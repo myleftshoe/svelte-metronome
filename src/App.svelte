@@ -65,19 +65,14 @@
 
 	function createTicks() {
 		// let _clicks = `${clicks*4}n`
-		if (clicks === 5)
-			Tone.Transport.PPQ = 190;
-		else if (clicks === 7)
-			Tone.Transport.PPQ = 189;
-		else
-			Tone.Transport.PPQ = 192;
+		if (!clicks) return;
+
+		const ppq = parseInt(Tone.Transport.PPQ);
+		Tone.Transport.PPQ = Math.round(ppq/clicks)*clicks;
 
 		const loop = new Tone.Loop();
-
-		let _clicks = Tone.Time('4n')/clicks;
-		console.log(_clicks)
 		loop.callback = time => click.start(time);
-		loop.interval = _clicks;
+		loop.interval = Tone.Time('4n')/clicks;
 		loop.start(0);
 	}
 
