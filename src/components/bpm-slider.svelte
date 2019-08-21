@@ -38,10 +38,10 @@
 </style>
 
 <div class='container'>
-    <input type="range" style="width:80%" min={min} max={max} step="1" value={bpm} 
+    <input type="range" style="width:100%" min={min} max={max} step="1" value={bpm} 
         on:input={handleSlide}
         on:change={handleChange}
-        />
+    />
     <div>{bpm}</div>
     <div class='buttons'>
         <button on:click={crement}>-20</button>
