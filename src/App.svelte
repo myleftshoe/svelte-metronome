@@ -114,12 +114,6 @@
 		clicks = value;
 	}
 
-	function toggleCheckbox(e) {
-		const i = parseInt(e.target.value);
-		const checked = e.target.checked; 
-		beatsArray[i] = checked;
-	}
-
 </script>
 
 <div class='container'>
@@ -132,7 +126,7 @@
 	<h2>Groove</h2>
 	<div>
 		{#each beatsArray as beat, i}
-			<input type='checkbox' value={i} on:click={toggleCheckbox} checked={beat}/>
+			<input type='checkbox' value={i} bind:checked={beat}/>
 		{/each}
 	</div>
 	<p/>
