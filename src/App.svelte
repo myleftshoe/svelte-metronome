@@ -90,6 +90,7 @@
 
 	function stop() {
 		Tone.Transport.stop();
+		Tone.Transport.cancel();
 	}
 
 	function toggle() {
