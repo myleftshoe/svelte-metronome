@@ -18,10 +18,13 @@
 	let playing = false;
 	let beatsArray = new Array(beats).fill(false);
 
-	const onBeat = new Tone.Player("kick.wav").toMaster();
-	const offBeat = new Tone.Player("High Seiko SQ50.wav").toMaster();
-	const click = new Tone.Player("Low Seiko SQ50.wav").toMaster();
+	// const onBeat = new Tone.Player("kick.wav").toMaster();
+	// const offBeat = new Tone.Player("High Seiko SQ50.wav").toMaster();
+	// const click = new Tone.Player("sounds/Low Seiko SQ50.wav").toMaster();
 
+	const onBeat = new Tone.Player("sounds/PK-M1.8.wav").toMaster();
+	const offBeat = new Tone.Player("sounds/SN_L-6.1.wav").toMaster();
+	const click = new Tone.Player("sounds/Low Seiko SQ50.wav").toMaster();
 
 	Tone.Transport.bpm.value = bpm;
 	Tone.Transport.timeSignature = [beats,4];
