@@ -18,11 +18,17 @@
             value = max;
         onChange(value);
     }
+
+    function handleChange(e) {
+        value = parseInt(e.target.value);
+        onChange(value);
+    }
+
 </script>
 
 <div>
     <button on:click={decrement} value={value}>-</button>
-        <input type='number' min='1' max='16' value={value} on:change={onChange}/>
+        <input type='number' min={min} max={max} value={value} on:change={handleChange}/>
     <button on:click={increment} value={value}>+</button>
 </div>
 

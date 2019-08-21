@@ -10,8 +10,7 @@
 
 	import StartStopButton from './components/start-stop-button.svelte';
 	import BpmSlider from './components/bpm-slider.svelte';
-	import Beats from './components/input-numeric.svelte';
-	import Clicks from './components/input-numeric.svelte';
+	import NumericInput from './components/input-numeric.svelte';
 
 	let bpm = 180;
 	let beats = 12;
@@ -124,9 +123,9 @@
 	<h2>Tempo</h2>
 	<BpmSlider onChange={setBpm} {bpm}/>
 	<h2>Beats</h2>
-	<Beats onChange={setBeats} value={beats} min={1} max={30}/>
+	<NumericInput onChange={setBeats} value={beats} min={1} max={30}/>
 	<h2>Clicks</h2>
-	<Clicks onChange={setClicks} value={clicks} min={0} max={7}/>
+	<NumericInput onChange={setClicks} value={clicks} min={0} max={9}/>
 	<h2>Groove</h2>
 	<div>
 		{#each beatsArray as beat, i}
