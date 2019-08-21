@@ -6,11 +6,11 @@
     const max = 320;
     
     function handleSlide(e) {
-        bpm = e.target.value;
+        bpm = parseInt(e.target.value);
     }
 
     function handleChange(e) {
-        onChange(e.target.value);
+        onChange(parseInt(e.target.value));
     }
 
     function crement(e) {
