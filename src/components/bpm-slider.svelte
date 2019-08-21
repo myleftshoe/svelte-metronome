@@ -1,30 +1,21 @@
 <script>
-    export let onChange;
-    export let bpm = 160;
+
+    export let value = 160;
 
     const min = 40;
     const max = 320;
     
-    function handleSlide(e) {
-        bpm = parseInt(e.target.value);
-    }
-
-    function handleChange(e) {
-        onChange(parseInt(e.target.value));
-    }
-
     function crement(e) {
-        bpm = bpm + parseInt(e.target.innerText);
-        if (bpm < min)
-            bpm = min;
-        if (bpm > max)
-            bpm = max;
-        onChange(bpm);
+        value = value + parseInt(e.target.innerText);
+        if (value < min)
+            value = min;
+        if (value > max)
+            value = max;
     }
 
     function round(e) {
-        console.log(bpm);
-        bpm = Math.round(bpm/10) * 10
+        console.log(value);
+        value = Math.round(value/10) * 10
     }
 
 </script>
@@ -38,11 +29,8 @@
 </style>
 
 <div class='container'>
-    <input type="range" style="width:100%" min={min} max={max} step="1" value={bpm} 
-        on:input={handleSlide}
-        on:change={handleChange}
-    />
-    <div>{bpm}</div>
+    <input type="range" style="width:100%" min={min} max={max} step="1" bind:value/>
+    <div>{value}</div>
     <div class='buttons'>
         <button on:click={crement}>-20</button>
         <button on:click={crement}>-5</button>

@@ -1,8 +1,7 @@
 <script>
-    export let onClick;
-    
+    export let playing=false;
 </script>
 
-<button on:click={onClick}>
+<button on:click={() => playing = !playing}>
     <slot/>
 </button>

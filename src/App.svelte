@@ -90,39 +90,27 @@
 		Tone.Transport.cancel();
 	}
 
-	function toggle() {
-		playing=!playing;
-		if (playing) 
-			start();
-		else 
-			stop();
-	}
-
-	function setBpm(value){
-		// Tone.Transport.bpm.rampTo(value, 5);
-		bpm = value;
-		Tone.Transport.bpm.value = bpm; 
-	}
-
-	function setBeats(value) {
-		beats = value;
+	$: {
 		beatsArray = new Array(beats).fill(false);
 		Tone.Transport.timeSignature = [beats,4];
 	}
 
-	function setClicks(value) {
-		clicks = value;
-	}
+	$: { Tone.Transport.bpm.value = bpm; }
+
+	$: if (playing) 
+			start();
+		else 
+			stop();		
 
 </script>
 
 <div class='container'>
 	<h2>Tempo</h2>
-	<BpmSlider onChange={setBpm} {bpm}/>
+	<BpmSlider bind:value={bpm}/>
 	<h2>Beats</h2>
-	<NumericInput onChange={setBeats} value={beats} min={1} max={30}/>
+	<NumericInput bind:value={beats} min={1} max={30}/>
 	<h2>Clicks</h2>
-	<NumericInput onChange={setClicks} value={clicks} min={0} max={9}/>
+	<NumericInput bind:value={clicks} min={0} max={9}/>
 	<h2>Groove</h2>
 	<div>
 		{#each beatsArray as beat, i}
@@ -130,7 +118,7 @@
 		{/each}
 	</div>
 	<p/>
-	<StartStopButton onClick={toggle}>
+	<StartStopButton bind:playing>
 		{playing ? 'Stop' : 'Play'}
 	</StartStopButton>
 </div>
