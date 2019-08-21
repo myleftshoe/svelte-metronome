@@ -24,7 +24,7 @@
 
 <div>
     <button on:click={decrement} value={value}>-</button>
-        <input type='number' min={min} max={max} bind:value/>
+    <input type='number' min={min} max={max} bind:value/>
     <button on:click={increment} value={value}>+</button>
 </div>
 

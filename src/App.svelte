@@ -18,23 +18,15 @@
 	let playing = false;
 	let beatsArray = new Array(beats).fill(false);
 
-	// const onBeat = new Tone.Player("kick.wav").toMaster();
-	// const offBeat = new Tone.Player("High Seiko SQ50.wav").toMaster();
-	// const click = new Tone.Player("sounds/Low Seiko SQ50.wav").toMaster();
-
 	const onBeat = new Tone.Player("sounds/PK-M1.8.wav").toMaster();
 	const offBeat = new Tone.Player("sounds/SN_L-6.1.wav").toMaster();
 	const click = new Tone.Player("sounds/Low Seiko SQ50.wav").toMaster();
 
 	Tone.Transport.bpm.value = bpm;
 	Tone.Transport.timeSignature = [beats,4];
-	// Tone.Transport.PPQ = 189;
-	// Tone.context.latencyHint = 'fastest'
-	// Tone.context.lookAhead = 0;
 
 
 	function createGroove() {
-
 		const times = beatsArray.reduce((res, beat, index) => {
 			if (beat)
 				res.push(`0:${index}`);
@@ -46,11 +38,9 @@
 
 		part.loop=true;
 		part.start(0);
-
 	}
 
 	function createBeats() {
-
 		const times = beatsArray.reduce((res, beat, index) => {
 			if (!beat)
 				res.push(`0:${index}`);
@@ -62,7 +52,6 @@
 
 		part.loop=true;
 		part.start(0);
-
 	}
 
 	function createTicks() {
