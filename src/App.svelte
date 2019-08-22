@@ -12,79 +12,15 @@
 	import BpmSlider from './components/bpm-slider.svelte';
 	import NumericInput from './components/input-numeric.svelte';
 
+	import metronome from './metronome';
+
 	let bpm = 180;
 	let beats = 12;
 	let clicks = 0;
 	let playing = false;
 	let beatsArray = new Array(beats).fill(false);
 
-	const players = {
-		clicks: new Tone.Player("sounds/Low Seiko SQ50.wav").toMaster(),
-		groove: new Tone.Player("sounds/PK-M1.8.wav").toMaster(),
-		beats: new Tone.Player("sounds/SN_L-6.1.wav").toMaster(),
-	}
-
-	let groovePart = new Tone.Part();
-	let beatsPart = new Tone.Part();
-	let clickLoop = new Tone.Loop();
-
-	Tone.Transport.bpm.value = bpm;
-	Tone.Transport.timeSignature = [beats,4];
-
-	function createGroove() {
-		groovePart.removeAll();
-		groovePart.dispose();
-		groovePart = new Tone.Part(time => players.groove.start(time));
-
-		const times = beatsArray.reduce((res, beat, index) => {
-			if (beat)
-				res.push(`0:${index}`);
-			return res;
-		}, []);
-
-		times.forEach(time => groovePart.add(time));
-
-		groovePart.loop=true;
-		groovePart.start('4n');
-	}
-
-	function createBeats() {
-		beatsPart.removeAll();
-		beatsPart.dispose();
-		beatsPart = new Tone.Part(time => players.beats.start(time));
-
-		const times = beatsArray.reduce((res, beat, index) => {
-			if (!beat)
-				res.push(`0:${index}`);
-			return res;
-		}, []);
-
-		times.forEach(time => beatsPart.add(time));
-
-		beatsPart.loop=true;
-		beatsPart.start('4n');
-	}
-
-	function createClicks() {
-		if (!clicks) return;
-		clickLoop.cancel();
-		clickLoop.callback = time => players.clicks.start(time);
-		clickLoop.interval = Tone.Time('4n')/clicks;
-		clickLoop.start('4n');
-	}
-
-	function play() {
-		createGroove();
-		createBeats();
-		createClicks();
-		Tone.Transport.timeSignature = [beats,4];
-		Tone.Transport.start();
-	}
-
-	function stop() {
-		Tone.Transport.stop();
-		Tone.Transport.cancel();
-	}
+	metronome.init(bpm, beats);
 
 	function updateBeatsArray(e) {
 		beatsArray = [...beatsArray];
@@ -96,15 +32,15 @@
 		beatsArray.length = beats;
 	}
 
-	$: { Tone.Transport.bpm.value = bpm; }
+	$: { metronome.setBpm(bpm); }
 
 	$: {
 		// block will run when of these change:
 		beatsArray; beats; clicks;
 		if (playing) 
-			play(beats);
+			metronome.play(beatsArray, clicks);
 		else 
-			stop();		
+			metronome.stop();		
 	}
 
 </script>
