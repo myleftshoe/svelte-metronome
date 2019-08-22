@@ -25,52 +25,66 @@
 	Tone.Transport.bpm.value = bpm;
 	Tone.Transport.timeSignature = [beats,4];
 
+	const clickLoop = new Tone.Loop();
+	let groovePart = new Tone.Part(time => onBeat.start(time));
+	let beatPart = new Tone.Part(time => offBeat.start(time));
+
 
 	function createGroove() {
+
+		groovePart.removeAll();
+		groovePart.dispose();
+		groovePart = new Tone.Part(time => onBeat.start(time));
+
 		const times = beatsArray.reduce((res, beat, index) => {
 			if (beat)
 				res.push(`0:${index}`);
 			return res;
 		}, []);
 
-		const part = new Tone.Part(time => onBeat.start(time));
-		times.forEach(time => part.add(time));
+		times.forEach(time => groovePart.add(time));
 
-		part.loop=true;
-		part.start(0);
+		groovePart.loop=true;
+		groovePart.start('4n');
 	}
 
 	function createBeats() {
+
+		beatPart.removeAll();
+		beatPart.dispose();
+		beatPart = new Tone.Part(time => offBeat.start(time));
+		
 		const times = beatsArray.reduce((res, beat, index) => {
 			if (!beat)
 				res.push(`0:${index}`);
 			return res;
 		}, []);
 
-		const part = new Tone.Part(time => offBeat.start(time));
-		times.forEach(time => part.add(time));
+		times.forEach(time => beatPart.add(time));
 
-		part.loop=true;
-		part.start(0);
+		beatPart.loop=true;
+		beatPart.start('4n');
 	}
 
 	function createTicks() {
 		// let _clicks = `${clicks*4}n`
 		if (!clicks) return;
 
-		const ppq = parseInt(Tone.Transport.PPQ);
-		Tone.Transport.PPQ = Math.round(ppq/clicks)*clicks;
+		clickLoop.cancel();
 
-		const loop = new Tone.Loop();
-		loop.callback = time => click.start(time);
-		loop.interval = Tone.Time('4n')/clicks;
-		loop.start(0);
+		// const ppq = parseInt(Tone.Transport.PPQ);
+		// Tone.Transport.PPQ = Math.round(ppq/clicks)*clicks;
+
+		clickLoop.callback = time => click.start(time);
+		clickLoop.interval = Tone.Time('4n')/clicks;
+		clickLoop.start('4n');
 	}
 
 	function start() {
 		createGroove();
 		createBeats();
 		createTicks();
+		Tone.Transport.timeSignature = [beats,4];
 		Tone.Transport.start();
 	}
 
@@ -80,17 +94,30 @@
 	}
 
 	$: {
-		beatsArray = new Array(beats).fill(false);
-		Tone.Transport.timeSignature = [beats,4];
+		beatsArray = [...beatsArray];
+		beatsArray.length = beats;
 	}
 
 	$: { Tone.Transport.bpm.value = bpm; }
 
-	$: if (playing) 
-			start();
+	$: {
+		// Dummy references: this block will run when  
+		// any of these vars change.
+		beatsArray;
+		beats;
+		clicks;
+		//
+		console.log(playing, beatsArray, beats, clicks, beatPart );
+		if (playing) 
+			start(beats);
 		else 
-			stop();		
+			stop(beats);		
+	}
 
+	function updateBeatsArray(e) {
+		beatsArray = [...beatsArray];
+		beatsArray[e.target.value] = e.target.checked;
+	}
 </script>
 
 <div class='container'>
@@ -103,7 +130,7 @@
 	<h2>Groove</h2>
 	<div>
 		{#each beatsArray as beat, i}
-			<input type='checkbox' value={i} bind:checked={beat}/>
+			<input type='checkbox' value={i} on:change={updateBeatsArray} checked={beatsArray[i]}/>
 		{/each}
 	</div>
 	<p/>
