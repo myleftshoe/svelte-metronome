@@ -59,7 +59,7 @@
 		if (playing) 
 			play(beats);
 		else 
-			stop(beats);		
+			stop();		
 	}
 
 </script>
