@@ -37,8 +37,10 @@
 	$: {
 		// block will run when of these change:
 		beatsArray; beats; clicks;
-		if (playing) 
-			metronome.play(beatsArray, clicks);
+		if (playing) {
+			metronome.times = beatsArray;
+			metronome.play( clicks);
+		}
 		else 
 			metronome.stop();		
 	}
