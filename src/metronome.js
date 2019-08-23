@@ -24,7 +24,7 @@ export default {
         return res;
     }, []);
     Tone.Transport.timeSignature = [this.beats,4];
-    this.stop();
+    // this.stop();
     this.onBeats.play(onTimes);
     this.offBeats.play(offTimes);
     this.clicksLoop.play(clicks);
