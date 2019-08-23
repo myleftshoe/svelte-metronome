@@ -41,7 +41,7 @@
 </script>
 
 <div class='container'>
-	<h2>Tempo</h2>
+	<h2>{bpm}</h2>
 	<BpmSlider bind:value={bpm}/>
 	<h2>Beats</h2>
 	<NumericInput bind:value={beats} min={1} max={30}/>

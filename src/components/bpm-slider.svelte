@@ -29,7 +29,6 @@
 
 <div class='container'>
     <input type="range" style="width:100%" min={min} max={max} step="1" bind:value/>
-    <div>{value}</div>
     <div class='buttons'>
         <button on:click={crement}>-20</button>
         <button on:click={crement}>-5</button>
