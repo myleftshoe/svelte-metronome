@@ -32,15 +32,13 @@
 		beatsArray.length = beats;
 	}
 
-	$: { metronome.setBpm(bpm); }
+	$: metronome.bpm = bpm;
 
 	$: {
 		// block will run when of these change:
 		beatsArray; beats; clicks;
-		if (playing) {
-			metronome.times = beatsArray;
-			metronome.play( clicks);
-		}
+		if (playing)
+			metronome.play(beatsArray, clicks);
 		else 
 			metronome.stop();		
 	}
