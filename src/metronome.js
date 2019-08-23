@@ -23,15 +23,16 @@ export default {
             res.push(`0:${index}`);
         return res;
     }, []);
+    Tone.Transport.timeSignature = [this.beats,4];
+    this.stop();
     this.onBeats.play(onTimes);
     this.offBeats.play(offTimes);
     this.clicksLoop.play(clicks);
-    Tone.Transport.timeSignature = [this.beats,4];
     Tone.Transport.start();
     },
     stop() {
-    Tone.Transport.stop();
-    Tone.Transport.cancel();
+        Tone.Transport.stop();
+        Tone.Transport.cancel();
     },
     set bpm(bpm) { 
         Tone.Transport.bpm.value = bpm; 

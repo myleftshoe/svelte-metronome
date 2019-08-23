@@ -27,16 +27,12 @@
 		beatsArray[e.target.value] = e.target.checked;
 	}
 
-	$: {
-		beatsArray = [...beatsArray];
-		beatsArray.length = beats;
-	}
-
 	$: metronome.bpm = bpm;
 
 	$: {
-		// block will run when of these change:
-		beatsArray; beats; clicks;
+		beatsArray = [...beatsArray];
+		beatsArray.length = beats || 1;
+		console.log(beatsArray);
 		if (playing)
 			metronome.play(beatsArray, clicks);
 		else 
