@@ -14,7 +14,6 @@
     }
 
     function round(e) {
-        console.log(value);
         value = Math.round(value/10) * 10
     }
 

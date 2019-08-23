@@ -32,7 +32,6 @@
 	$: {
 		beatsArray = [...beatsArray];
 		beatsArray.length = beats || 1;
-		console.log(beatsArray);
 		if (playing)
 			metronome.play(beatsArray, clicks);
 		else 
