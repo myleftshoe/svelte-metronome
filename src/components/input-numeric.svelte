@@ -1,21 +1,62 @@
+<style>
+    .container {
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        justify-content: center;
+    }
+    input {
+        background-color: transparent;
+        border:none;
+        padding:0;
+        font-size: 2em;
+        color: #aaa;
+        text-align:center;
+        /* width:2.2em; */
+        /* padding-left:12px; */
+        display:inline-block
+    }
+/* Hide HTML5 Up and Down arrows. */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}    
+    .value-container {
+        /* background-color: red; */
+        display:flex;
+        flex-direction: column;
+        align-items:center;
+        justify-content:center;
+    }
+</style>
 <script>
-    import {afterUpdate} from 'svelte';
+    import Incrementor from './incrementor.svelte'
+    import Crementor from './crementor.svelte'
+    import {afterUpdate, createEventDispatcher } from 'svelte';
     export let value = 5;
     export let step = 1;
     export let min = 0;
     export let max = 10;
+    export let label='';
     let node;
 
+    const dispatch = createEventDispatcher();
+
     function decrement() {
-        setValue(value - step); 
+        setValue(value - step);
     }
 
     function increment() {
-        setValue(value + step); 
+        setValue(value + step);
     }
 
     function setValue(newValue) {
-        if (newValue < min)
+        console.log('setValue',newValue)
+        if (newValue < min || isNaN(newValue))
             value = min;
         else if (newValue > max)
             value = max;
@@ -24,24 +65,45 @@
     }
 
     function handleInput(e) {
+
         let newValue = parseInt(e.target.value);
-        if (isNaN(newValue))
-            newValue = min;
-        setValue(parseInt(newValue));
+        setValue(parseInt(e.target.value));
         node = e.target;
+    }
+
+
+    function handleChange(e) {
+        console.log('handleChange',e.detail.value)
+        setValue(parseInt(e.detail.value));
+        dispatch("change", { value });
     }
 
     afterUpdate(() => {
         if (value === min && node)
             node.select();
-        node = undefined; 
+        node = undefined;
     })
+    $: {
+                console.log('A',value)
+
+        // setValue(value)
+        //         console.log('B',value)
+
+        }
 </script>
 
-<div>
-    <button on:click={decrement} value={value}>-</button>
-    <input type='number' min={min} max={max} bind:value on:input={handleInput}/>
-    <button on:click={increment} value={value}>+</button>
+<div class=container>
+    <Crementor on:change={handleChange} {value} step={-1}/>
+    <!-- <Decrementor bind:value/> -->
+    <!-- <button on:click={decrement} value={value}>-</button> -->
+
+    <div class=value-container>
+        <input on:keydown={() => {}} type='number' min={min} max={max} bind:value on:input={handleInput}/>
+        <label>{label}</label>
+    </div>
+
+    <Crementor on:change={handleChange} {value} step={+1}/>
+    <!-- <button on:click={increment} value={value}>+</button> -->
 </div>
 
 

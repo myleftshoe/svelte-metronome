@@ -18,6 +18,16 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
+"@maslick/radiaslider@^1.8.3":
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/@maslick/radiaslider/-/radiaslider-1.8.3.tgz#58d05143e3f402d4d92a57d3926283d1d28b6088"
+  integrity sha512-1MPQklrVmZ11OGm3/D94FNbFDewDhVS2dAJVz7yy31q7w25WQkEULmCfQnd1UceBJCvHHemnvWyNUsq5i6CBdA==
+
+"@mougli/circular-slider@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@mougli/circular-slider/-/circular-slider-1.0.0.tgz#5ec43ae6183ca9a0ecc2db6f8b8f447fd906b1ac"
+  integrity sha512-c6hQzBGaZvnx4kn/oBDPfD3AYEaItIMVdSpuxWpiLA5oqSYTcEPcxRIVmcbH0EOKwcRAnsMWC+bfW9aodBOAyg==
+
 "@polka/url@^0.5.0":
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-0.5.0.tgz#b21510597fd601e5d7c95008b76bf0d254ebfd31"
