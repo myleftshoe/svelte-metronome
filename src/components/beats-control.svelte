@@ -64,7 +64,9 @@
     <div class='hotspot' on:click={() => {beats--}}></div>
     <div class='bars'>
         {#each bars.slice(0, beats) as value, id}
-            <button {id} class={value ? 'bar-on': 'bar'} {value} transition:slide|local 
+            <button {id} class={value ? 'bar-on': 'bar'} {value} 
+                aria-label={`beat ${id + 1}`}
+                transition:slide|local 
                 on:click={e => toggleBar(id)}
             />
         {/each}
