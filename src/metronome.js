@@ -1,18 +1,11 @@
 export default {
 
-    ready: false,
-
-    get isReady() {
-        if (!window.Tone) return false;
-        if (this.ready) return true; 
+    init() {
         this.onBeats = new Part("sounds/PK-M1.8.wav");
         this.offBeats = new Part('sounds/SN_L-6.1.wav');
         this.clicksLoop = new Loop('sounds/Low Seiko SQ50.wav');
-        return true;
     },
-
     play(bpm, beatsArray, clicks) {
-        if (!this.isReady) return; 
         const beats = beatsArray.length;
         Tone.Transport.bpm.value = bpm; 
         Tone.Transport.timeSignature = [beats,4];
@@ -33,7 +26,6 @@ export default {
         Tone.Transport.start();
     },
     stop() {
-        if (!this.isReady) return; 
         Tone.Transport.stop();
         Tone.Transport.cancel();
     },
@@ -59,10 +51,10 @@ function Loop(url) {
     this.setUrl = (url) => {this.player = new Tone.Player(url).toMaster()};
     this.play = function(clicks) {
         this.loop.cancel();
-    if (!clicks) return;
+        if (!clicks) return;
         this.loop.interval = Tone.Time('4n')/clicks;
-    this.loop.callback = time => this.player.start(time);
-    this.loop.start('4n');
+        this.loop.callback = time => this.player.start(time);
+        this.loop.start('4n');
     }
 }
 
