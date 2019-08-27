@@ -92,7 +92,7 @@
 
 {#if visible}
 	<div class='container' id="slider" transition:fade={{duration:1000}}>
-		<BpmControl bind:value={bpm} step=5/>
+		<BpmControl bind:value={bpm}/>
 		<StartStopButton bind:playing>
 			{playing ? 'Pause' : 'Play'}
 		</StartStopButton>
