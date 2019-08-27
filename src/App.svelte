@@ -1,4 +1,36 @@
 <style>
+
+	.bpm-control { grid-area: bpm-control; }
+	.play-button { grid-area: play-button; }
+	.beats-control { grid-area: beats-control; }
+	.clicks-control { grid-area: clicks-control; }
+
+	.container {
+		max-width: 900px;
+		min-height: 100vh;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 100%;
+		grid-template-rows: 1fr auto auto auto;
+		grid-template-areas: "bpm-control"
+							"play-button"
+							"beats-control"
+							"clicks-control";
+	}
+
+@media (min-width: 540px) {
+	.container {
+		grid-template-columns: 1fr 150px 150px;
+		grid-template-rows: 1fr auto;
+		grid-template-areas: 
+							"bpm-control clicks clicks-control"
+							"bpm-control play-button play-button"
+							"beats-control beats-control beats-control"
+							;
+		}
+}
+
+/* 
 	.container {
 		display: flex;
 		flex-direction: column;
@@ -6,13 +38,13 @@
 		justify-content: space-around;
 		height: 100vh;
 		width:100vw;
-		/* background-color: rgba(256,0,0,.08); */
 	}
 	@media only screen and (orientation: landscape) {
 		.container {
 			flex-direction: row;
 		}
 	}
+ */
 </style>
 
 <script>
@@ -92,13 +124,20 @@
 
 {#if visible}
 	<div class='container' id="slider" transition:fade={{duration:1000}}>
-		<BpmControl bind:value={bpm} step=5/>
-		<StartStopButton bind:playing>
-			{playing ? 'Pause' : 'Play'}
-		</StartStopButton>
-		<p></p>
-		<BeatsControl bind:beats on:change={updateBeatsArray}></BeatsControl>
-		<NumericInput label=clicks bind:value={clicks} min={0} max={9}/>
+		<div class='bpm-control'>
+			<BpmControl bind:value={bpm} step=5/>
+		</div>
+		<div class='play-button'>
+			<StartStopButton bind:playing>
+				{playing ? 'Pause' : 'Play'}
+			</StartStopButton>
+		</div>
+		<div class='beats-control'>
+			<BeatsControl bind:beats on:change={updateBeatsArray}></BeatsControl>
+		</div>
+		<div class='clicks-control'>
+			<NumericInput label=clicks bind:value={clicks} min={0} max={9}/>
+		</div>
 		<!-- <ClicksControl bind:value={clicks}></ClicksControl> -->
 	</div>
 {/if}
