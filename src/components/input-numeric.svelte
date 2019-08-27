@@ -88,8 +88,8 @@ input[type="number"] {
 <div class=container>
     <Crementor on:change={handleChange} {value} step={-1}/>
     <div class=value-container>
-        <input on:keydown={() => {}} type='number' min={min} max={max} bind:value on:input={handleInput}/>
-        <label>{label}</label>
+        <input id={label} on:keydown={() => {}} type='number' min={min} max={max} bind:value on:input={handleInput}/>
+        <label for={label}>{label}</label>
     </div>
     <Crementor on:change={handleChange} {value} step={+1}/>
 </div>
