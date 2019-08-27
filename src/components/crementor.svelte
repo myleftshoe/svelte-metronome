@@ -1,13 +1,14 @@
 <style>
     span {
         pointer-events: auto;
-        font-size: 2em;
+        font-size: 1em;
         /* background: green; */
-        width:1.2em;
-        height:100%;
+        width:3em;
+        height:3em;
         display:flex;
         align-items:center;
         justify-content:center;
+        text-align:center;
     }
 </style>
 

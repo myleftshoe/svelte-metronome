@@ -1,27 +1,28 @@
 <style>
     .container {
-        /* pointer-events:auto; */
-        position:relative;
         display:flex;
         flex-direction:row;
+        width:100%;
         /* background-color: #f003; */
     }
-    .button {
-        bottom:0px;
-        flex:1;
-        align-self: flex-end;
-    }
-    .underlay {
-        pointer-events:none;
+    .center {
+        position:relative;
         display:flex;
         flex-direction: column;
         align-items:center;
         justify-content: center;
+        flex:1;
+    }
+    .overlay {
         position:absolute;
-        height:100%;
-        width:100%;
-        /* background-color: #f003; */
+        /* background-color: #00f2; */
         z-index:1;
+        pointer-events:none;
+    }
+    .hotspot {
+        /* background-color: red; */
+        width:32px;
+        height:100%;
     }
 </style>
 <script>
@@ -33,16 +34,13 @@
         value = e.detail.value 
     }
 </script>
-<div class='container'>
-    <!-- <Crementor on:change={handleChange} {value} step={-1}/> -->
-    <!-- <button class=button>-</button> -->
-    <!-- <button class=button>+</button> -->
-        <!-- <Crementor on:change={handleChange} {value} step={+1}/> -->
-    <underlay class=underlay>
-        <NumericInput label=bpm bind:value min={20} max={360}/>
-        <!-- <label style='font-size:3em'>{value}</label>
-        <label>bpm</label> -->
-    </underlay>
-    <CircularSlider bind:value/>
-
+<div class=container>
+    <div class='hotspot' on:click={() => {value--}}></div>
+    <div class=center>
+        <overlay class=overlay>
+            <NumericInput label=bpm bind:value min={20} max={360}/>
+        </overlay>
+        <CircularSlider bind:value/>
+    </div>
+    <div class='hotspot' on:click={() => {value++}}></div>
 </div>

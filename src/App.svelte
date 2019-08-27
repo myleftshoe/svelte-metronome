@@ -3,7 +3,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items:center;
-		justify-content: space-evenly;
+		justify-content: space-around;
 		height: 100vh;
 		width:100vw;
 		/* background-color: rgba(256,0,0,.08); */
@@ -42,8 +42,9 @@
 	import BpmControl from './components/bpm-control.svelte';
 	import { fade } from 'svelte/transition';
 	import metronome from './metronome';
-	import Beats from './components/beats.svelte';
+	// import Beats from './components/beats.svelte';
 	import BeatsControl from './components/beats-control.svelte';
+	import ClicksControl from './components/clicks-control.svelte';
 
 	let bpm = 180;
 	let beats = 4;
@@ -81,15 +82,6 @@
 			}
 			default:
 		}
-        // if (e.key === 'ArrowUp') 
-		// 	bpm = Math.floor(bpm/multiplier) * multiplier + multiplier;
-        // if (e.key === 'ArrowDown')
-        // console.log(bpm);
-		// if (e.key === 'ArrowRight')
-		// 	beats += 1
-		// if (e.key === 'ArrowLeft')
-		// 	beats -= 1
-
     }
 
 	document.addEventListener('keydown', handleKeydown);
@@ -116,35 +108,16 @@
 	}
 
 </script>
-{#if visible}
-<div class='container' id="slider" transition:fade={{duration:1000}}>
-	<BpmControl bind:value={bpm} step=5/>
-	        <!-- <div>▋▋</div> -->
 
-	<StartStopButton bind:playing>
-		{playing ? 'Pause' : 'Play'}
-	</StartStopButton>
-	<!-- <div class=beats-clicks>
-		<div class=col>
-			<NumericInput label=beats bind:value={beats} min={1} max={16}/>
-		</div>
-		<div class=col> -->
-		<!-- </div>
-	</div> -->
-	<!-- <span id="value1"></span>
-	<h2>{bpm}</h2>
-	<BpmSlider bind:value={bpm}/> -->
-	<!-- <div>Beats</div> -->
-	<!-- <div>Clicks</div>
-	<NumericInput bind:value={clicks} min={0} max={9}/>
-	<div>Groove</div> -->
-	<!-- <div>
-		{#each beatsArray as beat, i}
-			<input type='checkbox' value={i} on:change={updateBeatsArray} checked={beatsArray[i]}/>
-		{/each}
-	</div> -->
-	<Beats bind:beats on:change={updateBeatsArray}></Beats>
-			<NumericInput label=clicks bind:value={clicks} min={0} max={9}/>
-	<!-- <p/> -->
-</div>
+{#if visible}
+	<div class='container' id="slider" transition:fade={{duration:1000}}>
+		<BpmControl bind:value={bpm} step=5/>
+		<StartStopButton bind:playing>
+			{playing ? 'Pause' : 'Play'}
+		</StartStopButton>
+		<p></p>
+		<BeatsControl bind:beats on:change={updateBeatsArray}></BeatsControl>
+		<NumericInput label=clicks bind:value={clicks} min={0} max={9}/>
+		<!-- <ClicksControl bind:value={clicks}></ClicksControl> -->
+	</div>
 {/if}

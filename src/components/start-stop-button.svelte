@@ -1,7 +1,8 @@
 <style>
     button {
         background-color: transparent;
-        border: 2px solid var(--primary-color);
+        /* border: 2px solid var(--primary-color); */
+        border:none;
         border-radius: 12px;
         padding: .5em 1em;
         color: var(--primary-color);

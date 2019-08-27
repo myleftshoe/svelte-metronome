@@ -12,8 +12,6 @@
         font-size: 2em;
         color: #aaa;
         text-align:center;
-        /* width:2.2em; */
-        /* padding-left:12px; */
         display:inline-block
     }
 /* Hide HTML5 Up and Down arrows. */
@@ -33,8 +31,9 @@ input[type="number"] {
         justify-content:center;
     }
 </style>
+
 <script>
-    import Incrementor from './incrementor.svelte'
+
     import Crementor from './crementor.svelte'
     import {afterUpdate, createEventDispatcher } from 'svelte';
     export let value = 5;
@@ -83,27 +82,16 @@ input[type="number"] {
             node.select();
         node = undefined;
     })
-    $: {
-                console.log('A',value)
 
-        // setValue(value)
-        //         console.log('B',value)
-
-        }
 </script>
 
 <div class=container>
     <Crementor on:change={handleChange} {value} step={-1}/>
-    <!-- <Decrementor bind:value/> -->
-    <!-- <button on:click={decrement} value={value}>-</button> -->
-
     <div class=value-container>
         <input on:keydown={() => {}} type='number' min={min} max={max} bind:value on:input={handleInput}/>
         <label>{label}</label>
     </div>
-
     <Crementor on:change={handleChange} {value} step={+1}/>
-    <!-- <button on:click={increment} value={value}>+</button> -->
 </div>
 
 

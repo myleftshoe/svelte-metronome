@@ -1,6 +1,3 @@
-<style>
-</style>
-
 <script>
 	import {onMount, onDestroy} from 'svelte';
     // import Slider from "@maslick/radiaslider";
@@ -12,7 +9,13 @@
     
     let slider;
 
-    onMount(() => {
+
+    function createSlider(node) {
+        const {height, width} = getComputedStyle(node.parentNode);
+        console.log(height, width);
+
+        // node.height=height;
+        // node.width=width;
         slider = new Slider({ canvasId: "canvas", continuousMode: false,});
         slider.addSlider({
             id: 1,
@@ -24,12 +27,33 @@
             color: getComputedStyle(document.documentElement).getPropertyValue('--secondary-color'),
             changed: function(v) {value = v.value }
         });
-        // slider.setSliderValue(1, value);
+        console.log(slider.context, node);
+        // node.height=100;
+        // node.width=100;
+        // node.style.height='100px';
+        // node.style.width='100px';
+        // const ctx = Slider.setupHiDpiCanvas(node);
+        // slider.drawAll();
+    }
 
-        // window.addEventListener('load', resize, false);
-        // window.addEventListener('resize', resize, false);
+    // onMount(() => {
+    //     slider = new Slider({ canvasId: "canvas", continuousMode: false,});
+    //     slider.addSlider({
+    //         id: 1,
+    //         radius: 100,
+    //         value,
+    //         min,
+    //         max,
+    //         step,
+    //         color: getComputedStyle(document.documentElement).getPropertyValue('--secondary-color'),
+    //         changed: function(v) {value = v.value }
+    //     });
+    //     // slider.setSliderValue(1, value);
 
-    });
+    //     // window.addEventListener('load', resize, false);
+    //     // window.addEventListener('resize', resize, false);
+
+    // });
 
     // onDestroy(() => {
     //     window.removeEventListener('load', resize, false);
@@ -54,5 +78,7 @@
     $: { slider && slider.setSliderValue(1, value); }
 
 </script>
-
-<canvas id="canvas" value={value} width="300" height="300" tabindex="0"/>
+<canvas id="canvas" value={value} 
+    use:createSlider
+    width="300" height="300" 
+/>
