@@ -50,10 +50,17 @@
         bars[id] = !bars[id];
         dispatch('change', {value:[...bars]})
     }
+    function handleWheel(e) {
+        beats -= Math.sign(e.deltaY);
+        if (beats < 1)
+            beats = 1;
+        if (beats > 16)
+            beats = 16;
+    }
 </script>
 
 
-<div class='container'>
+<div class='container' on:wheel|stopPropagation={handleWheel}>
     <div class='hotspot' on:click={() => {beats--}}></div>
     <div class='bars'>
         {#each bars.slice(0, beats) as value, id}
