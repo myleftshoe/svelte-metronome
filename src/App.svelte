@@ -36,7 +36,6 @@
 	onMount(() => {
 		visible = true;
 	})
-	metronome.init(bpm, beats);
 	
     function handleWheel(e) {
 		console.log(e);
@@ -67,23 +66,16 @@
 
 	document.addEventListener('keydown', handleKeydown);
 	document.addEventListener('wheel', handleWheel);
-	// function updateBeatsArray(e) {
-	// 	beatsArray = [...beatsArray];
-	// 	beatsArray[e.target.value] = e.target.checked;
-	// }
-
+	
 	function updateBeatsArray(e) {
 		beatsArray = [...e.detail.value];
 	}
 
-	$: metronome.bpm = bpm;
-
 	$: {
 		beatsArray = [...beatsArray];
-		console.log(beats)
 		beatsArray.length = beats || 1;
-		if (playing)
-			metronome.play(beatsArray, clicks);
+		if (playing) 
+			metronome.play(bpm, beatsArray, clicks);
 		else 
 			metronome.stop();		
 	}
