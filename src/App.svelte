@@ -13,20 +13,6 @@
 			flex-direction: row;
 		}
 	}
-	.beats-clicks {
-		display: flex;
-		flex-direction: row;
-		width:100%;
-		height:6em;
-		align-items:center;
-		justify-content:center;
-		/* background: red */
-	}
-	.col {
-		display:flex;
-		flex:1; 
-		justify-content:center;
-	}
 </style>
 
 <script>
@@ -35,14 +21,9 @@
 	import BpmSlider from './components/bpm-slider.svelte';
 	import NumericInput from './components/input-numeric.svelte';
 	import {onMount} from 'svelte';
-	// import pureknob from './pureknob.js'
-	// import Slider from "@maslick/radiaslider";
-	// import LinearSlider from "@maslick/radiaslider/src/slider-linear";
-	// import CircularSlider from './components/circular-slider.svelte';
 	import BpmControl from './components/bpm-control.svelte';
 	import { fade } from 'svelte/transition';
 	import metronome from './metronome';
-	// import Beats from './components/beats.svelte';
 	import BeatsControl from './components/beats-control.svelte';
 	import ClicksControl from './components/clicks-control.svelte';
 
