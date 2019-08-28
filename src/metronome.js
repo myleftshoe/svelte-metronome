@@ -1,14 +1,26 @@
+// import Tone from 'tone'
+import Tone from 'tone/Tone/core/Tone';
+import ToneTransport from 'tone/Tone/core/Transport';
+import TonePart from 'tone/Tone/event/Part';
+import ToneLoop from 'tone/Tone/event/Loop';
+import TonePlayer from 'tone/Tone/source/Player';
+
 export default {
 
     init() {
-        this.onBeats = new Part("sounds/PK-M1.8.wav");
-        this.offBeats = new Part('sounds/SN_L-6.1.wav');
-        this.clicksLoop = new Loop('sounds/Low Seiko SQ50.wav');
+        if (!this.initialized) {
+            this.initialized = true;
+            Tone.context.resume();
+            this.onBeats = new Part("sounds/PK-M1.8.wav");
+            this.offBeats = new Part('sounds/SN_L-6.1.wav');
+            this.clicksLoop = new Loop('sounds/Low Seiko SQ50.wav');
+        }
     },
     play(bpm, beatsArray, clicks) {
+        this.init()
         const beats = beatsArray.length;
-        Tone.Transport.bpm.value = bpm; 
-        Tone.Transport.timeSignature = [beats,4];
+        ToneTransport.bpm.value = bpm; 
+        ToneTransport.timeSignature = [beats,4];
         const onTimes = beatsArray.reduce((res, beat, index) => {
             if (beat)
                 res.push(`0:${index}`);
@@ -23,22 +35,22 @@ export default {
         this.onBeats.play(onTimes);
         this.offBeats.play(offTimes);
         this.clicksLoop.play(clicks);
-        Tone.Transport.start();
+        ToneTransport.start();
     },
     stop() {
-        Tone.Transport.stop();
-        Tone.Transport.cancel();
+        ToneTransport.stop();
+        ToneTransport.cancel();
     },
 }
 
 function Part(url) {
-    this.player = new Tone.Player(url).toMaster();
-    this.part = new Tone.Part();
-    this.setUrl = (url) => {this.player = new Tone.Player(url).toMaster()};
+    this.player = new TonePlayer(url).toMaster();
+    this.part = new TonePart();
+    this.setUrl = (url) => {this.player = new TonePlayer(url).toMaster()};
     this.play = function(times) {
         this.part.removeAll();
         this.part.dispose();
-        this.part = new Tone.Part(time => this.player.start(time));
+        this.part = new TonePart(time => this.player.start(time));
         times.forEach(time => this.part.add(time));
         this.part.loop=true;
         this.part.start('4n');
@@ -46,13 +58,13 @@ function Part(url) {
 }
 
 function Loop(url) {
-    this.player = new Tone.Player(url).toMaster();
-    this.loop = new Tone.Loop();
-    this.setUrl = (url) => {this.player = new Tone.Player(url).toMaster()};
+    this.player = new TonePlayer(url).toMaster();
+    this.loop = new ToneLoop();
+    this.setUrl = (url) => {this.player = new TonePlayer(url).toMaster()};
     this.play = function(clicks) {
         this.loop.cancel();
         if (!clicks) return;
-        this.loop.interval = Tone.Time('4n')/clicks;
+        this.loop.interval = ToneTime('4n')/clicks;
         this.loop.callback = time => this.player.start(time);
         this.loop.start('4n');
     }

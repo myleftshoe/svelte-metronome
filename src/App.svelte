@@ -40,10 +40,10 @@
 	onMount(() => {mounted = true;})
 
 	// Tone cannot be imported as a node module with svelte - Tone/usestrict problem.
-	loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js')
-	.then(function(){
-		metronome.init(bpm, beats);
-	});
+	// loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js')
+	// .then(function(){
+	// 	metronome.init(bpm, beats);
+	// });
 
 
     function handleWheel(e) {

@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'static-cache-v7';
+const CACHE_NAME = 'static-cache-v8';
 const FILES_TO_CACHE = [
     '/index.html',
     '/favicon.png',
@@ -11,7 +11,7 @@ const FILES_TO_CACHE = [
     '/sounds/PK-M1.8.wav',
     '/sounds/SN_L-6.1.wav',
     '/sounds/Low Seiko SQ50.wav',
-    'https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js',
+    // 'https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js',
 ];
 
 self.addEventListener('install', (evt) => {
