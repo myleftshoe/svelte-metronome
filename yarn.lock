@@ -1772,6 +1772,11 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
+tone@^13.8.26:
+  version "13.8.26"
+  resolved "https://registry.yarnpkg.com/tone/-/tone-13.8.26.tgz#2642e6992096bb50911c813c0239c74e0df8f23c"
+  integrity sha512-leOouR6B3rx5LFSDsdCDNQNgVET3W/tTwlLrozp8IQ5HtlS6A/8pXNx515geKTxOVRav+PNkAk/B/LobggS5Qg==
+
 ultron@1.0.x:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/ultron/-/ultron-1.0.2.tgz#ace116ab557cd197386a4e88f4685378c8b2e4fa"
