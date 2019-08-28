@@ -18,6 +18,7 @@
     "tone": "^13.8.26"
   },
   "scripts": {
+    "deploy": "surge public",
     "build": "rollup -c",
     "autobuild": "rollup -c -w",
     "dev": "run-p start:dev autobuild",
