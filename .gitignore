@@ -3,4 +3,3 @@ node_modules
 public/bundle.*
 CNAME
 *.log
-public/temp.js
