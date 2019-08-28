@@ -1,41 +1,33 @@
 export default {
-    onBeats: new Part("sounds/PK-M1.8.wav"),
-    offBeats: new Part('sounds/SN_L-6.1.wav'),
-    clicksLoop: new Loop('sounds/Low Seiko SQ50.wav'),
-    onTimes: [],
-    offTimes: [],
-    bpm: 120,
-    beats: 4,
-    init(bpm, beats) {
-        Tone.Transport.bpm.value = bpm;
-        Tone.Transport.timeSignature = [beats,4];
-        this.beats = beats;
+
+    init() {
+        this.onBeats = new Part("sounds/PK-M1.8.wav");
+        this.offBeats = new Part('sounds/SN_L-6.1.wav');
+        this.clicksLoop = new Loop('sounds/Low Seiko SQ50.wav');
     },
-    play(beatsArray, clicks) {
-    this.beats = beatsArray.length;
-    const onTimes = beatsArray.reduce((res, beat, index) => {
-        if (beat)
-            res.push(`0:${index}`);
-        return res;
-    }, []);
-    const offTimes = beatsArray.reduce((res, beat, index) => {
-        if (!beat)
-            res.push(`0:${index}`);
-        return res;
-    }, []);
-    Tone.Transport.timeSignature = [this.beats,4];
-    // this.stop();
-    this.onBeats.play(onTimes);
-    this.offBeats.play(offTimes);
-    this.clicksLoop.play(clicks);
-    Tone.Transport.start();
+    play(bpm, beatsArray, clicks) {
+        const beats = beatsArray.length;
+        Tone.Transport.bpm.value = bpm; 
+        Tone.Transport.timeSignature = [beats,4];
+        const onTimes = beatsArray.reduce((res, beat, index) => {
+            if (beat)
+                res.push(`0:${index}`);
+            return res;
+        }, []);
+        const offTimes = beatsArray.reduce((res, beat, index) => {
+            if (!beat)
+                res.push(`0:${index}`);
+            return res;
+        }, []);
+        // this.stop();
+        this.onBeats.play(onTimes);
+        this.offBeats.play(offTimes);
+        this.clicksLoop.play(clicks);
+        Tone.Transport.start();
     },
     stop() {
         Tone.Transport.stop();
         Tone.Transport.cancel();
-    },
-    set bpm(bpm) { 
-        Tone.Transport.bpm.value = bpm; 
     },
 }
 
@@ -59,10 +51,10 @@ function Loop(url) {
     this.setUrl = (url) => {this.player = new Tone.Player(url).toMaster()};
     this.play = function(clicks) {
         this.loop.cancel();
-    if (!clicks) return;
+        if (!clicks) return;
         this.loop.interval = Tone.Time('4n')/clicks;
-    this.loop.callback = time => this.player.start(time);
-    this.loop.start('4n');
+        this.loop.callback = time => this.player.start(time);
+        this.loop.start('4n');
     }
 }
 

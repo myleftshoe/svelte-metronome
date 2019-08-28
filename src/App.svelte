@@ -26,27 +26,33 @@
 	import metronome from './metronome';
 	import BeatsControl from './components/beats-control.svelte';
 	import ClicksControl from './components/clicks-control.svelte';
+	import loadScriptAsync from './utils/load-script-async';
 
 	let bpm = 180;
 	let beats = 4;
 	let clicks = 0;
 	let playing = false;
+	let prev = false;
 	let beatsArray = new Array(beats).fill(false);
-	let visible = false;
-	onMount(() => {
-		visible = true;
-	})
-	metronome.init(bpm, beats);
-	
+	let mounted = false;
+
+
+	onMount(() => {mounted = true;})
+
+	// Tone cannot be imported as a node module with svelte - Tone/usestrict problem.
+	loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js')
+	.then(function(){
+		metronome.init(bpm, beats);
+	});
+
+
     function handleWheel(e) {
-		console.log(e);
 		const multiplier = e.shiftKey ? 1 : 10;
         bpm -= Math.sign(e.deltaY) * multiplier;
     }
 
     function handleKeydown(e) {
 		return;
-		console.log(e.key);
 		const multiplier = e.shiftKey ? 1 : 5;
 		switch (e.key) {
 			case 'ArrowUp': {
@@ -67,30 +73,26 @@
 
 	document.addEventListener('keydown', handleKeydown);
 	document.addEventListener('wheel', handleWheel);
-	// function updateBeatsArray(e) {
-	// 	beatsArray = [...beatsArray];
-	// 	beatsArray[e.target.value] = e.target.checked;
-	// }
-
+	
 	function updateBeatsArray(e) {
 		beatsArray = [...e.detail.value];
 	}
 
-	$: metronome.bpm = bpm;
-
 	$: {
 		beatsArray = [...beatsArray];
-		console.log(beats)
 		beatsArray.length = beats || 1;
-		if (playing)
-			metronome.play(beatsArray, clicks);
-		else 
-			metronome.stop();		
+		console.log(playing, prev);
+		if (playing) 
+			metronome.play(bpm, beatsArray, clicks);
+		else if (playing !== prev) 
+			metronome.stop();	
+		prev = playing;	
 	}
+
 
 </script>
 
-{#if visible}
+{#if mounted}
 	<div class='container' id="slider" transition:fade={{duration:1000}}>
 		<BpmControl bind:value={bpm}/>
 		<StartStopButton bind:playing>
