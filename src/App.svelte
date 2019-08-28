@@ -3,12 +3,10 @@
 		display: flex;
 		flex-direction: column;
 		align-items:center;
-		justify-content: space-around;
-		height: 100vh;
-		width:100vw;
+		justify-content: center;
 		/* background-color: rgba(256,0,0,.08); */
 	}
-	@media only screen and (orientation: landscape) {
+	@media only screen and (max-height: 530px) and (orientation: landscape) {
 		.container {
 			flex-direction: row;
 		}
