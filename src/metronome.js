@@ -4,7 +4,6 @@ import ToneTransport from 'tone/Tone/core/Transport';
 import TonePart from 'tone/Tone/event/Part';
 import ToneLoop from 'tone/Tone/event/Loop';
 import TonePlayer from 'tone/Tone/source/Player';
-import ToneTime from 'tone/Tone/type/Time';
 
 export default {
 
