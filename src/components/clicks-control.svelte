@@ -55,7 +55,6 @@
     }
     function handleChange(e) {
         value = e.detail.value;
-        console.log(value)
     }
 </script>
 

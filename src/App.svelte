@@ -22,7 +22,7 @@
 	import BpmControl from './components/bpm-control.svelte';
 	import { fade } from 'svelte/transition';
 	import metronome from './metronome';
-	import BeatsControl from './components/beats-control.svelte';
+	import BeatsControl from './components/beats-control';
 	import ClicksControl from './components/clicks-control.svelte';
 	import loadScriptAsync from './utils/load-script-async';
 
@@ -33,7 +33,7 @@
 	let prev = false;
 	let beatsArray = new Array(beats).fill(false);
 	let mounted = false;
-
+	let playingBeat;
 
 	onMount(() => {mounted = true;})
 
@@ -43,6 +43,11 @@
 	// 	metronome.init(bpm, beats);
 	// });
 
+	metronome.beatCallback = function(id) {
+		playingBeat = parseInt(id.split(':')[1]);
+	}
+
+	// metronome.init(bpm, beats);
 
     function handleWheel(e) {
 		const multiplier = e.shiftKey ? 1 : 10;
@@ -79,7 +84,6 @@
 	$: {
 		beatsArray = [...beatsArray];
 		beatsArray.length = beats || 1;
-		console.log(playing, prev);
 		if (playing) 
 			metronome.play(bpm, beatsArray, clicks);
 		else if (playing !== prev) 
@@ -97,7 +101,7 @@
 			{playing ? 'Pause' : 'Play'}
 		</StartStopButton>
 		<p></p>
-		<BeatsControl bind:beats on:change={updateBeatsArray}></BeatsControl>
+		<BeatsControl bind:beats on:change={updateBeatsArray} activeId={playingBeat}></BeatsControl>
 		<NumericInput label=clicks bind:value={clicks} min={0} max={9}/>
 		<!-- <ClicksControl bind:value={clicks}></ClicksControl> -->
 	</div>

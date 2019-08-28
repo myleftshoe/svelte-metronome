@@ -54,7 +54,6 @@ input[type="number"] {
     }
 
     function setValue(newValue) {
-        console.log('setValue',newValue)
         if (newValue < min || isNaN(newValue))
             value = min;
         else if (newValue > max)
@@ -72,7 +71,6 @@ input[type="number"] {
 
 
     function handleChange(e) {
-        console.log('handleChange',e.detail.value)
         setValue(parseInt(e.detail.value));
         dispatch("change", { value });
     }

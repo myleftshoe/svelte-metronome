@@ -5,6 +5,7 @@ import TonePart from 'tone/Tone/event/Part';
 import ToneLoop from 'tone/Tone/event/Loop';
 import TonePlayer from 'tone/Tone/source/Player';
 import ToneTime from 'tone/Tone/type/Time';
+import ToneDraw from 'tone/Tone/core/Draw';
 
 export default {
 
@@ -12,8 +13,8 @@ export default {
         if (!this.initialized) {
             this.initialized = true;
             Tone.context.resume();
-            this.onBeats = new Part("sounds/PK-M1.8.wav");
-            this.offBeats = new Part('sounds/SN_L-6.1.wav');
+            this.onBeats = new Part("sounds/PK-M1.8.wav", this.beatCallback);
+            this.offBeats = new Part('sounds/SN_L-6.1.wav' , this.beatCallback);
             this.clicksLoop = new Loop('sounds/Low Seiko SQ50.wav');
         }
     },
@@ -33,7 +34,7 @@ export default {
             return res;
         }, []);
         // this.stop();
-        this.onBeats.play(onTimes);
+        this.onBeats.play(onTimes, this.beatCallback);
         this.offBeats.play(offTimes);
         this.clicksLoop.play(clicks);
         ToneTransport.start();
@@ -44,15 +45,18 @@ export default {
     },
 }
 
-function Part(url) {
+function Part(url, callback) {
     this.player = new TonePlayer(url).toMaster();
     this.part = new TonePart();
     this.setUrl = (url) => {this.player = new TonePlayer(url).toMaster()};
     this.play = function(times) {
         this.part.removeAll();
         this.part.dispose();
-        this.part = new TonePart(time => this.player.start(time));
-        times.forEach(time => this.part.add(time));
+        this.part = new TonePart((time, id) => {
+            callback && Tone.Draw.schedule(() => callback(id), time);
+            this.player.start(time)
+        });
+        times.forEach(time => this.part.add(time, time));
         this.part.loop=true;
         this.part.start('4n');
     }
