@@ -16,7 +16,7 @@
         slider = new Slider({ canvasId: "canvas", continuousMode: false,});
         slider.addSlider({
             id: 1,
-            radius: 100,
+            radius: 110,
             value,
             min,
             max,
@@ -32,5 +32,5 @@
 
 <canvas id="canvas" value={value} 
     use:createSlider
-    width="300" height="300" 
+    width="260" height="260" 
 />

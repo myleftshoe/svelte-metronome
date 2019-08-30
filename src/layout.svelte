@@ -14,14 +14,15 @@
 		.container {
 			/* background-color: pink; */
 			display: grid;
-			grid-template-columns: 20% 15% 15% 1fr 5vw;
-			grid-template-rows: 1fr 1fr 15% 20%; 
+			grid-template-columns: 20% 20% 15% 1fr 2vw;
+			grid-template-rows: 1fr 1fr 15% 15%; 
 			width:100%;
 		}
 		.bpm-control { 
 			/* background-color: coral; */
 			grid-column:1 / 3;
 			grid-row:1 / 5;	
+			align-self:center;
 		}  
 		.play { 
 			/* background-color: brown; */

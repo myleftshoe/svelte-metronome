@@ -2,17 +2,26 @@
 	.container {
         display:flex;
         flex-direction: column;
-        align-items:center;
+        width:100%;
     }
+    .bars { 
+        /* background-color: orange; */
+        display:flex;
+
+     }
     .bar { 
         cursor: pointer;
         background-color: transparent;
         border:none;
-        border-radius:50%;
-        color: var(--texr-color);
+        /* border-radius:50%; */
+        color: var(--text-color);
         outline: none;
-        padding:.1em .4em;
-        margin:.5em;
+        padding-top:1vh;
+        padding-bottom:1vh;
+        /* padding:.1em .4em; */
+        /* margin:.4em; */
+        font-size:2vw;
+        flex:1
     }
     .selected { 
         background-color: var(--primary-color);
