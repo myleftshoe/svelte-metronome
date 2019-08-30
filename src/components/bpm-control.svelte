@@ -26,9 +26,8 @@
     }
 </style>
 <script>
-    import CircularSlider from './circular-slider.svelte';
-    import NumericInput from './input-numeric.svelte'; 
-    // import Crementor from './crementor.svelte'
+    import CircularSlider from '.';
+    import NumericInput from '.'; 
     export let value;
     function handleChange(e) {
         value = e.detail.value 

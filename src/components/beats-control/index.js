@@ -1,1 +1,1 @@
-export {default} from './beats-control.svelte';
+export { default } from './beats-control.svelte';

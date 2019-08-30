@@ -2,12 +2,8 @@
 	import {onMount} from 'svelte';
 	import Theme from './theme.svelte'
 	import Layout from './layout.svelte';
-	import StartStopButton from './components/start-stop-button.svelte';
-	import NumericInput from './components/input-numeric.svelte';
+	import { BpmControl, BeatsControl, ClicksControl, PlayButton, NumericInput } from './components';
 	import metronome from './metronome';
-	import BpmControl from './components/bpm-control.svelte';
-	import BeatsControl from './components/beats-control';
-	import ClicksControl from './components/clicks-control.svelte';
 
 	let bpm = 180;
 	let beats = 4;
@@ -76,9 +72,9 @@
 			<BpmControl  bind:value={bpm}/>
 		</div>
 		<div slot='play'>
-			<StartStopButton bind:playing>
+			<PlayButton bind:playing>
 				{playing ? 'Pause' : 'Play'}
-			</StartStopButton>
+			</PlayButton>
 		</div>
 		<div slot='beats-control'>
 			<BeatsControl bind:beats on:change={updateBeatsArray} activeId={playingBeat}></BeatsControl>

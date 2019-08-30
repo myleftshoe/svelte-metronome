@@ -2,8 +2,8 @@
 	import {onMount, onDestroy} from 'svelte';
     // import Slider from "@maslick/radiaslider";
     // import LinearSlider from "@maslick/radiaslider/src/slider-linear";
-
     import Slider from "./circular-slider";
+
     export let value=40;
     export let min=0;
     export let max=360;
