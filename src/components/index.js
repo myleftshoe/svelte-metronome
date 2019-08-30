@@ -5,3 +5,4 @@ export { default as ClicksControl } from './clicks-control.svelte';
 export { default as NumericInput } from './numeric-input.svelte';
 export { default as PlayButton } from './play-button.svelte';
 export { default as Crementor } from './crementor.svelte';
+export { default as Flex } from './flex.svelte';

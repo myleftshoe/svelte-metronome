@@ -1,8 +1,15 @@
 <style>
 	.container {
-        display:flex;
+        /* display:flex;
         flex-direction: column;
         align-items: center;
+        width:100%; */
+    }
+    .crementors {
+        display:flex;
+        flex-direction: row;
+        /* align-items: end; */
+        justify-content: flex-end;
         width:100%;
     }
     .bars {
@@ -11,17 +18,13 @@
         height:20vh;
         width:100%;
     }
-    .hotspot {
-        background-color: red;
-        width:32px;
-        height:100%;
-    }
 </style>
 
 <script>
     import { slide } from 'svelte/transition';
     import {createEventDispatcher} from 'svelte';
     import Bar from './bar.svelte';
+    import Crementor from '../crementor.svelte'
     
     export let beats = 4;
     export let max = 16;
@@ -57,12 +60,14 @@
 
 
 <div class='container' on:wheel|stopPropagation={handleWheel}>
-    <div class='hotspot' data-value={-1} on:click={handleHotspotClick}></div>
-    <label for='bars' style='visibility: hidden'>Beats</label>
-    <div class='bars' tabindex="0">
+    <!-- <div class=crementors>
+        <Crementor step=-1></Crementor>
+        <Crementor></Crementor>
+    </div> -->
+    <!-- <label for='bars' style='visibility: hidden'>Beats</label> -->
+    <div class='bars' tabindex="0" aria-label='beats'>
         {#each bars.slice(0, beats) as selected, id}
-            <Bar class='bar' {id} {selected} active={id === activeId } on:click={toggleBar}></Bar>
+            <Bar {id} {selected} active={id === activeId } on:click={toggleBar}></Bar>
         {/each}
     </div>
-    <div class='hotspot' data-value={1} on:click={handleHotspotClick}></div>
 </div>

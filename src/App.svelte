@@ -2,7 +2,7 @@
 	import {onMount} from 'svelte';
 	import Theme from './theme.svelte'
 	import Layout from './layout.svelte';
-	import { BpmControl, BeatsControl, ClicksControl, PlayButton, NumericInput } from './components';
+	import { BpmControl, BeatsControl, ClicksControl, PlayButton, NumericInput, Crementor, Flex } from './components';
 	import metronome from './metronome';
 
 	let bpm = 180;
@@ -49,7 +49,11 @@
 	document.addEventListener('wheel', handleWheel);
 	
 	function updateBeatsArray(e) {
-		beatsArray = [...e.detail.value];
+		const value = e.detail.value;
+		if (typeof value === 'number')
+			beatsArray=beatsArray.slice(0,value);
+		else		
+			beatsArray = [...e.detail.value];
 	}
 
 	$: {
@@ -77,9 +81,19 @@
 		<div slot='beats-control'>
 			<BeatsControl bind:beats on:change={updateBeatsArray} activeId={playingBeat}></BeatsControl>
 		</div>
-		<div slot=clicks>
+		<div slot='clicks'>
 			<!-- <NumericInput label=clicks bind:value={clicks} min={0} max={9}/> -->
-			<ClicksControl bind:value={clicks}></ClicksControl>
+			<!-- <ClicksControl bind:value={clicks}></ClicksControl> -->
+		</div>
+		<div slot='beat-buttons'>
+			<Flex style='justify-content:space-between; background-color:#7770; padding:5px; border-radius:5px;'>
+				<NumericInput compact label=clicks bind:value={clicks} min={0} max={9}/>
+				<NumericInput compact label=beats bind:value={beats} on:change={updateBeatsArray} min={1} max={16}/>
+				<!-- <Crementor step=-1></Crementor>
+				<Crementor></Crementor>
+				<Crementor step=-1></Crementor>
+				<Crementor></Crementor> -->
+			</Flex>
 		</div>
 	</Layout>
 {/if}
