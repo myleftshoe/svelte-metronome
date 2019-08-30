@@ -27,7 +27,6 @@
     }
 
     function handleKeydown(e) {
-		return;
 		const multiplier = e.shiftKey ? 1 : 5;
 		switch (e.key) {
 			case 'ArrowUp': {
@@ -62,7 +61,6 @@
 			metronome.stop();	
 		previous = playing;	
 	}
-
 
 </script>
 
