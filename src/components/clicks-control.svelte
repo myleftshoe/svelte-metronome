@@ -1,76 +1,46 @@
 <style>
 	.container {
         display:flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items:center;
-        justify-content:center;
-        width:100%;
-        /* background-color: #00f3 */
     }
-    .bars {
-        display:flex;
-        flex-direction: row;
-        align-items:center;
-        justify-content:center;
-        /* background-color: #00f3 */
-    }
-    .bar {
-        margin:2px;
-        padding:0;
-        border-radius: 2px;
-        border: 1px solid var(--secondary-color);
-        width:20px;
-        height:20px;
+    .bar { 
+        cursor: pointer;
         background-color: transparent;
+        border:none;
+        border-radius:50%;
+        color: var(--texr-color);
+        outline: none;
+        padding:.1em .4em;
+        margin:.5em;
     }
-    .bar-on {
-        margin:2px;
-        padding:0;
-        border-radius: 2px;
-        border: 1px solid var(--secondary-color);
-        width:20px;
-        height:20px;
+    .selected { 
         background-color: var(--primary-color);
-    }
-    .hotspot {
-        /* background-color: #f003; */
-        flex:1;
-        color:transparent;
-        height:3em;
+        color:black
     }
 </style>
 
 <script>
     import { createEventDispatcher } from 'svelte';
-    import { slide } from 'svelte/transition';
-    import Crementor from './crementor.svelte'
 
     export let value=4;
-    export let bars = [...Array(9).fill(false)];
+    export let bars = [...Array(10).fill()];
 
     const dispatch = createEventDispatcher();
-    function toggleBar(id) {
-        bars[id] = !bars[id];
-        dispatch('change', {value:[...bars]})
-    }
-    function handleChange(e) {
-        value = e.detail.value;
+    function setValue(e) {
+        value = parseInt(e.target.id);
+        console.log(value)
+        dispatch('change', value)
     }
 </script>
 
-
 <div class='container'>
-    <div class='hotspot' on:click={() => value--}>-
-        <!-- <Crementor on:change={handleChange} {value} step={-1}/> -->
-    </div>
-    <div class='bars'>
-        {#each bars.slice(0, value) as value, id}
-            <button {id} class={value ? 'bar-on': 'bar'} {value} transition:slide|local 
-                on:click={e => toggleBar(id)}
-            />
+    <label for='bars' style='visibility:hidden'>Clicks</label>
+    <div class='bars' id='bars' tabindex="0" name='clicks' aria-label=clicks>
+        {#each bars as _, id}
+            <button id={id} class=bar class:selected={value == (id)} value={id} on:click={setValue}>
+                {id }
+            </button>
         {/each}
-    </div>
-    <div class='hotspot' on:click={() => value++}>+
-        <!-- <Crementor on:change={handleChange} {value} step={+1}/> -->
     </div>
 </div>

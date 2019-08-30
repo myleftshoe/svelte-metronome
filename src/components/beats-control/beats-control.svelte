@@ -1,7 +1,8 @@
 <style>
 	.container {
         display:flex;
-        flex-direction: row;
+        flex-direction: column;
+        align-items: center;
         width:100%;
     }
     .bars {
@@ -57,9 +58,10 @@
 
 <div class='container' on:wheel|stopPropagation={handleWheel}>
     <div class='hotspot' data-value={-1} on:click={handleHotspotClick}></div>
-    <div class='bars'>
+    <label for='bars' style='visibility: hidden'>Beats</label>
+    <div class='bars' tabindex="0">
         {#each bars.slice(0, beats) as selected, id}
-            <Bar {id} {selected} active={id === activeId } on:click={toggleBar}></Bar>
+            <Bar class='bar' {id} {selected} active={id === activeId } on:click={toggleBar}></Bar>
         {/each}
     </div>
     <div class='hotspot' data-value={1} on:click={handleHotspotClick}></div>

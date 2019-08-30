@@ -7,6 +7,7 @@
         padding: .5em 1em;
         color: var(--primary-color);
         font-size:2em;
+        cursor: pointer;
     }
 </style>
 <script>

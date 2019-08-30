@@ -78,8 +78,8 @@
 			<BeatsControl bind:beats on:change={updateBeatsArray} activeId={playingBeat}></BeatsControl>
 		</div>
 		<div slot=clicks>
-			<NumericInput label=clicks bind:value={clicks} min={0} max={9}/>
+			<!-- <NumericInput label=clicks bind:value={clicks} min={0} max={9}/> -->
+			<ClicksControl bind:value={clicks}></ClicksControl>
 		</div>
-		<!-- <ClicksControl bind:value={clicks}></ClicksControl> -->
 	</Layout>
 {/if}

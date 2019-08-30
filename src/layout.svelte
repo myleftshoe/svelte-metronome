@@ -3,7 +3,7 @@
 		display: flex;
 		flex-direction: column;
 		height:100%;
-		width:100%;
+		width:calc(100% - 10vw);
 		justify-content: space-around;
 		/* background-color: rgba(256,0,0,.08); */
 	}
@@ -14,8 +14,9 @@
 		.container {
 			/* background-color: pink; */
 			display: grid;
-			grid-template-columns: 20% 15% 15% 1fr;
+			grid-template-columns: 20% 15% 15% 1fr 5vw;
 			grid-template-rows: 1fr 1fr 15% 20%; 
+			width:100%;
 		}
 		.bpm-control { 
 			/* background-color: coral; */
@@ -34,6 +35,7 @@
 			grid-column:3/5;
 			grid-row:1/2;
 			align-self:center;
+			justify-self:end;
 		}  
 		.beats-control {
 			/* background-color: aqua; */

@@ -12,17 +12,19 @@
         font-size: 2em;
         color: #aaa;
         text-align:center;
-        display:inline-block
+        display:inline-block;
+        width:2em;
     }
-/* Hide HTML5 Up and Down arrows. */
-input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
+    /* Hide HTML5 Up and Down arrows. */
+    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 
-input[type="number"] {
-    -moz-appearance: textfield;
-}    
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }    
+
     .value-container {
         /* background-color: red; */
         display:flex;

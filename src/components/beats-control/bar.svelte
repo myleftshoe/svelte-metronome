@@ -6,6 +6,7 @@
         border: 1px solid var(--secondary-color);
         flex:1;
         background-color: transparent;
+        cursor:pointer;
     }
     .selected {
         background-color: var(--primary-color);
