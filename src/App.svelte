@@ -70,30 +70,17 @@
 
 {#if mounted}
 	<Layout>
-		<div slot='bpm-control' >
-			<BpmControl  bind:value={bpm}/>
+		<div slot='top' >
+			<input type=range width=100%/>
 		</div>
-		<div slot='play'>
-			<PlayButton bind:playing>
-				{playing ? 'Pause' : 'Play'}
-			</PlayButton>
+		<div slot='left' >
+			<input type=range width=100%/>
 		</div>
-		<div slot='beats-control'>
-			<BeatsControl bind:beats on:change={updateBeatsArray} activeId={playingBeat}></BeatsControl>
+		<div slot='right' >
+			<input type=range width=100%/>
 		</div>
-		<div slot='clicks'>
-			<!-- <NumericInput label=clicks bind:value={clicks} min={0} max={9}/> -->
-			<!-- <ClicksControl bind:value={clicks}></ClicksControl> -->
-		</div>
-		<div slot='beat-buttons'>
-			<Flex style='justify-content:space-between; background-color:#7770; padding:5px; border-radius:5px;'>
-				<NumericInput compact label=clicks bind:value={clicks} min={0} max={9}/>
-				<NumericInput compact label=beats bind:value={beats} on:change={updateBeatsArray} min={1} max={16}/>
-				<!-- <Crementor step=-1></Crementor>
-				<Crementor></Crementor>
-				<Crementor step=-1></Crementor>
-				<Crementor></Crementor> -->
-			</Flex>
+		<div slot='bottom' >
+			<input type=range width=100%/>
 		</div>
 	</Layout>
 {/if}
