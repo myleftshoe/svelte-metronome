@@ -12,7 +12,9 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/bundle.js'
+		file: 'public/bundle.js',
+		// Added this line:
+		intro: 'var global = typeof self !== undefined ? self : this;'
 	},
 	plugins: [
 		svelte({
