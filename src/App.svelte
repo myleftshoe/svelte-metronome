@@ -2,14 +2,46 @@
 	.container {
 		display: flex;
 		flex-direction: column;
-		align-items:center;
-		justify-content: center;
+		height:100%;
+		width:100%;
+		justify-content: space-around;
 		/* background-color: rgba(256,0,0,.08); */
+	}
+	.play { 
+		align-self: center 
 	}
 	@media only screen and (max-height: 530px) and (orientation: landscape) {
 		.container {
-			flex-direction: row;
+			/* background-color: pink; */
+			display: grid;
+			grid-template-columns: 20% 15% 15% 1fr;
+			grid-template-rows: 1fr 1fr 15% 20%; 
 		}
+		.bpm-control { 
+			/* background-color: coral; */
+			grid-column:1 / 3;
+			grid-row:1 / 5;	
+		}  
+		.play { 
+			/* background-color: brown; */
+			grid-column:3/5;
+			grid-row:2/3;
+			justify-self:center;
+			align-self: center;
+		}  
+		.clicks { 
+			/* background-color: chartreuse; */
+			grid-column:3/5;
+			grid-row:1/2;
+			align-self:center;
+		}  
+		.beats-control {
+			/* background-color: aqua; */
+			grid-column: 3 / 5;
+			grid-row: 3/5; 
+			align-self:center;
+		}
+
 	}
 </style>
 
@@ -96,13 +128,20 @@
 
 {#if mounted}
 	<div class='container' id="slider" transition:fade={{duration:1000}}>
-		<BpmControl bind:value={bpm}/>
-		<StartStopButton bind:playing>
-			{playing ? 'Pause' : 'Play'}
-		</StartStopButton>
-		<p></p>
-		<BeatsControl bind:beats on:change={updateBeatsArray} activeId={playingBeat}></BeatsControl>
-		<NumericInput label=clicks bind:value={clicks} min={0} max={9}/>
+		<div class=bpm-control>
+			<BpmControl bind:value={bpm}/>
+		</div>
+		<div class=play>
+			<StartStopButton bind:playing>
+				{playing ? 'Pause' : 'Play'}
+			</StartStopButton>
+		</div>
+		<div class=beats-control>
+			<BeatsControl bind:beats on:change={updateBeatsArray} activeId={playingBeat}></BeatsControl>
+		</div>
+		<div class=clicks>
+			<NumericInput label=clicks bind:value={clicks} min={0} max={9}/>
+		</div>
 		<!-- <ClicksControl bind:value={clicks}></ClicksControl> -->
 	</div>
 {/if}

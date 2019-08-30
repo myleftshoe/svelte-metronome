@@ -2,12 +2,12 @@
 	.container {
         display:flex;
         flex-direction: row;
-        align-items:center;
         width:100%;
     }
     .bars {
         display: flex;
         flex-direction: row;
+        height:20vh;
         width:100%;
     }
     .hotspot {

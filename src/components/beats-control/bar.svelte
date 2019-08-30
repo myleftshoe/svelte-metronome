@@ -5,7 +5,6 @@
         border-radius: 2px;
         border: 1px solid var(--secondary-color);
         flex:1;
-        height:70px;
         background-color: transparent;
     }
     .selected {
