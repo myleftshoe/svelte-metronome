@@ -1,28 +1,13 @@
 <style>
 	.container {
-        /* display:flex;
-        flex-direction: column;
-        align-items: center;
-        width:100%; */
-    }
-    .crementors {
         display:flex;
-        flex-direction: row;
-        /* align-items: end; */
-        justify-content: flex-end;
-        width:100%;
-    }
-    .bars {
-        display: flex;
-        flex-direction: row;
-        height:20vh;
-        width:100%;
+        height:100%;
     }
 </style>
 
 <script>
     import { slide } from 'svelte/transition';
-    import {createEventDispatcher} from 'svelte';
+    import {createEventDispatcher, onMount} from 'svelte';
     import Bar from './bar.svelte';
     import Crementor from '../crementor.svelte'
     
@@ -56,18 +41,30 @@
         dispatch('change', {value:[...bars]})
 
     }
+    let y = bars.length;
+    function animate() {
+        setTimeout(() => {
+        for(let i=0; i<bars.length; i++) {
+            setTimeout(() => {
+                activeId = i;
+            },150 * i)
+        } 
+        setTimeout(() => {
+            activeId = -1;
+        },900);
+}, 1000)
+    }
+        console.log(bars.length,y)
+
+    onMount(animate);
 </script>
 
 
-<div class='container' on:wheel|stopPropagation={handleWheel}>
-    <!-- <div class=crementors>
-        <Crementor step=-1></Crementor>
-        <Crementor></Crementor>
-    </div> -->
+<!-- <div class='container' on:wheel|stopPropagation={handleWheel}> -->
     <!-- <label for='bars' style='visibility: hidden'>Beats</label> -->
-    <div class='bars' tabindex="0" aria-label='beats'>
+    <div class='container' tabindex="0" aria-label='beats'>
         {#each bars.slice(0, beats) as selected, id}
-            <Bar {id} {selected} active={id === activeId } on:click={toggleBar}></Bar>
+            <Bar {id} {selected} active={id === activeId || activeId === -1 } on:click={toggleBar}></Bar>
         {/each}
     </div>
-</div>
+<!-- </div> -->

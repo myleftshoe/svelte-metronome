@@ -2,32 +2,40 @@
 	.container {
 		/* background-color: pink; */
 		display: grid;
-		grid-template-columns: 20% 1fr 20%;
-		grid-template-rows: 20% 1fr 20%;
-		width:100vw;
-		height:100vh;
-		align-items:center;
-		justify-items:center;
+		grid-template-rows: auto auto auto 1fr auto;
+		width:90vw; 
+		height:95vh;
+		font-size: 1.5em;
+
 	}
 	.top {
-		background-color: coral;
+		background-color: #3333;
 		grid-row:1;
-		grid-column: 1/4;
+		display:flex;
+		justify-content:space-evenly;
 	}
-	.left {
-		background-color: coral;
-		grid-column:1;
-		grid-row:2 ;
+	.top1 {
+		/* background-color: #f339; */
+		grid-row:2;
 	}
-	.right {
-		background-color: coral;
-		grid-column:3;
-		grid-row:2 ;
+	.top2 {
+		/* background-color: #f339; */
+		grid-row:3;
+		display: flex;
+		justify-content:space-evenly;
+	}
+	.middle {
+		/* background-color: red; */
+		grid-row:4 ;
+		height:100%;
+		display:grid;
 	}
 	.bottom {
-		background-color: coral;
-		grid-row:3 ;
-		grid-column: 1/4;
+		/* background-color: blueviolet; */
+		grid-row:5 ;
+		width:100%;
+		display:grid;
+		justify-content: center;
 	}
 </style>
 
@@ -39,12 +47,15 @@
     <div class=top>
         <slot name=top/>
     </div>
-    <div class=left>
-        <slot name=left/>
+    <div class=top1>
+        <slot name=top1/>
     </div>
-    <div class=right>
-        <slot name=right/>
+    <div class=top2>
+        <slot name=top2/>
     </div>
+    <div class=middle>
+        <slot name=middle/>
+	</div>
     <div class=bottom>
         <slot name=bottom/>
     </div>

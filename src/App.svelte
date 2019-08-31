@@ -2,10 +2,10 @@
 	import {onMount} from 'svelte';
 	import Theme from './theme.svelte'
 	import Layout from './layout.svelte';
-	import { BpmControl, BeatsControl, ClicksControl, PlayButton, NumericInput, Crementor, Flex } from './components';
+	import { Slider, BeatsControl, PlayButton } from './components';
 	import metronome from './metronome';
 
-	let bpm = 180;
+	let bpm = 200;
 	let beats = 4;
 	let clicks = 0;
 	let playing = false;
@@ -70,17 +70,25 @@
 
 {#if mounted}
 	<Layout>
-		<div slot='top' >
-			<input type=range width=100%/>
+		<!-- <div slot='top' > -->
+			<div slot='top'>{clicks} clicks</div>
+			<div slot='top'>{bpm} bpm</div>
+			<div slot='top'>{beats} beats</div>
+		<!-- </div> -->
+		<div slot='top1' >
+			<Slider bind:value={bpm} min=40 max=360 step=10/>
 		</div>
-		<div slot='left' >
-			<input type=range width=100%/>
+		<div slot='top2'>
+			<Slider bind:value={clicks} min=0 max=9/>
 		</div>
-		<div slot='right' >
-			<input type=range width=100%/>
+		<div slot='top2' >
+			<Slider bind:value={beats} min=1 max=16/>
+		</div>
+		<div slot='middle' >
+			<BeatsControl bind:beats on:change={updateBeatsArray} activeId={playingBeat}/>
 		</div>
 		<div slot='bottom' >
-			<input type=range width=100%/>
+			<PlayButton bind:playing>Play</PlayButton>
 		</div>
 	</Layout>
 {/if}

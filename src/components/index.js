@@ -1,5 +1,5 @@
 export { default as BeatsControl } from './beats-control';
-export { default as CircularSlider } from './circular-slider';
+export { default as Slider } from './slider.svelte';
 export { default as BpmControl } from './bpm-control.svelte';
 export { default as ClicksControl } from './clicks-control.svelte';
 export { default as NumericInput } from './numeric-input.svelte';
