@@ -31,6 +31,11 @@
         font-family: var(--pure-material-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
         font-size: 16px;
         line-height: 1.5;
+        background-color: #0005;
+        border-radius:16px;
+        padding:0px 20px;
+        margin:10px;
+        box-shadow: 0px 0px 5px 5px #4449 inset 
     }
 
     /* Input */
@@ -76,10 +81,12 @@
     /* Webkit | Track */
     .pure-material-slider > input::-webkit-slider-runnable-track {
         margin: 17px 0;
-        border-radius: 1px;
+        border-radius: 2px;
         width: 100%;
-        height: 2px;
-        background-color: rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.24);
+        height: 6px;
+        /* background-color: rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.24); */
+        background-color: black;
+        padding: 0 20px
     }
 
     /* Webkit | Thumb */
@@ -88,11 +95,14 @@
         -webkit-appearance: none;
         border: none;
         border-radius: 50%;
-        height: 2px;
-        width: 2px;
-        background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
-        transform: scale(6, 6);
+        height: 22px;
+        width: 22px;
+        margin-top:-8px;
+        /* background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243)); */
+        background-color: #aaa;
+        /* transform: scale(12); */
         transition: box-shadow 0.2s;
+        box-shadow: 0px 1px 1px 1px black
     }
 
     /* Webkit | Hover, Focus */

@@ -1,8 +1,12 @@
 <style>
 	.container {
         display:grid;
+        padding:10px;
+        border-radius:15px;
         height:100%;
         grid-auto-flow: row;
+        /* background:url('wood.png'); */
+        box-shadow: 0px 0px 10px 25px #577 inset
     }
     @media only screen and (orientation: landscape) {
         .container {
