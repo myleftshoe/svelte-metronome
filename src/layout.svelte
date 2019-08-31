@@ -1,11 +1,10 @@
 <style>
 	.container {
-		/* background-color: pink; */
 		display: grid;
 		grid-template-rows: auto auto auto 1fr auto;
-		width:90vw; 
+		width:90vw;
 		height:95vh;
-		font-size: 1.5em;
+		font-size: 1em;
 
 	}
 	.top {
@@ -15,19 +14,17 @@
 		justify-content:space-evenly;
 	}
 	.top1 {
-		/* background-color: #f339; */
 		grid-row:2;
 	}
 	.top2 {
-		/* background-color: #f339; */
 		grid-row:3;
 		display: flex;
-		justify-content:space-evenly;
+		justify-content:space-between;
 	}
 	.middle {
-		/* background-color: red; */
 		grid-row:4 ;
-		height:100%;
+		/* height:100%; */
+		/* width:100%; */
 		display:grid;
 	}
 	.bottom {

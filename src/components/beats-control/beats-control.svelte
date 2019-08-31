@@ -1,9 +1,15 @@
 <style>
 	.container {
-        display:flex;
+        display:grid;
         height:100%;
+        grid-auto-flow: row;
     }
-</style>
+    @media only screen and (orientation: landscape) {
+        .container {
+            grid-auto-flow:column;
+        }
+    }
+    </style>
 
 <script>
     import { slide } from 'svelte/transition';

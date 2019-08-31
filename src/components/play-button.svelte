@@ -6,7 +6,7 @@
         border-radius: 12px;
         padding: .5em 1em;
         color: var(--primary-color);
-        font-size:2em;
+        font-size:1em;
         cursor: pointer;
     }
 </style>

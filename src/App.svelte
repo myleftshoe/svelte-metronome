@@ -76,13 +76,13 @@
 			<div slot='top'>{beats} beats</div>
 		<!-- </div> -->
 		<div slot='top1' >
-			<Slider bind:value={bpm} min=40 max=360 step=10/>
+			<Slider bind:value={bpm} min=40 max=360 step=10 style='width:90vw'/>
 		</div>
 		<div slot='top2'>
-			<Slider bind:value={clicks} min=0 max=9/>
+			<Slider bind:value={clicks} min=0 max=9 style='width:42.5vw'/>
 		</div>
 		<div slot='top2' >
-			<Slider bind:value={beats} min=1 max=16/>
+			<Slider bind:value={beats} min=1 max=16 style='width:42.5vw'/>
 		</div>
 		<div slot='middle' >
 			<BeatsControl bind:beats on:change={updateBeatsArray} activeId={playingBeat}/>
