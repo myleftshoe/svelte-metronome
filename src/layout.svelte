@@ -1,10 +1,11 @@
 <style>
 	.container {
 		display: grid;
-		grid-template-rows: auto auto auto 1fr auto;
-		width:90vw;
+		grid-template-rows: 0vh auto auto 2vh 1fr 70px;
+		width:80vw;
 		height:95vh;
 		font-size: 1em;
+		grid-gap:2vh;
 
 	}
 	.top {
@@ -21,18 +22,23 @@
 		display: flex;
 		justify-content:space-between;
 	}
+	.spacer { 
+		grid-row:4;
+	 }
 	.middle {
-		grid-row:4 ;
+		grid-row:5 ;
 		/* height:100%; */
 		/* width:100%; */
 		display:grid;
+		/* padding: 20px 0; */
 	}
 	.bottom {
 		/* background-color: blueviolet; */
-		grid-row:5 ;
-		width:100%;
+		grid-row:6 ;
+		/* width:100%; */
 		display:grid;
 		justify-content: center;
+		align-content: end;	
 	}
 </style>
 

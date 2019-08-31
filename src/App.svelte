@@ -71,18 +71,21 @@
 {#if mounted}
 	<Layout>
 		<!-- <div slot='top' > -->
-			<div slot='top'>{clicks} clicks</div>
+			<!-- <div slot='top'>{clicks} clicks</div>
 			<div slot='top'>{bpm} bpm</div>
-			<div slot='top'>{beats} beats</div>
+			<div slot='top'>{beats} beats</div> -->
 		<!-- </div> -->
 		<div slot='top1' >
-			<Slider bind:value={bpm} min=40 max=360 step=10 style='width:90vw'/>
+			<Slider bind:value={bpm} min=40 max=360 step=10 style='width:80vw'/>
 		</div>
 		<div slot='top2'>
-			<Slider bind:value={clicks} min=0 max=9 style='width:42.5vw'/>
+			<Slider bind:value={clicks} min=0 max=9 style='width:30vw'/>
 		</div>
+		<!-- <div slot='top2' >
+			<PlayButton bind:playing>Play</PlayButton>
+		</div> -->
 		<div slot='top2' >
-			<Slider bind:value={beats} min=1 max=16 style='width:42.5vw'/>
+			<Slider bind:value={beats} min=1 max=16 style='width:30vw'/>
 		</div>
 		<div slot='middle' >
 			<BeatsControl bind:beats on:change={updateBeatsArray} activeId={playingBeat}/>

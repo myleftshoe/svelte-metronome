@@ -2,8 +2,8 @@
     button {
         margin:0px;
         padding:0;
-        border-radius: 15px;
-        border: 3px solid #0ff5;
+        border-radius: .7vh;
+        border: 1px solid #0ff5;
         flex:1;
         background: #0ff5;
         cursor:pointer;

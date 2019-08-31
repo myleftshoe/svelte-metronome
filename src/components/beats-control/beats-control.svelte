@@ -1,8 +1,8 @@
 <style>
 	.container {
         display:grid;
-        padding:10px;
-        border-radius:15px;
+        padding:1.0vh;
+        border-radius:1.5vh;
         height:100%;
         grid-auto-flow: row;
         /* background:url('wood.png'); */
