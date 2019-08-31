@@ -1,3 +1,13 @@
+<style>
+    input {
+        width: 100%;
+        height: 100%;
+        -webkit-appearance: slider-horizontal;
+    }
+    .vertical {
+        -webkit-appearance: slider-vertical;
+    }
+</style>
 
 <script>
     export let vertical = false;
