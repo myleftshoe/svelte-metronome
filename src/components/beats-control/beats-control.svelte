@@ -51,22 +51,21 @@
         dispatch('change', {value:[...bars]})
 
     }
-    let y = bars.length;
+
     function animate() {
         setTimeout(() => {
-        for(let i=0; i<bars.length; i++) {
+            for(let i=0; i<beats; i++) {
+                setTimeout(() => { activeId = i;},100 * i)
+            } 
             setTimeout(() => {
-                activeId = i;
-            },150 * i)
-        } 
-        setTimeout(() => {
-            activeId = -1;
-        },900);
-}, 1000)
+                activeId = null;
+                setTimeout(() => setTimeout(activeId = undefined),300)
+            }, 100*(beats + 1));
+        }, 1000)
     }
-        console.log(bars.length,y)
 
     onMount(animate);
+
 </script>
 
 
@@ -74,7 +73,7 @@
     <!-- <label for='bars' style='visibility: hidden'>Beats</label> -->
     <div class='container' tabindex="0" aria-label='beats'>
         {#each bars.slice(0, beats) as selected, id}
-            <Bar {id} {selected} active={id === activeId || activeId === -1 } on:click={toggleBar}></Bar>
+            <Bar {id} {selected} active={id === activeId || activeId === null } on:click={toggleBar}></Bar>
         {/each}
     </div>
 <!-- </div> -->
