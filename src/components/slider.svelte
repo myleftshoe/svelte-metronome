@@ -31,28 +31,7 @@
         font-family: var(--pure-material-font, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
         font-size: 16px;
         line-height: 1.5;
-        background-color: #0005;
-        border-radius:16px;
-        padding:0px 20px;
-        /* margin:10px; */
-        /* box-shadow: 0px 0px 5px 5px #4449 inset  */
-    box-shadow:
-/*
-            0px 0px 2px 4px black,   
-            0px 0px 5px 5px #555a; 
-*/
-        inset hsla(0,0%,15%, 1) 0 0px 0px 4px,
-        inset hsla(0,0%,15%, .8) 0 -1px 2px 4px,
-        inset hsla(0,0%,0%, .25) 0 -1px 0px 7px,
-        /* inset hsla(0,0%,100%,.7) 0 2px 1px 7px, */
-        hsla(0,0%, 0%,.15) 0 -5px 6px 4px,
-        hsla(0,0%,40%,.5) 0 0px 12px 3px; 
     }
-
-
-
-
-
 
     /* Input */
     .pure-material-slider > input {
@@ -97,12 +76,10 @@
     /* Webkit | Track */
     .pure-material-slider > input::-webkit-slider-runnable-track {
         margin: 17px 0;
-        border-radius: 2px;
+        border-radius: 1px;
         width: 100%;
-        height: 6px;
-        /* background-color: rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.24); */
-        background-color: black;
-        padding: 0 20px
+        height: 2px;
+        background-color: rgba(var(--pure-material-primary-rgb, 33, 150, 243), 0.24);
     }
 
     /* Webkit | Thumb */
@@ -111,15 +88,11 @@
         -webkit-appearance: none;
         border: none;
         border-radius: 50%;
-        height: 34px;
-        width: 34px;
-        margin-top:-12px;
-        /* background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243)); */
-        background: url('round.png');
-        /* background-color: #aaa; */
-        /* transform: scale(12); */
+        height: 2px;
+        width: 2px;
+        background-color: rgb(var(--pure-material-primary-rgb, 33, 150, 243));
+        transform: scale(6, 6);
         transition: box-shadow 0.2s;
-        box-shadow: 0px 1px 1px 1px black
     }
 
     /* Webkit | Hover, Focus */

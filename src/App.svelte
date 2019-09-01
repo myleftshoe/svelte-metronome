@@ -2,11 +2,11 @@
 	import {onMount} from 'svelte';
 	import Theme from './theme.svelte'
 	import Layout from './layout.svelte';
-	import { Slider, BeatsControl, PlayButton } from './components';
+	import { Slider, BeatsControl, PlayButton, Controls } from './components';
 	import metronome from './metronome';
 
 	let bpm = 200;
-	let beats = 4;
+	let beats = 2;
 	let clicks = 0;
 	let playing = false;
 	let previous = false;
@@ -75,18 +75,18 @@
 			<div slot='top'>{bpm} bpm</div>
 			<div slot='top'>{beats} beats</div> -->
 		<!-- </div> -->
-		<div slot='top1' >
+		<!-- <div slot='top1' >
 			<Slider bind:value={bpm} min=40 max=360 step=10 style='width:80vw'/>
 		</div>
 		<div slot='top2'>
 			<Slider bind:value={clicks} min=0 max=9 style='width:30vw'/>
-		</div>
+		</div> -->
 		<!-- <div slot='top2' >
 			<PlayButton bind:playing>Play</PlayButton>
 		</div> -->
-		<div slot='top2' >
+		<!-- <div slot='top2' >
 			<Slider bind:value={beats} min=1 max=16 style='width:30vw'/>
-		</div>
+		</div> -->
 		<div slot='middle' >
 			<BeatsControl bind:beats on:change={updateBeatsArray} activeId={playingBeat}/>
 		</div>
@@ -94,4 +94,7 @@
 			<PlayButton bind:playing>Play</PlayButton>
 		</div>
 	</Layout>
+	<Controls>
+		<Slider bind:value={bpm} min=40 max=360 step=10 style='width:80vw'/>
+	</Controls>
 {/if}

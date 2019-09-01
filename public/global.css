@@ -14,7 +14,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: black;
+	background-color: #000;
 	background-image: url("wood.png");
 }
 

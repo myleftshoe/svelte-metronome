@@ -22,9 +22,9 @@
         height:100%;
     }
     div {
-                        background:url('scratched-metal.png');
+        background:url('scratched-metal.png');
         margin:1px;
-        border-radius: 15px;
+        border-radius: .7vh;
     }
     .selected {
         /* background-color: var(--primary-color);

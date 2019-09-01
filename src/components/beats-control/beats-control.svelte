@@ -1,15 +1,29 @@
 <style>
 	.container {
         display:grid;
-        padding:1.0vh;
+        /* padding:10.0vh; */
         border-radius:1.5vh;
         height:100%;
-        grid-auto-flow: row;
+        align-items:center;
+        justify-items:center;
+        /* grid-auto-flow: row; */
         /* background:url('wood.png'); */
+        /* box-shadow: 
+            0px 0px 4px 4px #000f inset,
+            0px 0px 8px 2px #fff8 inset */
+    }
+	.lights-container {
+        display:grid;
+        padding:1.0vh;
+        border-radius:1.5vh;
+        height:calc(100% - 10vh);
+        width:calc(100% - 10vh);
+        grid-auto-flow: row;
+        /* grid-gap:5vh; */
         box-shadow: 0px 0px 10px 25px #577 inset
     }
     @media only screen and (orientation: landscape) {
-        .container {
+        .lights-container {
             grid-auto-flow:column;
         }
     }
@@ -21,7 +35,7 @@
     import Bar from './bar.svelte';
     import Crementor from '../crementor.svelte'
     
-    export let beats = 4;
+    export let beats = 2;
     export let max = 16;
     export let min = 1;
     export let bars = [...Array(max).fill(false)];
@@ -72,8 +86,10 @@
 <!-- <div class='container' on:wheel|stopPropagation={handleWheel}> -->
     <!-- <label for='bars' style='visibility: hidden'>Beats</label> -->
     <div class='container' tabindex="0" aria-label='beats'>
-        {#each bars.slice(0, beats) as selected, id}
-            <Bar {id} {selected} active={id === activeId || activeId === null } on:click={toggleBar}></Bar>
-        {/each}
+        <div class='lights-container'>
+            {#each bars.slice(0, beats) as selected, id}
+                <Bar {id} {selected} active={id === activeId || activeId === null } on:click={toggleBar}></Bar>
+            {/each}
+        </div>
     </div>
 <!-- </div> -->
