@@ -70,8 +70,13 @@
     export let id;
     export let selected = false;
     export let active = false;
-    // $:active = id === 2
 </script>
 <div>
-<button {id} class:selected={selected} class:active={active} class:activeselected={selected && active} on:click/>
+    <button {id} 
+        class:selected class:active class:activeselected={selected && active} 
+        on:pointerdown={() => active = true} 
+        on:pointerup={() => active = false}  
+        on:click
+        on:contextmenu|preventDefault
+    />
 </div>

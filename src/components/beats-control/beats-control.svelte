@@ -6,6 +6,7 @@
         height:100%;
         align-items:center;
         justify-items:center;
+        outline:none;
         /* grid-auto-flow: row; */
         /* background:url('wood.png'); */
         /* box-shadow: 
@@ -35,61 +36,42 @@
     import Bar from './bar.svelte';
     import Crementor from '../crementor.svelte'
     
-    export let beats = 2;
-    export let max = 16;
-    export let min = 1;
-    export let bars = [...Array(max).fill(false)];
-    export let activeId;
+    export let pattern = [];
+    export let active = [0,0];
 
     const dispatch = createEventDispatcher();
-    function toggleBar(e) {
-        const id = e.target.id;
-        bars[id] = !bars[id];
-        dispatch('change', {value:[...bars]})
+
+    function handleOffBeatClick() {
+        pattern = [...pattern, 0];
+        console.log(pattern);
     }
 
-    function handleWheel(e) {
-        crement(Math.sign(e.deltaY)*-1);
-    }
-
-    function handleHotspotClick(e) {
-        crement(parseInt(e.target.dataset.value))
-    }
-
-    function crement(value) {
-        beats += value;
-        if (beats < min)
-            beats = min;
-        if (beats > max)
-            beats = max;
-        dispatch('change', {value:[...bars]})
-
+    function handleOnBeatClick() {
+        pattern = [...pattern, 1];
     }
 
     function animate() {
         setTimeout(() => {
-            for(let i=0; i<beats; i++) {
-                setTimeout(() => { activeId = i;},100 * i)
-            } 
-            setTimeout(() => {
-                activeId = null;
-                setTimeout(() => setTimeout(activeId = undefined),300)
-            }, 100*(beats + 1));
+            setTimeout(() => { active[0] = 1;}, 100)
+            setTimeout(() => { active[0] = 0;}, 200)
+            setTimeout(() => { active[1] = 1;}, 150)
+            setTimeout(() => { active[1] = 0;}, 250)
+            setTimeout(() => { active = [1,1];}, 500)
+            setTimeout(() => { active = [0,0];}, 600)
         }, 1000)
     }
 
     onMount(animate);
 
+    $: {console.log(active)}
+
 </script>
 
 
-<!-- <div class='container' on:wheel|stopPropagation={handleWheel}> -->
-    <!-- <label for='bars' style='visibility: hidden'>Beats</label> -->
-    <div class='container' tabindex="0" aria-label='beats'>
-        <div class='lights-container'>
-            {#each bars.slice(0, beats) as selected, id}
-                <Bar {id} {selected} active={id === activeId || activeId === null } on:click={toggleBar}></Bar>
-            {/each}
-        </div>
+<!-- <label for='bars' style='visibility: hidden'>Beats</label> -->
+<div class='container' tabindex="0" aria-label='beats'>
+    <div class='lights-container'>
+        <Bar active={active[0]} selected on:click={handleOnBeatClick}/>
+        <Bar active={active[1]} on:click={handleOffBeatClick}/>
     </div>
-<!-- </div> -->
+</div>
