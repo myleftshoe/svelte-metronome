@@ -48,8 +48,8 @@
     <div id='beats-container' class='container' in:slide out:slide={{delay:500}}>
         <div></div>
         <div class=pattern>
-            {#each pattern as big, index}
-                <Bar {big} active={index === activeId} on:click={() => handleClick(index)}></Bar>
+            {#each pattern as big, id}
+                <Bar {big} active={id === activeId} on:click={() => handleClick(id)}></Bar>
             {/each}
         </div>
         <button on:click={() => pattern = []} >CLEAR</button>

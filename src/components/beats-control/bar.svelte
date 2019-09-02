@@ -67,12 +67,11 @@
 </style>
 
 <script>
-    export let id;
     export let selected = false;
     export let active = false;
 </script>
 <div>
-    <button {id} 
+    <button 
         class:selected class:active class:activeselected={selected && active} 
         on:pointerdown={() => active = true} 
         on:pointerup={() => active = false}  

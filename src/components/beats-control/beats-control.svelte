@@ -43,7 +43,6 @@
 
     function handleOffBeatClick() {
         pattern = [...pattern, 0];
-        console.log(pattern);
     }
 
     function handleOnBeatClick() {
@@ -62,8 +61,6 @@
     }
 
     onMount(animate);
-
-    $: {console.log(active)}
 
 </script>
 
