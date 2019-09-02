@@ -6,15 +6,12 @@
 		width:100vw;
 		height:100vh;
 		font-size: 1em;
-		/* grid-gap:2vh; */
 
 	}
 	.content {
 		grid-row:2 ;
-		/* height:100%; */
-		/* width:100%; */
 		display:grid;
-		/* padding: 20px 0; */
+		z-index:2;
 	}
 </style>
 
