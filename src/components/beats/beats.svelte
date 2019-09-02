@@ -6,7 +6,7 @@
         background-color: #000;
         display:grid;
         grid-auto-flow: column;
-        grid-template-columns: 1fr auto 1fr;
+        grid-template-columns: minmax(5vw, auto) auto minmax(5vw, auto);
         width:100%;
         justify-content:space-between;
         align-items:center; 
@@ -18,7 +18,7 @@
         align-items:center; 
         transition:all .5s ease;
         overflow-x:auto;
-        max-width:100vw;
+        max-width:100%;
         height:10vh;
         overflow-y: hidden;
     }
