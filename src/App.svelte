@@ -17,7 +17,7 @@
 
 	metronome.beatCallback = function(id) {
 		playingBeat = parseInt(id.split(':')[1]);
-		setTimeout(() => {playingBeat = undefined}, 200)
+		setTimeout(() => {playingBeat = undefined}, 50)
 	}
 
     function handleWheel(e) {
