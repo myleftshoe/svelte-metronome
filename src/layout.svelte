@@ -1,44 +1,20 @@
 <style>
 	.container {
 		display: grid;
-		grid-template-rows: 0vh auto auto 2vh 1fr 70px;
-		width:80vw;
-		height:95vh;
+		grid-template-rows: 25vh 1fr 25vh;
+		grid-template-columns: 10vw 1fr 10vw;
+		width:100vw;
+		height:100vh;
 		font-size: 1em;
-		grid-gap:2vh;
+		/* grid-gap:2vh; */
 
 	}
-	.top {
-		background-color: #3333;
-		grid-row:1;
-		display:flex;
-		justify-content:space-evenly;
-	}
-	.top1 {
-		grid-row:2;
-	}
-	.top2 {
-		grid-row:3;
-		display: flex;
-		justify-content:space-between;
-	}
-	.spacer { 
-		grid-row:4;
-	 }
-	.middle {
-		grid-row:5 ;
+	.content {
+		grid-row:2 ;
 		/* height:100%; */
 		/* width:100%; */
 		display:grid;
 		/* padding: 20px 0; */
-	}
-	.bottom {
-		/* background-color: blueviolet; */
-		grid-row:6 ;
-		/* width:100%; */
-		display:grid;
-		justify-content: center;
-		align-content: end;	
 	}
 </style>
 
@@ -47,19 +23,9 @@
 </script>
 
 <div class='container' transition:fade={{duration:1000}}>
-    <div class=top>
-        <slot name=top/>
-    </div>
-    <div class=top1>
-        <slot name=top1/>
-    </div>
-    <div class=top2>
-        <slot name=top2/>
-    </div>
-    <div class=middle>
-        <slot name=middle/>
+	<div style='grid-column:1; grid-row: 1/4'></div>
+    <div class=content>
+        <slot name=content/>
 	</div>
-    <div class=bottom>
-        <slot name=bottom/>
-    </div>
+	<div style='grid-column:3; grid-row: 1/4'></div>
 </div>

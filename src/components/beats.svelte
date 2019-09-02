@@ -19,22 +19,7 @@
         overflow-x:auto;
         max-width:100vw;
         height:10vh;
-    }
-    .circle {
-        background-color: #aaa7;
-        height:2vh;
-        width:2vh;
-        border-radius: 50%;
-        margin:1vh;
-        flex-shrink:0;
-    }
-    .big {
-        height:4vh;
-        width:4vh;
-    }
-    .active {
-        background-color: #ffff;
-        /* box-shadow: 0px 0px 2px 4px #fff5 */
+        overflow-y: hidden;
     }
     button { 
         padding:2vh;
@@ -43,14 +28,15 @@
         background:none;
         /* margin-left:auto; */
         color:var(--text-color);
+        cursor:pointer;
     }
-
 </style>
 
 <script>
     export let pattern = [];
     export let activeId;
     import {slide, fade} from 'svelte/transition'; 
+    import Bar from './bar.svelte';
 
     function handleClick(index) {
         pattern[index] = !pattern[index];
@@ -59,11 +45,11 @@
 </script>
 
 {#if pattern.length } 
-<div class=container in:slide out:slide={{delay:500}}>
-    <div></div>
+    <div id='beats-container' class='container' in:slide out:slide={{delay:500}}>
+        <div></div>
         <div class=pattern>
             {#each pattern as big, index}
-                <div class=circle class:big class:active={index === activeId} transition:fade on:click={() => handleClick(index)}></div>
+                <Bar {big} active={index === activeId} on:click={() => handleClick(index)}></Bar>
             {/each}
         </div>
         <button on:click={() => pattern = []} >CLEAR</button>

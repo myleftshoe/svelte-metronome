@@ -1,11 +1,3 @@
-<style>
-img { 
-	/* box-shadow: 0px 0px 10px 2px #000; */
-	position: absolute;
-	bottom:20px;
-	right:80px;
- }
-</style>
 <script>
 	import {onMount} from 'svelte';
 	import Theme from './theme.svelte'
@@ -15,7 +7,7 @@ img {
 
 	let bpm = 200;
 	let clicks = 0;
-	let playing = false;
+	let playing = true;
 	let previous = false;
 	let pattern = [];
 	let mounted = false;
@@ -25,7 +17,7 @@ img {
 
 	metronome.beatCallback = function(id) {
 		playingBeat = parseInt(id.split(':')[1]);
-		setTimeout(() => {playingBeat = undefined}, 100)
+		setTimeout(() => {playingBeat = undefined}, 200)
 	}
 
     function handleWheel(e) {
@@ -68,15 +60,9 @@ img {
 </script>
 
 {#if mounted}
-	<div>
-		<img src='neonome.png'/>
-		</div>
 	<Layout>
-		<div slot='middle' >
+		<div slot='content' >
 			<BeatsControl bind:pattern active={[pattern[playingBeat] === 1, pattern[playingBeat] === 0]}/>
-		</div>
-		<div slot='bottom' >
-			<!-- <PlayButton bind:playing>Play</PlayButton> -->
 		</div>
 	</Layout>
 	<Controls>
