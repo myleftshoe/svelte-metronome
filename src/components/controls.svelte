@@ -5,7 +5,6 @@
         left:0;
         width:100vw;
         height:100vh;
-        z-index:1;
         /* background-color: #f003; */
     }
     .bar {
@@ -16,15 +15,15 @@
         justify-content:center;
         align-items:center;
         background-color: #000;
-        z-index:10;
+        z-index:1;
         height:10vh;
     }
     #top {
         top:0;
-    }   
+    }
     #bottom {
         bottom:0;
-    }   
+    }
 </style>
 <script>
     import { slide } from 'svelte/transition';

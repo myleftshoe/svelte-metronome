@@ -7,7 +7,6 @@
         flex:1;
         background: #0ff5;
         cursor:pointer;
-        z-index:1;
                 /* border-color: white; */
         background-color: #0ff5;
         box-shadow: 

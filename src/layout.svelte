@@ -11,7 +11,7 @@
 	.content {
 		grid-row:2 ;
 		display:grid;
-		z-index:2;
+		z-index:1;
 	}
 </style>
 
