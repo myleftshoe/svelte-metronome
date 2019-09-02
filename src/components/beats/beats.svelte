@@ -4,8 +4,9 @@
         top:0;
         left:0;
         background-color: #000;
-        display:flex;
-        /* grid-auto-flow: column; */
+        display:grid;
+        grid-auto-flow: column;
+        grid-template-columns: 1fr auto 1fr;
         width:100%;
         justify-content:space-between;
         align-items:center; 
@@ -21,6 +22,13 @@
         height:10vh;
         overflow-y: hidden;
     }
+    .hotspot { 
+        width:100%; 
+        height:100%;
+        display:flex;
+        align-items:center;
+        justify-content:flex-end;
+    }
 </style>
 
 <script>
@@ -34,21 +42,27 @@
         pattern[index] = !pattern[index];
         pattern=[...pattern];
     }
-    function handleClearClick() {
+    function removeOne() {
         pattern.pop();
         pattern=[...pattern];
+    }
+    function addOne() {
+        pattern=[...pattern, 0];
     }
 </script>
 
 {#if pattern.length } 
     <div id='beats-container' class='container' in:slide out:slide={{delay:500}}>
-        <div></div>
+        <div class=hotspot on:click={removeOne}></div>
         <div class=pattern>
             {#each pattern as big, id}
                 <Bar {big} active={id === activeId} on:click={() => handleClick(id)}></Bar>
             {/each}
         </div>
-        <ClearIcon size='1em' color='#fffa' on:click={handleClearClick}/>
-        <!-- <button on:click={() => pattern = []} >CLEAR</button> -->
+        <div class=hotspot on:click={addOne}>
+            <div on:click|stopPropagation={() => pattern = []}>
+                <ClearIcon size='1em' color='#fffa'/>
+            </div>
+        </div>
     </div>
 {/if}
