@@ -44,9 +44,9 @@
 		}
     }
 
-	document.addEventListener('keydown', handleKeydown);
-	document.addEventListener('wheel', handleWheel);	
-	document.addEventListener('contextmenu', e => e.preventDefault());	
+	// document.addEventListener('keydown', handleKeydown);
+	// document.addEventListener('wheel', handleWheel);	
+	// document.addEventListener('contextmenu', e => e.preventDefault());	
 	
 	$: {
 		// pattern = [...pattern];
@@ -58,6 +58,14 @@
 	}
 
 </script>
+
+<svelte:window 
+	on:contextmenu|preventDefault
+/>
+<svelte:body 
+	on:keydown={handleKeydown}
+	on:wheel={handleWheel}
+/>
 
 {#if mounted}
 	<Layout>
