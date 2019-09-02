@@ -21,15 +21,6 @@
         height:10vh;
         overflow-y: hidden;
     }
-    button { 
-        padding:2vh;
-        justify-self: end;
-        border:none;
-        background:none;
-        /* margin-left:auto; */
-        color:var(--text-color);
-        cursor:pointer;
-    }
 </style>
 
 <script>
@@ -37,9 +28,14 @@
     export let activeId;
     import {slide, fade} from 'svelte/transition'; 
     import Bar from './bar.svelte';
+    import { ClearIcon } from '../../svgicons';
 
     function handleClick(index) {
         pattern[index] = !pattern[index];
+        pattern=[...pattern];
+    }
+    function handleClearClick() {
+        pattern.pop();
         pattern=[...pattern];
     }
 </script>
@@ -52,6 +48,7 @@
                 <Bar {big} active={id === activeId} on:click={() => handleClick(id)}></Bar>
             {/each}
         </div>
-        <button on:click={() => pattern = []} >CLEAR</button>
+        <ClearIcon size='1em' color='#fffa' on:click={handleClearClick}/>
+        <!-- <button on:click={() => pattern = []} >CLEAR</button> -->
     </div>
 {/if}
