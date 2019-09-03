@@ -80,10 +80,8 @@
 			<Slider bind:value={bpm} min=40 max=360 step=10 style='width:80vw'/>
 		</div>
 	</Topbar>
-	<Bottombar {visible}>
-		<div slot=content>
-			<PlayButton on:click={() => {playing = !playing}}>{ playing ? 'PAUSE' : 'PLAY'}</PlayButton>
-		</div>
+	<Bottombar {visible} on:click={() => console.log('gggggggggg')}>
+		<PlayButton on:click={() => {playing = !playing}}>{ playing ? 'PAUSE' : 'PLAY'}</PlayButton>
 	</Bottombar>
 	<Beats bind:pattern activeId={playingBeat}/>
 {/if}
