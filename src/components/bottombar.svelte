@@ -6,7 +6,7 @@
         background-color: #000;
         display:grid;
         grid-auto-flow: column;
-        grid-template-columns: minmax(5vw, 1fr) auto minmax(5vw, 1fr);
+        grid-template-columns: minmax(5vw, 100%) auto minmax(5vw, 100%);
         width:100%; 
         height:10vh;
         align-items:center; 
