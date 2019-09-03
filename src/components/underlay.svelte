@@ -7,4 +7,4 @@
         height:100vh;
     }
 </style>
-<div id='underlay' on:click/>
+<div on:click/>
