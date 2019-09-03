@@ -1,8 +1,8 @@
 <style>
 	.container {
 		display: grid;
-		grid-template-rows: 10vh 1fr 50vh 1fr 10vh;
-		grid-template-columns: 10vw 1fr 10vw;
+		grid-template-rows: 10vh 1fr 40vh 1fr 10vh;
+		grid-template-columns: 1fr 70vw 1fr;
 		width:100vw;
 		height:100vh;
 		font-size: 1em;

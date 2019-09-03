@@ -2,7 +2,7 @@
 	div {
 		position:fixed;
 		top:10vh;
-		height:15vh;
+		height:20vh;
 		left:10vw;
 		right:10vw;
 		/* background-color: #0003; */

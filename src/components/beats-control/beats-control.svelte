@@ -17,8 +17,10 @@
         display:grid;
         padding:1.0vh;
         border-radius:1.5vh;
-        height:calc(100% - 10vh);
-        width:calc(100% - 10vh);
+        height:100%;
+        width:100%;
+        /* height:calc(100% - 10vh);
+        width:calc(100% - 10vh); */
         grid-auto-flow: row;
         /* grid-gap:5vh; */
         box-shadow: 0px 0px 10px 25px #577 inset
