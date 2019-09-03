@@ -1,34 +1,9 @@
-<style>
-	.display {
-		grid-column: 2;
-		grid-row: 2;
-		display:flex;
-		align-items:center;
-		justify-content: center;
-		font-size:7vh;
-		color:#fff3;
-		text-shadow: .5vh .5vh 1vh #0008;
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
-	}
-	.clicks {
-		grid-column: 1;
-		grid-row: 2/4;
-		display:flex;
-		flex-direction: column;
-	}
-	.bpm {
-		grid-column: 3;
-		grid-row: 2/4;
-		display:flex;
-		flex-direction: column;
-	}	
-</style>
+
 <script>
 	import {onMount, afterUpdate} from 'svelte';
-	import {fade} from 'svelte/transition';
 	import Theme from './theme.svelte'
 	import Layout from './layout.svelte';
-	import { Slider, BeatsControl, PlayButton, Beats, Underlay, Topbar, Bottombar, Ripple } from './components';
+	import { Slider, BeatsControl, PlayButton, Beats, Underlay, Topbar, Bottombar, Ripple, ClicksControl, BpmControl, Notifier } from './components';
 	import metronome from './metronome';
 
 	let bpm = 200;
@@ -72,20 +47,6 @@
 			default:
 		}
     }
-
-	function setClicks (value) {
-		if (value >= 0 && value <= 9)
-			clicks = value;
-	}
-
-	function setBpm (value) {
-		if (value >= 40 && value <= 360)
-			bpm = value;
-	}
-
-	function resetBpm() {
-		
-	}
 
 	let to;
 	afterUpdate(() => {
@@ -131,25 +92,9 @@
 		<div slot='content' >
 			<BeatsControl bind:pattern active={[pattern[playingBeat] === 1, pattern[playingBeat] === 0]}/>
 		</div>
-		<div class='display'>
-			{#if text}
-				<div  transition:fade>
-					{text}
-				</div>
-			{/if}
-		</div>
-		<div class='clicks'>
-			<Ripple on:click={() => setClicks(clicks+1)}></Ripple>
-			<Ripple on:click={() => setClicks(clicks-1)}></Ripple>
-		</div>
-		<div class='bpm'>
-			<Ripple on:click={() => setBpm(bpm+20)}></Ripple>
-			<Ripple on:click={() => setBpm(bpm+5)}></Ripple>
-			<Ripple on:click={() => setBpm(bpm+1)}></Ripple>
-			<Ripple on:click={() => setBpm(bpm-1)}></Ripple>
-			<Ripple on:click={() => setBpm(bpm-5)}></Ripple>
-			<Ripple on:click={() => setBpm(bpm-20)}></Ripple>
-		</div>		
+		<Notifier {text}/>
+		<ClicksControl bind:clicks/>
+		<BpmControl bind:bpm/>
 	</Layout>
 	<Topbar {visible}>
 		<div slot=content>

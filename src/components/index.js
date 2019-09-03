@@ -9,3 +9,6 @@ export { default as Topbar } from './topbar.svelte';
 export { default as Bottombar } from './bottombar.svelte';
 export { default as Ripple } from './ripple.svelte';
 export { default as Hotspot } from './hotspot.svelte';
+export { default as ClicksControl } from './clicks-control.svelte';
+export { default as BpmControl } from './bpm-control.svelte';
+export { default as Notifier } from './notifier.svelte';
