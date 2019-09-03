@@ -3,7 +3,7 @@
 	import {onMount, afterUpdate} from 'svelte';
 	import Theme from './theme.svelte'
 	import Layout from './layout.svelte';
-	import { BeatsControl, PlayButton, Beats, Underlay, Topbar, Bottombar, Ripple, ClicksControl, BpmControl, Notifier } from './components';
+	import { BeatsControl, PlayButton, Beats, Underlay, Topbar, Bottombar, ClicksControl, BpmControl, Notifier } from './components';
 	import metronome from './metronome';
 
 	let bpm = 200;
