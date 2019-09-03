@@ -12,8 +12,6 @@
     "svelte": "^3.9.1"
   },
   "dependencies": {
-    "@maslick/radiaslider": "^1.8.3",
-    "@mougli/circular-slider": "^1.0.0",
     "sirv-cli": "^0.4.4",
     "tone": "^13.8.26"
   },

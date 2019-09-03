@@ -3,7 +3,7 @@
 	import {onMount, afterUpdate} from 'svelte';
 	import Theme from './theme.svelte'
 	import Layout from './layout.svelte';
-	import { Slider, BeatsControl, PlayButton, Beats, Underlay, Topbar, Bottombar, Ripple, ClicksControl, BpmControl, Notifier } from './components';
+	import { BeatsControl, PlayButton, Beats, Underlay, Topbar, Bottombar, Ripple, ClicksControl, BpmControl, Notifier } from './components';
 	import metronome from './metronome';
 
 	let bpm = 200;
@@ -96,11 +96,8 @@
 		<ClicksControl bind:clicks/>
 		<BpmControl bind:bpm/>
 	</Layout>
-	<Topbar {visible}>
-		<div slot=content>
-			<Slider bind:value={bpm} min=40 max=360 step=10 style='width:80vw'/>
-		</div>
-	</Topbar>
+	<!-- <Topbar {visible}>
+	</Topbar> -->
 	<Bottombar {visible} on:click={() => {}}>
 		<PlayButton on:click={() => {playing = !playing}}>{ playing ? 'PAUSE' : 'PLAY'}</PlayButton>
 	</Bottombar>
