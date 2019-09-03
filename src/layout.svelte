@@ -9,7 +9,8 @@
 
 	}
 	.content {
-		grid-row:2 ;
+		grid-row:2;
+		grid-column:2;
 		display:grid;
 		z-index:1;
 	}
@@ -19,10 +20,8 @@
 	import { fade } from 'svelte/transition';
 </script>
 
-<div class='container' transition:fade={{duration:1000}}>
-	<div style='grid-column:1; grid-row: 1/4'></div>
-    <div class=content>
+<div id='layout' class='container' transition:fade={{duration:1000}}>
+    <div id='content' class=content>
         <slot name=content/>
 	</div>
-	<div style='grid-column:3; grid-row: 1/4'></div>
 </div>
