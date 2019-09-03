@@ -34,7 +34,6 @@
     import { slide } from 'svelte/transition';
     import {createEventDispatcher, onMount} from 'svelte';
     import Bar from './bar.svelte';
-    import Crementor from '../crementor.svelte'
     
     export let pattern = [];
     export let active = [0,0];
