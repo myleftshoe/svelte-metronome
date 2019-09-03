@@ -36,14 +36,13 @@
 </style>
 <script>
     let ripple = false;
-    let style='';
+    let style = '';
     let node;
     function end() {
         ripple = false;
         node.removeEventListener('animationend', end)
     }
     function start(e) {
-        console.log($$props)
         node = e.currentTarget;
         style=`left: ${e.offsetX - 25}px; top: ${e.offsetY - 25}px;`
         ripple = true;
