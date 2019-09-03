@@ -1,67 +1,55 @@
 <style>
-    button {
-        margin:0px;
-        padding:0;
-        border-radius: .7vh;
-        border: 1px solid #0ff5;
-        flex:1;
-        background: #0ff5;
-        cursor:pointer;
-                /* border-color: white; */
-        background-color: #0ff5;
-        box-shadow: 
-        /* 0 0 10px #0004 inset,  */
-        0 0 60px #0008 inset, 
-        /* 0 0 120px #0008 inset, */
-        0 0 5px #0ff2, 
-        0 0 20px #0ff2, 
-        0 0 40px #0ff2;
-        transition: background-color 150ms ease;
-        width:100%;
-        height:100%;
-    }
     div {
         background:url('scratched-metal.png');
         margin:1px;
         border-radius: .7vh;
     }
-    .selected {
-        /* background-color: var(--primary-color);
-        border-color: var(--primary-color); */
-        background: #ff05;
-                border-color: white;
-        background: #ff05;
+    button {
+        flex:1;
+        width:100%;
+        height:100%;
+        margin:0;
+        padding:0;
+        outline:none;
+        cursor:pointer;
+        border-radius: .7vh;
+        transition: background-color 150ms ease;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #fff7;
+        background-color: #0ff5;
         box-shadow: 
-        /* 0 0 10px #0004 inset,  */
-        0 0 60px #0008 inset, 
-        /* 0 0 120px #0008 inset, */
-        0 0 5px #ff05, 
-        0 0 20px #ff05, 
-        0 0 40px #ff05;
+            0 0 60px #0008 inset, 
+            0 0 5px #0ff2, 
+            0 0 20px #0ff2, 
+            0 0 40px #0ff2;
+    }
+    .selected {
+        border-color: #fff7;
+        background-color: #ff05;
+        box-shadow: 
+            0 0 60px #0008 inset, 
+            0 0 5px #ff05, 
+            0 0 20px #ff05, 
+            0 0 40px #ff05;
     }
     .active {
-        /* background-color: white; */
         border-color: white;
-        background: #0ff;
+        background-color: #0ff;
         box-shadow: 
-        /* 0 0 10px #0004 inset,  */
-        0 0 60px #0008 inset, 
-        /* 0 0 120px #0008 inset, */
-        0 0 5px #0ff, 
-        0 0 20px #0ff, 
-        0 0 40px #0ff;
+            0 0 60px #0008 inset, 
+            0 0 5px #0ff, 
+            0 0 20px #0ff, 
+            0 0 40px #0ff;
     }
-        .activeselected {
-        /* background-color: white; */
+    .activeselected {
         border-color: white;
-        background: #f00;
+        background-color: #f00;
         box-shadow: 
-        /* 0 0 10px #0004 inset,  */
-        0 0 60px #0008 inset, 
-        /* 0 0 120px #0008 inset, */
-        0 0 5px #f00, 
-        0 0 20px #f00, 
-        0 0 40px #f00;
+            0 0 60px #0008 inset, 
+            0 0 5px #f00, 
+            0 0 20px #f00, 
+            0 0 40px #f00;
     }
 </style>
 
