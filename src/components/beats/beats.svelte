@@ -3,13 +3,15 @@
         position:fixed;
         top:0;
         left:0;
-        background-color: #000;
+        background-color: #232323;
         display:grid;
         grid-auto-flow: column;
-        grid-template-columns: minmax(5vw, auto) auto minmax(5vw, auto);
+        grid-template-columns: minmax(5vw, 1fr) auto 1fr;
         width:100%;
         justify-content:space-between;
         align-items:center; 
+        box-shadow: 0px 0px 8px 8px #0003;
+        border-bottom: 1px solid #000a;
     }
     .pattern { 
         /* background-color: pink; */
@@ -21,6 +23,7 @@
         max-width:100%;
         height:10vh;
         overflow-y: hidden;
+        padding: 5px;
     }
     .hotspot { 
         width:100%; 
@@ -37,7 +40,7 @@
     import {slide, fade} from 'svelte/transition'; 
     import Bar from './bar.svelte';
     import { ClearIcon } from '../../svgicons';
-
+    import Hotspot from '../hotspot.svelte';
     function handleClick(index) {
         pattern[index] = !pattern[index];
         pattern=[...pattern];
@@ -53,7 +56,7 @@
 
 {#if pattern.length } 
     <div id='beats-container' class='container' in:slide out:slide={{delay:500}}>
-        <div class=hotspot on:click={removeOne}></div>
+        <Hotspot ripple on:click={removeOne}/>
         <div class=pattern>
             {#each pattern as big, id}
                 <Bar {big} active={id === activeId} on:click={() => handleClick(id)}></Bar>

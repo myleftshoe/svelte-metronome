@@ -25,11 +25,11 @@
         position: absolute;
         height: 50px;
         width: 50px;
-        background: white;
+        background: cyan;
         border-radius: 50%;
         opacity: 0.3;
         animation-name: ripple;
-        animation-duration: 500ms;
+        animation-duration: 300ms;
         animation-iteration-count: 1;
         animation-timing-function: ease;
     }

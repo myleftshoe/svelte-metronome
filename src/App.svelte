@@ -2,7 +2,7 @@
 	import {onMount} from 'svelte';
 	import Theme from './theme.svelte'
 	import Layout from './layout.svelte';
-	import { Slider, BeatsControl, PlayButton, Controls, Beats, Underlay, Topbar, Bottombar } from './components';
+	import { Slider, BeatsControl, PlayButton, Beats, Underlay, Topbar, Bottombar } from './components';
 	import metronome from './metronome';
 
 	let bpm = 200;

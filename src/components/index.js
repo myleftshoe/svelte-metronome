@@ -8,3 +8,4 @@ export { default as Underlay } from './underlay.svelte';
 export { default as Topbar } from './topbar.svelte';
 export { default as Bottombar } from './bottombar.svelte';
 export { default as Ripple } from './ripple.svelte';
+export { default as Hotspot } from './hotspot.svelte';

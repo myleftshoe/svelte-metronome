@@ -20,7 +20,7 @@
     }
 </style>
 <script>
-    import {Ripple} from './';
+    import Ripple from './ripple.svelte';
     let pressed = false;
     function handlePointerDown() {
         pressed = true;
