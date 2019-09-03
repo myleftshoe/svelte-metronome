@@ -1,7 +1,11 @@
 <style>
 	div {
-		grid-column: 2;
-		grid-row: 2;
+		position:fixed;
+		top:10vh;
+		height:15vh;
+		left:10vw;
+		right:10vw;
+		/* background-color: #0003; */
 		display:flex;
 		align-items:center;
 		justify-content: center;
