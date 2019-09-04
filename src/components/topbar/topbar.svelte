@@ -12,6 +12,7 @@
         align-items:center; 
         box-shadow: 0px 0px 8px 8px #0003;
         border-bottom: 1px solid #121212;
+        z-index:1;
     }
     .pattern { 
         /* background-color: pink; */
