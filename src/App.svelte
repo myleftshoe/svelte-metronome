@@ -51,20 +51,36 @@
 		setTimeout(() => bar.classList.remove('active'), 50)
 	}
 
+	function setBpm (value) {
+		bpm = value < 40 ? 40 : value > 360 ? 360 : value;
+		notify(`${bpm} bpm`);
+	}
+
+	function floor(value, amount) {
+		return Math.floor(value/amount) * amount + amount;
+	} 
+
+	function ceil(value, amount) {
+		return Math.ceil(value/amount) * amount - amount;
+	} 
+
     function handleWheel(e) {
 		const multiplier = e.shiftKey ? 1 : 10;
-        bpm -= Math.sign(e.deltaY) * multiplier;
+		if (Math.sign(e.deltaY) < 0)
+			setBpm(floor(bpm, multiplier));
+		else
+			setBpm(ceil(bpm, multiplier));
     }
 
     function handleKeydown(e) {
 		const multiplier = e.shiftKey ? 1 : 5;
 		switch (e.key) {
 			case 'ArrowUp': {
-				bpm = Math.floor(bpm/multiplier) * multiplier + multiplier; 
+				setBpm(floor(bpm, multiplier)); 
 				break;
 			}
 			case 'ArrowDown': {
-				bpm = Math.ceil(bpm/multiplier) * multiplier - multiplier;
+				setBpm(ceil(bpm, multiplier));
 				break;
 			}
 			case ' ': {
@@ -96,7 +112,7 @@
 <div class=container transition:fade={{duration:1000}}>
 	<Topbar bind:pattern/>
 	<BeatsControl bind:pattern/>
-	<BpmControl {show} bind:bpm on:click={e => notify(`${e.detail} bpm`)}/>
+	<BpmControl {show} {bpm} on:change={e => setBpm(e.detail)}/>
 	<ClicksControl {show} bind:clicks on:click={e => notify(`${e.detail} clicks`)}/>
 	<StartStop {show} bind:playing/>
 	<Overlay bind:show></Overlay>

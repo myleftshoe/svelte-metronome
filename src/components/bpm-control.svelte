@@ -13,23 +13,22 @@
 	}
 </style>
 <script>
-	export let bpm = 180;
+	export let bpm = 200;
 	export let show = false;
     import Hotspot from './hotspot.svelte';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
-	function setBpm (value) {
-		bpm = value < 40 ? 40 : value > 360 ? 360 : value;
-		dispatch('click', bpm);
+	function change (value) {
+		dispatch('change', value);
 	}
 </script>
 <div class='left'>
-    <Hotspot {show} on:click={() => setBpm(bpm-20)}>BPM<p/>-20</Hotspot>
-    <Hotspot {show} on:click={() => setBpm(bpm-5)}>-5</Hotspot>
-    <Hotspot {show} on:click={() => setBpm(bpm-1)}>-1</Hotspot>
+    <Hotspot {show} on:click={() => change(bpm-20)}>BPM<p/>-20</Hotspot>
+    <Hotspot {show} on:click={() => change(bpm-5)}>-5</Hotspot>
+    <Hotspot {show} on:click={() => change(bpm-1)}>-1</Hotspot>
 </div>
 <div class='right'>
-    <Hotspot {show} on:click={() => setBpm(bpm+20)}>BPM<p/>+20</Hotspot>
-    <Hotspot {show} on:click={() => setBpm(bpm+5)}>+5</Hotspot>
-    <Hotspot {show} on:click={() => setBpm(bpm+1)}>+1</Hotspot>
+    <Hotspot {show} on:click={() => change(bpm+20)}>BPM<p/>+20</Hotspot>
+    <Hotspot {show} on:click={() => change(bpm+5)}>+5</Hotspot>
+    <Hotspot {show} on:click={() => change(bpm+1)}>+1</Hotspot>
 </div>
