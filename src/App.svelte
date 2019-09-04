@@ -1,4 +1,3 @@
-
 <script>
 	import { onMount } from 'svelte';
 	import Layout from './layout.svelte';
@@ -47,12 +46,7 @@
 		}
     }
 
-	// document.addEventListener('keydown', handleKeydown);
-	// document.addEventListener('wheel', handleWheel);	
-	// document.addEventListener('contextmenu', e => e.preventDefault());	
-	
 	$: {
-		// pattern = [...pattern];
 		if (playing) 
 			metronome.play(bpm, pattern, clicks);
 		else if (playing !== previous) 
@@ -66,13 +60,8 @@
 
 </script>
 
-<svelte:window 
-	on:contextmenu|preventDefault
-/>
-<svelte:body 
-	on:keydown={handleKeydown}
-	on:wheel={handleWheel}
-/>
+<svelte:window on:contextmenu|preventDefault/>
+<svelte:body on:keydown={handleKeydown}	on:wheel={handleWheel}/>
 
 {#if mounted}
 	<Beats bind:pattern activeId={playingBeat}/>
