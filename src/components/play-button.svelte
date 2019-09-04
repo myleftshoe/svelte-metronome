@@ -17,7 +17,7 @@
     }
 </style>
 <script>
-    import Ripple from './ripple.svelte';
+    import Hotspot from './hotspot.svelte';
     let pressed = false;
     function handlePointerDown() {
         pressed = true;
@@ -26,7 +26,7 @@
         pressed = false;
     }
 </script>
-<Ripple>
+<Hotspot>
     <button 
         on:click
         on:pointerdown={handlePointerDown}
@@ -35,4 +35,4 @@
     >
         <slot/>
     </button>
-</Ripple>
+</Hotspot>

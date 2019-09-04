@@ -11,7 +11,7 @@
 <script>
 	export let clicks = 0;
 	export let show = false;
-	import Ripple from './ripple.svelte';
+	import Hotspot from './hotspot.svelte';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 	function setClicks (value) {
@@ -20,8 +20,8 @@
 	}
 </script>
 <div class='left'>
-    <Ripple {show} on:click={() => setClicks(clicks-1)}>CLICKS<p/>-1</Ripple>
+    <Hotspot {show} on:click={() => setClicks(clicks-1)}>CLICKS<p/>-1</Hotspot>
 </div>
 <div class='right'>
-    <Ripple {show} on:click={() => setClicks(clicks+1)}>CLICKS<p/>+1</Ripple>
+    <Hotspot {show} on:click={() => setClicks(clicks+1)}>CLICKS<p/>+1</Hotspot>
 </div>

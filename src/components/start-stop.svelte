@@ -7,8 +7,8 @@
 <script>
 	export let playing = false;
 	export let show = false;
-	import Ripple from './ripple.svelte';
+	import Hotspot from './hotspot.svelte';
 </script>
 <div>
-    <Ripple {show} on:click={() => playing = !playing}>MUTE</Ripple>
+    <Hotspot {show} on:click={() => playing = !playing}>MUTE</Hotspot>
 </div>

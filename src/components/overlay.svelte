@@ -6,8 +6,8 @@
 </style>
 <script>
 	export let show = false;
-	import Ripple from './ripple.svelte';
+	import Hotspot from './hotspot.svelte';
 </script>
 <div>
-    <Ripple {show} on:click={() => show = !show}>DISMISS</Ripple>
+    <Hotspot {show} on:click={() => show = !show}>DISMISS</Hotspot>
 </div>

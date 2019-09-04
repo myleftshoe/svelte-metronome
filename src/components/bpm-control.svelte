@@ -15,7 +15,7 @@
 <script>
 	export let bpm = 180;
 	export let show = false;
-    import Ripple from './ripple.svelte';
+    import Hotspot from './hotspot.svelte';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 	function setBpm (value) {
@@ -24,12 +24,12 @@
 	}
 </script>
 <div class='left'>
-    <Ripple {show} on:click={() => setBpm(bpm-20)}>BPM<p/>-20</Ripple>
-    <Ripple {show} on:click={() => setBpm(bpm-5)}>-5</Ripple>
-    <Ripple {show} on:click={() => setBpm(bpm-1)}>-1</Ripple>
+    <Hotspot {show} on:click={() => setBpm(bpm-20)}>BPM<p/>-20</Hotspot>
+    <Hotspot {show} on:click={() => setBpm(bpm-5)}>-5</Hotspot>
+    <Hotspot {show} on:click={() => setBpm(bpm-1)}>-1</Hotspot>
 </div>
 <div class='right'>
-    <Ripple {show} on:click={() => setBpm(bpm+20)}>BPM<p/>+20</Ripple>
-    <Ripple {show} on:click={() => setBpm(bpm+5)}>+5</Ripple>
-    <Ripple {show} on:click={() => setBpm(bpm+1)}>+1</Ripple>
+    <Hotspot {show} on:click={() => setBpm(bpm+20)}>BPM<p/>+20</Hotspot>
+    <Hotspot {show} on:click={() => setBpm(bpm+5)}>+5</Hotspot>
+    <Hotspot {show} on:click={() => setBpm(bpm+1)}>+1</Hotspot>
 </div>
