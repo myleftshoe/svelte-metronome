@@ -1,5 +1,9 @@
 <style>
 	.container {
+        grid-row:3;
+		grid-column:2;
+		display:grid;
+		z-index:1;
         display:grid;
         /* padding:10.0vh; */
         border-radius:1.5vh;

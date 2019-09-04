@@ -7,12 +7,6 @@
 		height:100vh;
 		font-size: 1em;
 	}
-	.content {
-		grid-row:3;
-		grid-column:2;
-		display:grid;
-		z-index:1;
-	}
 </style>
 
 <script>
@@ -20,9 +14,7 @@
 </script>
 
 <div id='layout' class=container transition:fade={{duration:1000}}>
-    <div class=content>
-        <slot name=content/>
-	</div>
+	<slot/>
 	<slot/>
 	<slot/>
 </div>

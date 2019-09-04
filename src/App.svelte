@@ -3,7 +3,7 @@
 	import {onMount, afterUpdate} from 'svelte';
 	import Theme from './theme.svelte'
 	import Layout from './layout.svelte';
-	import { BeatsControl, PlayButton, Beats, Underlay, Topbar, Bottombar, ClicksControl, BpmControl, Notifier } from './components';
+	import { BeatsControl, PlayButton, Beats, Underlay, Bottombar, ClicksControl, BpmControl, Notifier } from './components';
 	import metronome from './metronome';
 
 	let bpm = 200;
@@ -85,21 +85,15 @@
 />
 
 {#if mounted}
-	<Underlay on:click={() => visible = !visible}>
-
-	</Underlay>
+	<Underlay on:click={() => visible = !visible}/>
+	<Beats bind:pattern activeId={playingBeat}/>
+	<Notifier {text}/>
 	<Layout>
-		<div slot='content' >
-			<BeatsControl bind:pattern active={[pattern[playingBeat] === 1, pattern[playingBeat] === 0]}/>
-		</div>
-		<Notifier {text}/>
+		<BeatsControl bind:pattern active={[pattern[playingBeat] === 1, pattern[playingBeat] === 0]}/>
 		<ClicksControl bind:clicks/>
 		<BpmControl bind:bpm/>
 	</Layout>
-	<!-- <Topbar {visible}>
-	</Topbar> -->
 	<Bottombar {visible} on:click={() => {}}>
 		<PlayButton on:click={() => {playing = !playing}}>{ playing ? 'PAUSE' : 'PLAY'}</PlayButton>
 	</Bottombar>
-	<Beats bind:pattern activeId={playingBeat}/>
 {/if}
