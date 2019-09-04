@@ -56,9 +56,10 @@
 <script>
     export let selected = false;
     export let active = false;
+    export let id;
 </script>
 <div>
-    <button 
+    <button {id}
         class:selected class:active class:activeselected={selected && active} 
         on:pointerdown={() => active = true} 
         on:pointerup={() => active = false}  

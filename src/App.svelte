@@ -26,11 +26,16 @@
 	let message = '';
 	let show = false;
 
-	onMount(() => {mounted = true;})
+	onMount(() => {
+		mounted = true;
+	});
 
 	metronome.beatCallback = function(id) {
-		playingBeat = parseInt(id.split(':')[1]);
-		setTimeout(() => {playingBeat = undefined}, 50)
+		const left = document.getElementById('left-bar');
+		console.log('tttttttt',left);
+
+		// playingBeat = parseInt(id.split(':')[1]);
+		// setTimeout(() => {playingBeat = undefined}, 50)
 	}
 
     function handleWheel(e) {

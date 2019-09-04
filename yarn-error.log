@@ -1,30 +1,30 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js add Tone
+  /usr/bin/node /usr/share/yarn/bin/yarn.js publish
 
 PATH: 
-  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/gfie-3.6:/snap/bin:/opt/gfie-3.6
 
 Yarn version: 
   1.17.3
 
 Node version: 
-  12.8.1
+  12.9.1
 
 Platform: 
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/Tone: Not found
-      at Request.params.callback [as _callback] (/usr/share/yarn/lib/cli.js:66830:18)
-      at Request.self.callback (/usr/share/yarn/lib/cli.js:140464:22)
-      at Request.emit (events.js:203:13)
-      at Request.<anonymous> (/usr/share/yarn/lib/cli.js:141436:10)
-      at Request.emit (events.js:203:13)
-      at IncomingMessage.<anonymous> (/usr/share/yarn/lib/cli.js:141358:12)
-      at Object.onceWrapper (events.js:291:20)
-      at IncomingMessage.emit (events.js:208:15)
-      at endReadableNT (_stream_readable.js:1168:12)
-      at processTicksAndRejections (internal/process/task_queues.js:77:11)
+  Error: canceled
+      at Interface.<anonymous> (/usr/share/yarn/lib/cli.js:136724:13)
+      at Interface.emit (events.js:209:13)
+      at Interface._ttyWrite (readline.js:887:16)
+      at ReadStream.onkeypress (readline.js:191:10)
+      at ReadStream.emit (events.js:209:13)
+      at emitKeys (internal/readline/utils.js:414:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1153:36)
+      at ReadStream.emit (events.js:209:13)
+      at addChunk (_stream_readable.js:305:12)
 
 npm manifest: 
   {
@@ -38,12 +38,14 @@ npm manifest:
       "rollup-plugin-node-resolve": "^5.2.0",
       "rollup-plugin-svelte": "^5.0.3",
       "rollup-plugin-terser": "^4.0.4",
-      "svelte": "^3.0.0"
+      "svelte": "^3.9.1"
     },
     "dependencies": {
-      "sirv-cli": "^0.4.4"
+      "sirv-cli": "^0.4.4",
+      "tone": "^13.8.26"
     },
     "scripts": {
+      "deploy": "surge public",
       "build": "rollup -c",
       "autobuild": "rollup -c -w",
       "dev": "run-p start:dev autobuild",
@@ -1763,10 +1765,10 @@ Lockfile:
     dependencies:
       has-flag "^3.0.0"
   
-  svelte@^3.0.0:
-    version "3.8.1"
-    resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.8.1.tgz#5baff4a32d36f03590c3c122f09635aea272ad6d"
-    integrity sha512-D9Xm4UTES99RfExLbHRLjyXC0Ns22WmwekF3s7MZKlvTxKjBM9UVabYvwg6gAlpa2qSI0TDkJbTMJE68MuFD3w==
+  svelte@^3.9.1:
+    version "3.9.1"
+    resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.9.1.tgz#f0dc0993d80e69da46f7b21d858895c37c2fd419"
+    integrity sha512-oy6FjffuCzPueBnzs8SxkV5VaOS+VX/eUywgE9LCA+skKdXt7wFlpKH3DNi1Uy+K23sb9bzlWxn0AaDQOnEUEw==
   
   tar@^4:
     version "4.4.10"
@@ -1819,6 +1821,11 @@ Lockfile:
       extend-shallow "^3.0.2"
       regex-not "^1.0.2"
       safe-regex "^1.1.0"
+  
+  tone@^13.8.26:
+    version "13.8.26"
+    resolved "https://registry.yarnpkg.com/tone/-/tone-13.8.26.tgz#2642e6992096bb50911c813c0239c74e0df8f23c"
+    integrity sha512-leOouR6B3rx5LFSDsdCDNQNgVET3W/tTwlLrozp8IQ5HtlS6A/8pXNx515geKTxOVRav+PNkAk/B/LobggS5Qg==
   
   ultron@1.0.x:
     version "1.0.2"

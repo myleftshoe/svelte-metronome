@@ -60,7 +60,7 @@
 
 <div class='container' tabindex="0" aria-label='beats'>
     <div class='lights-container'>
-        <Bar active={active[0]} selected on:click={handleOnBeatClick}/>
-        <Bar active={active[1]} on:click={handleOffBeatClick}/>
+        <Bar id='left-bar' active={active[0]} selected on:click={handleOnBeatClick}/>
+        <Bar id='right-bar' active={active[1]} on:click={handleOffBeatClick}/>
     </div>
 </div>
