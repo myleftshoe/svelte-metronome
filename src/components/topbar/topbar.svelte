@@ -55,7 +55,7 @@
 </script>
 
 {#if pattern.length } 
-    <div id='beats-container' class='container' in:slide out:slide={{delay:500}}>
+    <div class='container' in:slide out:slide={{delay:500}}>
         <div class=hotspot on:click={removeOne}/>
         <div class=pattern>
             {#each pattern as big, id}

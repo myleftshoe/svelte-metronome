@@ -13,7 +13,7 @@
         outline:none;
         cursor:pointer;
         border-radius: .7vh;
-        transition: background-color 150ms ease;
+        /* transition: background-color 150ms ease; */
         border-width: 1px;
         border-style: solid;
         border-color: #fff7;
