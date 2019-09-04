@@ -40,8 +40,8 @@
         animation-timing-function: ease;
     }
 	.show {
-        background-color: #0001;
-		outline: 1px solid #0005;
+        background-color: #0004;
+		outline: 1px solid #0009;
 	} 
 </style>
 <script>
