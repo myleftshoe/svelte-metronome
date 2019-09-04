@@ -10,9 +10,12 @@
 </style>
 <script>
     export let clicks = 0;
-    import Ripple from './ripple.svelte';
+	import Ripple from './ripple.svelte';
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
 	function setClicks (value) {
 		clicks = value < 0 ? 0 : value > 9 ? 9 : value;
+		dispatch('click', clicks);
 	}
 </script>
 <div class='left'>

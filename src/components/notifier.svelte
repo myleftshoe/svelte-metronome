@@ -10,19 +10,22 @@
 		align-items:center;
 		justify-content: center;
 		font-size:7vh;
-		color:#fff3;
+		color:#fff5;
 		text-shadow: .5vh .5vh 1vh #0008;
 		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 	}
 </style>
 <script>
-    export let text = '';
-    import {fade} from 'svelte/transition';
+	export let message = '';
+	import {fade} from 'svelte/transition';
+	let timeout;
+	$: if (message) {
+			clearTimeout(timeout);
+			timeout = setTimeout(() => {message = ''}, 3000);
+		}
 </script>
-<div>
-    {#if text}
-        <div  transition:fade>
-            {text}
-        </div>
-    {/if}
-</div>
+{#if message}
+	<div  transition:fade>
+		{message}
+	</div>
+{/if}

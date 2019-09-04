@@ -15,8 +15,11 @@
 <script>
     export let bpm = 180;
     import Ripple from './ripple.svelte';
+	import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
 	function setBpm (value) {
 		bpm = value < 40 ? 40 : value > 360 ? 360 : value;
+		dispatch('click', bpm);
 	}
 </script>
 <div class='left'>

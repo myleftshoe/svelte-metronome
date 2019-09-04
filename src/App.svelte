@@ -1,6 +1,6 @@
 
 <script>
-	import {onMount, afterUpdate} from 'svelte';
+	import { onMount } from 'svelte';
 	import Theme from './theme.svelte'
 	import Layout from './layout.svelte';
 	import { BeatsControl, PlayButton, Beats, Underlay, Bottombar, ClicksControl, BpmControl, Notifier } from './components';
@@ -14,8 +14,7 @@
 	let mounted = false;
 	let playingBeat;
 	let visible = false;
-	let previousBpm = bpm;
-	let previousClicks = clicks;
+	let message = '';
 
 	onMount(() => {mounted = true;})
 
@@ -48,16 +47,6 @@
 		}
     }
 
-	let to;
-	afterUpdate(() => {
-		if (previousBpm !== bpm || previousClicks !== clicks) {
-			clearTimeout(to);
-			to = setTimeout(() => {
-				previousBpm = bpm;
-				previousClicks = clicks;
-			}, 3000);
-		}
-	});
 	// document.addEventListener('keydown', handleKeydown);
 	// document.addEventListener('wheel', handleWheel);	
 	// document.addEventListener('contextmenu', e => e.preventDefault());	
@@ -71,8 +60,9 @@
 		previous = playing;	
 	}
 
-	$: text = bpm !== previousBpm ? `${bpm} bpm` : previousClicks !== clicks ? `${clicks} clicks` : '';
-	
+	function notify(value) {
+		message = value;
+	} 
 
 </script>
 
@@ -87,11 +77,13 @@
 {#if mounted}
 	<Underlay on:click={() => visible = !visible}/>
 	<Beats bind:pattern activeId={playingBeat}/>
-	<Notifier {text}/>
+	{#if message}
+		<Notifier bind:message/>
+	{/if}
 	<Layout>
 		<BeatsControl bind:pattern active={[pattern[playingBeat] === 1, pattern[playingBeat] === 0]}/>
-		<ClicksControl bind:clicks/>
-		<BpmControl bind:bpm/>
+		<BpmControl bind:bpm on:click={e => notify(`${e.detail} bpm`)}/>
+		<ClicksControl bind:clicks on:click={e => notify(`${e.detail} clicks`)}/>
 	</Layout>
 	<Bottombar {visible} on:click={() => {}}>
 		<PlayButton on:click={() => {playing = !playing}}>{ playing ? 'PAUSE' : 'PLAY'}</PlayButton>
