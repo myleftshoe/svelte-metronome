@@ -31,6 +31,11 @@
 		mounted = true;
 	});
 
+	function toggleClass(node, name, duration = 50) {
+		node.classList.add(name);
+		setTimeout(() => node.classList.remove(name), duration);
+	}
+
 	metronome.beatCallback = function(beatId) {
 		const id = parseInt(beatId.split(':')[1]);
 
@@ -38,17 +43,12 @@
 		right = right || document.getElementById('right-bar');
 		const bar = document.getElementById(`bar-${id}`);
 
-		if (pattern[id]) {
-			left.classList.add('activeselected');
-			setTimeout(() => left.classList.remove('activeselected'), 50)
-		}
-		else {
-			right.classList.add('active');
-			setTimeout(() => right.classList.remove('active'), 50)
-		}
+		if (pattern[id]) 
+			toggleClass(left, 'activeselected');
+		else
+			toggleClass(right, 'active');
 
-		bar.classList.add('active');
-		setTimeout(() => bar.classList.remove('active'), 50)
+		toggleClass(bar, 'active');
 	}
 
 	function setBpm (value) {
