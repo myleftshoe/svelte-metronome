@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import Layout from './layout.svelte';
-	import { BeatsControl, Beats, BpmControl, ClicksControl, Notifier, StartStop, Overlay } from './components';
+	import { BeatsControl, Topbar, BpmControl, ClicksControl, StartStop, Overlay, Notifier } from './components';
 	import metronome from './metronome';
 
 	let bpm = 200;
@@ -64,7 +64,7 @@
 <svelte:body on:keydown={handleKeydown}	on:wheel={handleWheel}/>
 
 {#if mounted}
-	<Beats bind:pattern activeId={playingBeat}/>
+	<Topbar bind:pattern activeId={playingBeat}/>
 	{#if message}
 		<Notifier bind:message/>
 	{/if}

@@ -1,5 +1,5 @@
 export { default as BeatsControl } from './beats-control';
-export { default as Beats } from './beats';
+export { default as Topbar } from './topbar';
 export { default as Ripple } from './ripple.svelte';
 export { default as ClicksControl } from './clicks-control.svelte';
 export { default as BpmControl } from './bpm-control.svelte';
