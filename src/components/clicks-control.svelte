@@ -1,9 +1,11 @@
 <style>
-	div {
+	.left {
 		grid-column: 1;
-		grid-row: 2/4;
-		display:flex;
-		flex-direction: column;
+		grid-row: 4;
+	}
+	.right {
+		grid-column: 3;
+		grid-row: 4;
 	}
 </style>
 <script>
@@ -14,7 +16,9 @@
 			clicks = value;
 	}
 </script>
-<div>
-    <Ripple on:click={() => setClicks(clicks+1)}></Ripple>
+<div class='left'>
     <Ripple on:click={() => setClicks(clicks-1)}></Ripple>
+</div>
+<div class='right'>
+    <Ripple on:click={() => setClicks(clicks+1)}></Ripple>
 </div>
