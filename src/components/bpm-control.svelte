@@ -16,8 +16,7 @@
     export let bpm = 180;
     import Ripple from './ripple.svelte';
 	function setBpm (value) {
-		if (value >= 40 && value <= 360)
-			bpm = value;
+		bpm = value < 40 ? 40 : value > 360 ? 360 : value;
 	}
 </script>
 <div class='left'>

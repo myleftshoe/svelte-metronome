@@ -12,8 +12,7 @@
     export let clicks = 0;
     import Ripple from './ripple.svelte';
 	function setClicks (value) {
-		if (value >= 0 && value <= 9)
-			clicks = value;
+		clicks = value < 0 ? 0 : value > 9 ? 9 : value;
 	}
 </script>
 <div class='left'>
