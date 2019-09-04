@@ -9,7 +9,8 @@
 	}
 </style>
 <script>
-    export let clicks = 0;
+	export let clicks = 0;
+	export let show = false;
 	import Ripple from './ripple.svelte';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
@@ -19,8 +20,8 @@
 	}
 </script>
 <div class='left'>
-    <Ripple on:click={() => setClicks(clicks-1)}></Ripple>
+    <Ripple {show} on:click={() => setClicks(clicks-1)}>CLICKS<p/>-1</Ripple>
 </div>
 <div class='right'>
-    <Ripple on:click={() => setClicks(clicks+1)}></Ripple>
+    <Ripple {show} on:click={() => setClicks(clicks+1)}>CLICKS<p/>+1</Ripple>
 </div>

@@ -13,7 +13,8 @@
 	}
 </style>
 <script>
-    export let bpm = 180;
+	export let bpm = 180;
+	export let show = false;
     import Ripple from './ripple.svelte';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
@@ -23,12 +24,12 @@
 	}
 </script>
 <div class='left'>
-    <Ripple on:click={() => setBpm(bpm-20)}></Ripple>
-    <Ripple on:click={() => setBpm(bpm-5)}></Ripple>
-    <Ripple on:click={() => setBpm(bpm-1)}></Ripple>
+    <Ripple {show} on:click={() => setBpm(bpm-20)}>BPM<p/>-20</Ripple>
+    <Ripple {show} on:click={() => setBpm(bpm-5)}>-5</Ripple>
+    <Ripple {show} on:click={() => setBpm(bpm-1)}>-1</Ripple>
 </div>
 <div class='right'>
-    <Ripple on:click={() => setBpm(bpm+20)}></Ripple>
-    <Ripple on:click={() => setBpm(bpm+5)}></Ripple>
-    <Ripple on:click={() => setBpm(bpm+1)}></Ripple>
+    <Ripple {show} on:click={() => setBpm(bpm+20)}>BPM<p/>+20</Ripple>
+    <Ripple {show} on:click={() => setBpm(bpm+5)}>+5</Ripple>
+    <Ripple {show} on:click={() => setBpm(bpm+1)}>+1</Ripple>
 </div>

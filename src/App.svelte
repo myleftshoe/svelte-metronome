@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import Theme from './theme.svelte'
 	import Layout from './layout.svelte';
-	import { BeatsControl, PlayButton, Beats, Underlay, Bottombar, ClicksControl, BpmControl, Notifier } from './components';
+	import { BeatsControl, PlayButton, Beats, Underlay, Bottombar, ClicksControl, BpmControl, Notifier, StartStop, Overlay } from './components';
 	import metronome from './metronome';
 
 	let bpm = 200;
@@ -15,6 +15,7 @@
 	let playingBeat;
 	let visible = false;
 	let message = '';
+	let show = false;
 
 	onMount(() => {mounted = true;})
 
@@ -75,15 +76,17 @@
 />
 
 {#if mounted}
-	<Underlay on:click={() => visible = !visible}/>
+	<!-- <Underlay on:click={() => visible = !visible}/> -->
 	<Beats bind:pattern activeId={playingBeat}/>
 	{#if message}
 		<Notifier bind:message/>
 	{/if}
 	<Layout>
 		<BeatsControl bind:pattern active={[pattern[playingBeat] === 1, pattern[playingBeat] === 0]}/>
-		<BpmControl bind:bpm on:click={e => notify(`${e.detail} bpm`)}/>
-		<ClicksControl bind:clicks on:click={e => notify(`${e.detail} clicks`)}/>
+		<BpmControl {show} bind:bpm on:click={e => notify(`${e.detail} bpm`)}/>
+		<ClicksControl {show} bind:clicks on:click={e => notify(`${e.detail} clicks`)}/>
+		<StartStop {show} bind:playing/>
+		<Overlay bind:show></Overlay>
 	</Layout>
 	<Bottombar {visible} on:click={() => {}}>
 		<PlayButton on:click={() => {playing = !playing}}>{ playing ? 'PAUSE' : 'PLAY'}</PlayButton>
