@@ -1,13 +1,10 @@
 <style>
     button {
-        /* background: url('button.png'); */
         background: none;
-        /* border: 2px solid var(--primary-color); */
         border:none;
         outline:none;
         padding: .5em 2em;
         color: cyan;
-        /* color: var(--text-color); */
         font-size:1em;
         cursor: pointer;
         height:100%;

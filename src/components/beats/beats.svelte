@@ -41,7 +41,6 @@
     import {slide, fade} from 'svelte/transition'; 
     import Bar from './bar.svelte';
     import { ClearIcon } from '../../svgicons';
-    import Hotspot from '../hotspot.svelte';
     function handleClick(index) {
         pattern[index] = !pattern[index];
         pattern=[...pattern];
@@ -57,7 +56,6 @@
 
 {#if pattern.length } 
     <div id='beats-container' class='container' in:slide out:slide={{delay:500}}>
-        <!-- <Hotspot ripple on:click={removeOne}/> -->
         <div class=hotspot on:click={removeOne}/>
         <div class=pattern>
             {#each pattern as big, id}

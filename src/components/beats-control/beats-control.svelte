@@ -5,17 +5,11 @@
 		display:grid;
 		z-index:1;
         display:grid;
-        /* padding:10.0vh; */
         border-radius:1.5vh;
         height:100%;
         align-items:center;
         justify-items:center;
         outline:none;
-        /* grid-auto-flow: row; */
-        /* background:url('wood.png'); */
-        /* box-shadow: 
-            0px 0px 4px 4px #000f inset,
-            0px 0px 8px 2px #fff8 inset */
     }
 	.lights-container {
         display:grid;
@@ -23,10 +17,7 @@
         border-radius:1.5vh;
         height:100%;
         width:100%;
-        /* height:calc(100% - 10vh);
-        width:calc(100% - 10vh); */
         grid-auto-flow: row;
-        /* grid-gap:5vh; */
         box-shadow: 0px 0px 10px 25px #577 inset
     }
     @media only screen and (orientation: landscape) {
@@ -69,8 +60,6 @@
 
 </script>
 
-
-<!-- <label for='bars' style='visibility: hidden'>Beats</label> -->
 <div class='container' tabindex="0" aria-label='beats'>
     <div class='lights-container'>
         <Bar active={active[0]} selected on:click={handleOnBeatClick}/>

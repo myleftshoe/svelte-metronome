@@ -1,11 +1,6 @@
 export { default as BeatsControl } from './beats-control';
-export { default as PlayButton } from './play-button.svelte';
 export { default as Beats } from './beats';
-export { default as Underlay } from './underlay.svelte';
-export { default as Topbar } from './topbar.svelte';
-export { default as Bottombar } from './bottombar.svelte';
 export { default as Ripple } from './ripple.svelte';
-export { default as Hotspot } from './hotspot.svelte';
 export { default as ClicksControl } from './clicks-control.svelte';
 export { default as BpmControl } from './bpm-control.svelte';
 export { default as StartStop } from './start-stop.svelte';

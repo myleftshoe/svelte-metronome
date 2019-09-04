@@ -1,9 +1,8 @@
 
 <script>
 	import { onMount } from 'svelte';
-	import Theme from './theme.svelte'
 	import Layout from './layout.svelte';
-	import { BeatsControl, PlayButton, Beats, Underlay, Bottombar, ClicksControl, BpmControl, Notifier, StartStop, Overlay } from './components';
+	import { BeatsControl, Beats, BpmControl, ClicksControl, Notifier, StartStop, Overlay } from './components';
 	import metronome from './metronome';
 
 	let bpm = 200;
@@ -76,7 +75,6 @@
 />
 
 {#if mounted}
-	<!-- <Underlay on:click={() => visible = !visible}/> -->
 	<Beats bind:pattern activeId={playingBeat}/>
 	{#if message}
 		<Notifier bind:message/>
@@ -88,7 +86,4 @@
 		<StartStop {show} bind:playing/>
 		<Overlay bind:show></Overlay>
 	</Layout>
-	<Bottombar {visible} on:click={() => {}}>
-		<PlayButton on:click={() => {playing = !playing}}>{ playing ? 'PAUSE' : 'PLAY'}</PlayButton>
-	</Bottombar>
 {/if}
