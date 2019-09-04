@@ -17,13 +17,15 @@
         top:-10px; bottom:-10px; 
         left:-1vh; right:-1vh; 
     }
+    .bar:hover {
+        background-color: #fff;
+    }
     .big {
         transform: scaleY(2);
     }
-    .active, .bar:hover {
+    .active {
         background-color: #fff;
         box-shadow: 0px 0px 8px 6px #0ff4
-
     }
     @media only screen and (max-width: 600px), (max-height: 600px) { 
         .bar {
