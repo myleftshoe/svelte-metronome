@@ -31,6 +31,7 @@
         display:flex;
         align-items:center;
         justify-content:flex-end;
+        cursor: pointer;
     }
 </style>
 
@@ -56,7 +57,8 @@
 
 {#if pattern.length } 
     <div id='beats-container' class='container' in:slide out:slide={{delay:500}}>
-        <Hotspot ripple on:click={removeOne}/>
+        <!-- <Hotspot ripple on:click={removeOne}/> -->
+        <div class=hotspot on:click={removeOne}/>
         <div class=pattern>
             {#each pattern as big, id}
                 <Bar {big} active={id === activeId} on:click={() => handleClick(id)}></Bar>
