@@ -29,13 +29,11 @@
 
 <script>
     import { slide } from 'svelte/transition';
-    import {createEventDispatcher, onMount} from 'svelte';
+    import { onMount } from 'svelte';
     import Bar from './bar.svelte';
     
     export let pattern = [];
     export let active = [0,0];
-
-    const dispatch = createEventDispatcher();
 
     function handleOffBeatClick() {
         pattern = [...pattern, 0];
