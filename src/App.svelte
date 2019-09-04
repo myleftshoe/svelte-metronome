@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import Layout from './layout.svelte';
-	import { BeatsControl, Topbar, BpmControl, ClicksControl, StartStop, Overlay, Notifier } from './components';
+	import { Topbar, BeatsControl, BpmControl, ClicksControl, StartStop, Overlay, Notifier } from './components';
 	import metronome from './metronome';
 
 	let bpm = 200;
