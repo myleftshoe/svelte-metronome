@@ -32,8 +32,9 @@
     }
 </style>
 <script>
+    export let id;
     export let big=false;
     export let active=false;
     import {fade} from 'svelte/transition'; 
 </script>
-<div class=bar class:big class:active transition:fade on:click></div>
+<div id={`bar-${id}`} class=bar class:big class:active transition:fade on:click></div>

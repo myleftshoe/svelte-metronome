@@ -21,21 +21,34 @@
 	let previous = false;
 	let pattern = [];
 	let mounted = false;
-	let playingBeat;
 	let visible = false;
 	let message = '';
 	let show = false;
+	let left;
+	let right;
 
 	onMount(() => {
 		mounted = true;
 	});
 
-	metronome.beatCallback = function(id) {
-		const left = document.getElementById('left-bar');
-		console.log('tttttttt',left);
+	metronome.beatCallback = function(beatId) {
+		const id = parseInt(beatId.split(':')[1]);
 
-		// playingBeat = parseInt(id.split(':')[1]);
-		// setTimeout(() => {playingBeat = undefined}, 50)
+		left = left || document.getElementById('left-bar');
+		right = right || document.getElementById('right-bar');
+		const bar = document.getElementById(`bar-${id}`);
+
+		if (pattern[id]) {
+			left.classList.add('activeselected');
+			setTimeout(() => left.classList.remove('activeselected'), 50)
+		}
+		else {
+			right.classList.add('active');
+			setTimeout(() => right.classList.remove('active'), 50)
+		}
+
+		bar.classList.add('active');
+		setTimeout(() => bar.classList.remove('active'), 50)
 	}
 
     function handleWheel(e) {
@@ -81,8 +94,8 @@
 
 {#if mounted}
 <div class=container transition:fade={{duration:1000}}>
-	<Topbar bind:pattern activeId={playingBeat}/>
-	<BeatsControl bind:pattern active={[pattern[playingBeat] === 1, pattern[playingBeat] === 0]}/>
+	<Topbar bind:pattern/>
+	<BeatsControl bind:pattern/>
 	<BpmControl {show} bind:bpm on:click={e => notify(`${e.detail} bpm`)}/>
 	<ClicksControl {show} bind:clicks on:click={e => notify(`${e.detail} clicks`)}/>
 	<StartStop {show} bind:playing/>

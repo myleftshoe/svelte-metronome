@@ -37,7 +37,6 @@
 
 <script>
     export let pattern = [];
-    export let activeId;
     import {slide, fade} from 'svelte/transition'; 
     import Bar from './bar.svelte';
     import { ClearIcon } from '../../svgicons';
@@ -59,7 +58,7 @@
         <div class=hotspot on:click={removeOne}/>
         <div class=pattern>
             {#each pattern as big, id}
-                <Bar {big} active={id === activeId} on:click={() => handleClick(id)}></Bar>
+                <Bar {id} {big} on:click={() => handleClick(id)}></Bar>
             {/each}
         </div>
         <div class=hotspot on:click={addOne}>

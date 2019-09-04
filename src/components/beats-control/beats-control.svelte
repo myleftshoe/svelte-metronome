@@ -33,7 +33,7 @@
     import Bar from './bar.svelte';
     
     export let pattern = [];
-    export let active = [0,0];
+    let active = [0,0];
 
     function handleOffBeatClick() {
         pattern = [...pattern, 0];
