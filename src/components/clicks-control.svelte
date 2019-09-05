@@ -14,7 +14,6 @@
 </style>
 <script>
 	export let clicks = 0;
-	export let show = false;
 	import SideButton from './side-button';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
