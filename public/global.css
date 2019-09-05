@@ -15,8 +15,8 @@ body {
 	align-items: center;
 	justify-content: center;
 	/* background-color: #232323; */
-	background-color: #000;
-	background-image: url("wood.png");
+	background-color: #232323;
+	background-image: url("images/wood-gf-75-blackbg.jpg");
 	box-shadow: 
 		0px 0px 4px 4px #000f inset,
 		0px 0px 8px 2px #fff8 inset

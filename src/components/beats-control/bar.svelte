@@ -1,6 +1,6 @@
 <style>
     div {
-        background:url('scratched-metal.png');
+        background:url('images/scratched-metal-gf-75.jpg');
         margin:1px;
         border-radius: .7vh;
     }
