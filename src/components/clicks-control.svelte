@@ -2,16 +2,20 @@
 	.left {
 		grid-column: 1;
 		grid-row: 4;
+		justify-self:start;
+		align-self:end;
 	}
 	.right {
 		grid-column: 3;
 		grid-row: 4;
+		justify-self:end;
+		align-self:end;
 	}
 </style>
 <script>
 	export let clicks = 0;
 	export let show = false;
-	import Hotspot from './hotspot.svelte';
+	import SideButton from './side-button';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
 	function setClicks (value) {
@@ -20,8 +24,8 @@
 	}
 </script>
 <div class='left'>
-    <Hotspot {show} on:click={() => setClicks(clicks-1)}>CLICKS<p/>-1</Hotspot>
+	<SideButton on:click={() => setClicks(clicks-1)}/>
 </div>
 <div class='right'>
-    <Hotspot {show} on:click={() => setClicks(clicks+1)}>CLICKS<p/>+1</Hotspot>
+	<SideButton right on:click={() => setClicks(clicks+1)}/>
 </div>
