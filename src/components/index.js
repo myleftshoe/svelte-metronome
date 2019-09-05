@@ -6,3 +6,4 @@ export { default as BpmControl } from './bpm-control.svelte';
 export { default as StartStop } from './start-stop.svelte';
 export { default as Overlay } from './overlay.svelte';
 export { default as Notifier } from './notifier.svelte';
+export { default as Mute } from './mute.svelte';

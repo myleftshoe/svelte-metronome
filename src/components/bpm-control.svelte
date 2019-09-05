@@ -1,7 +1,7 @@
 <style>
 	.left {
 		grid-column: 1;
-		grid-row: 2/4;
+		grid-row: 3/4;
 		display:flex;
 		flex-direction: column;
 		align-items:flex-start;
@@ -9,7 +9,7 @@
 	}
 	.right {
 		grid-column: 3;
-		grid-row: 2/4;
+		grid-row: 3/4;
 		display:flex;
 		flex-direction: column;
 		align-items:flex-end;

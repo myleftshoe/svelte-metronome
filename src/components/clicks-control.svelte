@@ -1,15 +1,15 @@
 <style>
 	.left {
 		grid-column: 1;
-		grid-row: 4;
+		grid-row: 4/6;
 		justify-self:start;
-		align-self:end;
+		align-self:center;
 	}
 	.right {
 		grid-column: 3;
-		grid-row: 4;
+		grid-row: 4/6;
 		justify-self:end;
-		align-self:end;
+		align-self:center;
 	}
 </style>
 <script>

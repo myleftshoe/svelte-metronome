@@ -1,6 +1,6 @@
 <style>
 	.container {
-        grid-row:3;
+        grid-row:3/5;
 		grid-column:2;
 		display:grid;
 		z-index:1;

@@ -3,7 +3,8 @@
 		position: relative;
 		background-color: var(--color);
 		height: var(--height);
-		width:14px;
+		width:1vw;
+		min-width: 20px;
 		border-radius: 9px 0% 0% 9px;
 		box-shadow: 
             -2px 0px 2px 0px #fff1 ,

@@ -12,7 +12,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { Topbar, BeatsControl, BpmControl, ClicksControl, StartStop, Overlay, Notifier } from './components';
+	import { Mute, Topbar, BeatsControl, BpmControl, ClicksControl, StartStop, Overlay, Notifier } from './components';
 	import metronome from './metronome';
 
 	let bpm = 200;
@@ -110,12 +110,13 @@
 
 {#if mounted}
 <div class=container transition:fade={{duration:1000}}>
-	<Topbar bind:pattern/>
+	<!-- <Topbar bind:pattern/> -->
 	<BeatsControl bind:pattern/>
 	<BpmControl {show} {bpm} on:change={e => setBpm(e.detail)}/>
 	<ClicksControl {show} bind:clicks on:click={e => notify(`${e.detail} clicks`)}/>
 	<StartStop {show} bind:playing/>
 	<Overlay bind:show></Overlay>
+	<Mute bind:pattern/>
 	{#if message}
 		<Notifier bind:message/>
 	{/if}

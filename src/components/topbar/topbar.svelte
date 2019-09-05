@@ -1,9 +1,9 @@
 <style>
     .container { 
-        position:fixed;
+        /* position:fixed;
         top:0;
         left:0;
-        background-color: #232323;
+        background-color: #232323; */
         display:grid;
         grid-auto-flow: column;
         grid-template-columns: minmax(5vw, 1fr) auto 1fr;
@@ -54,8 +54,8 @@
     }
 </script>
 
-{#if pattern.length } 
-    <div class='container' in:slide out:slide={{delay:500}}>
+<!-- {#if pattern.length }  -->
+    <div class='container' >
         <div class=hotspot on:click={removeOne}/>
         <div class=pattern>
             {#each pattern as big, id}
@@ -63,9 +63,9 @@
             {/each}
         </div>
         <div class=hotspot on:click={addOne}>
-            <div on:click|stopPropagation={() => pattern = []}>
+            <!-- <div on:click|stopPropagation={() => pattern = []}>
                 <ClearIcon size='1em' color='#fffa'/>
-            </div>
+            </div> -->
         </div>
     </div>
-{/if}
+<!-- {/if} -->
