@@ -1,5 +1,6 @@
 <style>
 	div { 
+		position: relative;
 		background-color: var(--color);
 		height: var(--height);
 		width:14px;
@@ -15,6 +16,13 @@
 			+2px 0px 2px 0px #222 inset,
 			-3px 0px 3px 0px #000 inset
 	}
+	/* increase hit test area */
+    div:after {
+        content:'';
+        position:absolute;
+        top:-10px; bottom:-10px; 
+        left:-10vw; right:-10vw; 
+    }
 </style>
 <script>
     export let color = '#aaa';
