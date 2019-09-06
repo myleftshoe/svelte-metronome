@@ -2,7 +2,7 @@
     .bar {
         position: relative;
         background-color: #0ff;
-        height:2vh;
+        height:100%;
         width:3px;
         border-radius: 1px;
         margin:0 1vh;
@@ -20,8 +20,8 @@
     .bar:hover {
         background-color: #fff;
     }
-    .big {
-        transform: scaleY(2);
+    .small {
+        transform: scaleY(.5);
     }
     .active {
         background-color: #fff;
@@ -39,4 +39,4 @@
     export let active=false;
     import {fade} from 'svelte/transition'; 
 </script>
-<div id={`bar-${id}`} class=bar class:big class:active transition:fade on:click></div>
+<div id={`bar-${id}`} class=bar class:small={!big} class:active transition:fade on:click|stopPropagation></div>

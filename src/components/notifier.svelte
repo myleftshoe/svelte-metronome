@@ -1,18 +1,16 @@
 <style>
 	div {
 		position:fixed;
-		top:10vh;
-		height:20vh;
-		left:10vw;
-		right:10vw;
-		/* background-color: #0003; */
+		height:50%;
+		width:100%;
 		display:flex;
-		align-items:center;
+		align-items:flex-end;
 		justify-content: center;
-		font-size:7vh;
-		color:#fff5;
-		text-shadow: .5vh .5vh 1vh #0008;
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+		color:#ffff;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		font-size:5vh;
+		pointer-events: none;
+		/* text-shadow: black 0 0 1vh; */
 	}
 </style>
 <script>
@@ -21,11 +19,11 @@
 	let timeout;
 	$: if (message) {
 			clearTimeout(timeout);
-			timeout = setTimeout(() => {message = ''}, 3000);
+			timeout = setTimeout(() => {message = ''}, 1500);
 		}
 </script>
 {#if message}
-	<div  transition:fade>
+	<div transition:fade>
 		{message}
 	</div>
 {/if}
