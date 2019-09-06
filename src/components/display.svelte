@@ -21,25 +21,31 @@
 <script>
     export let pattern = [];
 
-    import {slide, fade} from 'svelte/transition'; 
+    import { fade } from 'svelte/transition'; 
     import Bar from './bar.svelte';
     import Logo from './logo.svelte';
     
+    let showLogo = false;
     function toggleBar(index) {
         pattern[index] = !pattern[index];
         pattern=[...pattern];
     }
 
+    function handleOutroEnd(e) {
+        showLogo = true;
+    }
+
+    $: showLogo = showLogo && !pattern.length;
 </script>
 
 <div class='container' on:click>
     {#if pattern.length}
-        <div class=pattern>
+        <div class=pattern transition:fade on:outroend={handleOutroEnd}>
             {#each pattern as big, id}
                 <Bar {id} {big} on:click={() => toggleBar(id)}/>
             {/each}
         </div>
-    {:else}
-        <Logo/>
+    {:else if showLogo}
+        <Logo on/>
     {/if}
 </div>
