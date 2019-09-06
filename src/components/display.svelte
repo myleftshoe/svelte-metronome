@@ -11,8 +11,8 @@
         justify-content:center;
         align-items:center; 
         max-width:100%;
-        height:50%;
-        overflow-x:auto;
+        height:100%;
+        overflow-x: auto;
         overflow-y: hidden;
         /* transition:all .5s ease; */
     }

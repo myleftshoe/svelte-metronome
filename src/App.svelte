@@ -34,6 +34,7 @@
 	metronome.beatCallback = function(beatId) {
 		const id = parseInt(beatId.split(':')[1]);
 		const bar = document.getElementById(`bar-${id}`);
+		bar.scrollIntoView({block:'center', inline:'center', behaviour:'smooth'});
 		toggleClass(bar, 'active');
 	}
 

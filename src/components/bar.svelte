@@ -2,7 +2,7 @@
     .bar {
         position: relative;
         background-color: #0ff;
-        height:100%;
+        height:50%;
         width:3px;
         border-radius: 1px;
         margin:0 2vw;
