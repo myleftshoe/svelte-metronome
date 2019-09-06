@@ -5,7 +5,7 @@
         height:100%;
         width:3px;
         border-radius: 1px;
-        margin:0 1vh;
+        margin:0 2vw;
         flex-shrink:0;
         cursor:pointer;
         transition: transform .2s; 

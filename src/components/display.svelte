@@ -23,6 +23,7 @@
 
     import {slide, fade} from 'svelte/transition'; 
     import Bar from './bar.svelte';
+    import Logo from './logo.svelte';
     
     function toggleBar(index) {
         pattern[index] = !pattern[index];
@@ -32,9 +33,13 @@
 </script>
 
 <div class='container' on:click>
-    <div class=pattern>
-        {#each pattern as big, id}
-            <Bar {id} {big} on:click={() => toggleBar(id)}/>
-        {/each}
-    </div>
+    {#if pattern.length}
+        <div class=pattern>
+            {#each pattern as big, id}
+                <Bar {id} {big} on:click={() => toggleBar(id)}/>
+            {/each}
+        </div>
+    {:else}
+        <Logo/>
+    {/if}
 </div>
