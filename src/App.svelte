@@ -26,7 +26,7 @@
 		mounted = true;
 	});
 
-	function toggleClass(node, name, duration = 50) {
+	function toggleClass(node, name, duration = 100) {
 		node.classList.add(name);
 		setTimeout(() => node.classList.remove(name), duration);
 	}
