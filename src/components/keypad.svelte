@@ -23,7 +23,10 @@
         outline:none;
         cursor: pointer;
         color:white;
-        font-size:6.25vh;
+        font-size:4vh;
+    }
+    button:active {
+        background-color: #777;
     }
     .on-beat { 
         grid-row:1/3; 

@@ -15,7 +15,7 @@
 
 	let bpm = 200;
 	let clicks = 0;
-	let playing = true;
+	let playing = false;
 	let previous = false;
 	let pattern = [1,0,0,0];
 	let mounted = false;
