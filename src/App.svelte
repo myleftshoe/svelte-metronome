@@ -79,6 +79,13 @@
 		}
     }
 
+	function handleDisplayClick() {
+		if (!pattern.length)
+			keypadVisible = true;
+		else
+			keypadVisible = !keypadVisible;
+	}
+
 	$: {
 		if (playing) 
 			metronome.play(bpm, pattern, clicks);
@@ -97,7 +104,7 @@
 
 {#if mounted}
 <div class=container transition:fade={{duration:1000}}>
-	<Display bind:pattern on:click={() => keypadVisible = !keypadVisible}/>
+	<Display bind:pattern on:click={handleDisplayClick}/>
 	<Keypad visible={keypadVisible} {bpm} bind:clicks bind:pattern bind:playing on:change={e => setBpm(e.detail)}/>
 	<Notifier bind:message/>
 </div>
