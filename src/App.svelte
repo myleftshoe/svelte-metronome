@@ -79,8 +79,11 @@
 	function handleDisplayClick() {
 		if (!pattern.length)
 			keypadVisible = true;
-		else
+		else {
 			keypadVisible = !keypadVisible;
+			if (!keypadVisible && !playing)
+				playing = true; 
+		}
 	}
 
 	$: {
