@@ -39,6 +39,6 @@
 <script>
     import {fade} from 'svelte/transition'; 
 </script>
-<div in:fade={{delay:1000, duration:1000}}>
+<div in:fade={{delay:5000, duration:1000}}>
     Neonome
 </div>
