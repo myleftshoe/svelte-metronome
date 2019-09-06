@@ -10,7 +10,7 @@
         display:flex;
         justify-content:center;
         align-items:center; 
-        max-width:100%;
+        width:100%;
         height:100%;
         overflow-x: auto;
         overflow-y: hidden;
