@@ -7,10 +7,8 @@
 		align-items:flex-end;
 		justify-content: center;
 		color:#ffff;
-		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 		font-size:5vh;
 		pointer-events: none;
-		/* text-shadow: black 0 0 1vh; */
 	}
 </style>
 <script>

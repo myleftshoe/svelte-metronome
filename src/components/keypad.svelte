@@ -80,17 +80,17 @@
     
 </script>
 <div class=container class:hidden={!visible}>
-<div class='keypad'>
-    <button class='on-beat' on:click={addOnBeat}>|</button>
-    <button class='off-beat' on:click={addOffBeat}>'</button>
-    <button on:click={removeOne}><ClearIcon/></button>
-    <button on:click={clearAll}>X</button>
-    <button class='onoff' on:click={() => {playing = !playing}}>{playing ? '▮▮' : '▶'}</button>
-    <button on:click={() => change(bpm+20)}>+20</button>
-    <button on:click={() => change(bpm+1)}>+1</button>
-    <button on:click={() => setClicks(clicks+1)}>+</button>
-    <button on:click={() => change(bpm-20)}>-20</button>
-    <button on:click={() => change(bpm-1)}>-1</button>
-    <button on:click={() => setClicks(clicks-1)}>-</button>
-</div>
+    <div class='keypad'>
+        <button class='on-beat' on:click={addOnBeat}>|</button>
+        <button class='off-beat' on:click={addOffBeat}>'</button>
+        <button on:click={removeOne}><ClearIcon/></button>
+        <button on:click={clearAll}>X</button>
+        <button class='onoff' on:click={() => {playing = !playing}}>{playing ? '▮▮' : '▶'}</button>
+        <button on:click={() => change(bpm+20)}>+20</button>
+        <button on:click={() => change(bpm+1)}>+1</button>
+        <button on:click={() => setClicks(clicks+1)}>+</button>
+        <button on:click={() => change(bpm-20)}>-20</button>
+        <button on:click={() => change(bpm-1)}>-1</button>
+        <button on:click={() => setClicks(clicks-1)}>-</button>
+    </div>
 </div>
