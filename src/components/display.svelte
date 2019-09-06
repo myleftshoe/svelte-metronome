@@ -25,7 +25,7 @@
     import Bar from './bar.svelte';
     import Logo from './logo.svelte';
     
-    let showLogo = false;
+    let showLogo = true;
     function toggleBar(index) {
         pattern[index] = !pattern[index];
         pattern=[...pattern];

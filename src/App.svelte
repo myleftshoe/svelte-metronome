@@ -17,13 +17,10 @@
 	let clicks = 0;
 	let playing = false;
 	let previous = false;
-	let pattern = [1,0,0,0];
+	let pattern = [];
 	let mounted = false;
 	let keypadVisible = true;
 	let message = '';
-	let show = false;
-	let left;
-	let right;
 
 	onMount(() => {
 		mounted = true;
@@ -103,9 +100,9 @@
 <svelte:body on:keydown={handleKeydown}	on:wheel={handleWheel}/>
 
 {#if mounted}
-<div class=container transition:fade={{duration:1000}}>
-	<Display bind:pattern on:click={handleDisplayClick}/>
-	<Keypad visible={keypadVisible} {bpm} bind:clicks bind:pattern bind:playing on:change={e => setBpm(e.detail)}/>
-	<Notifier bind:message/>
-</div>
+	<div class=container transition:fade={{duration:1000}}>
+		<Display bind:pattern on:click={handleDisplayClick}/>
+		<Keypad visible={keypadVisible} {bpm} bind:clicks bind:pattern bind:playing on:change={e => setBpm(e.detail)}/>
+		<Notifier bind:message/>
+	</div>
 {/if}
