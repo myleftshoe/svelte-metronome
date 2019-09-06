@@ -17,7 +17,7 @@
 	let clicks = 0;
 	let playing = false;
 	let previous = false;
-	let pattern = [];
+	let pattern = [1,0,0,0];
 	let mounted = false;
 	let keypadVisible = true;
 	let message = '';
