@@ -24,6 +24,9 @@
         cursor: pointer;
         color:white;
         font-size:4vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
     }
     button:active {
         background-color: #777;
@@ -48,7 +51,7 @@
     export let bpm;
     export let clicks;
 
-    import { ClearIcon } from '../svgicons';
+    import { ClearIcon, VerticalBarIcon, PlayIcon,  PauseIcon } from '../svgicons';
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
     
@@ -81,11 +84,17 @@
 </script>
 <div class=container class:hidden={!visible}>
     <div class='keypad'>
-        <button class='on-beat' on:click={addOnBeat}>|</button>
-        <button class='off-beat' on:click={addOffBeat}>'</button>
+        <button class='on-beat' on:click={addOnBeat}><VerticalBarIcon size=32/></button>
+        <button class='off-beat' on:click={addOffBeat}><VerticalBarIcon size='16'/></button>
         <button on:click={removeOne}><ClearIcon/></button>
         <button on:click={clearAll}>X</button>
-        <button class='onoff' on:click={() => {playing = !playing}}>{playing ? '▮▮' : '▶'}</button>
+        <button class='onoff' on:click={() => {playing = !playing}}>
+            {#if playing}
+                <PauseIcon/>
+            {:else}
+                <PlayIcon/>
+            {/if}
+        </button>
         <button on:click={() => change(bpm+20)}>+20</button>
         <button on:click={() => change(bpm+1)}>+1</button>
         <button on:click={() => setClicks(clicks+1)}>+</button>
