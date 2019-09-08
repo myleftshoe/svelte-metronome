@@ -65,7 +65,7 @@
 			'ArrowDown': () => setBpm(ceil(bpm, multiplier)),
 			' ' : () => playing = !playing
 		}
-		keyActions[e.key] && keyActions[e.key](multiplier);
+		keyActions[e.key] && keyActions[e.key]();
     }
 
 	function handleDisplayClick() {
