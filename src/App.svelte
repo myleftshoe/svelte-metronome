@@ -60,21 +60,12 @@
 
     function handleKeydown(e) {
 		const multiplier = e.shiftKey ? 1 : 5;
-		switch (e.key) {
-			case 'ArrowUp': {
-				setBpm(floor(bpm, multiplier)); 
-				break;
-			}
-			case 'ArrowDown': {
-				setBpm(ceil(bpm, multiplier));
-				break;
-			}
-			case ' ': {
-				playing = !playing;
-				break;
-			}
-			default:
+		const keyActions = {
+			'ArrowUp' : () => setBpm(floor(bpm, multiplier)),
+			'ArrowDown': () => setBpm(ceil(bpm, multiplier)),
+			' ' : () => playing = !playing
 		}
+		keyActions[e.key] && keyActions[e.key](multiplier);
     }
 
 	function handleDisplayClick() {
