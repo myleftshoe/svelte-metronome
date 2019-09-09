@@ -42,13 +42,8 @@
 		bpm = value < 40 ? 40 : value > 360 ? 360 : value;
 	}
 
-	function floor(value, amount) {
-		return Math.floor(value/amount) * amount + amount;
-	} 
-
-	function ceil(value, amount) {
-		return Math.ceil(value/amount) * amount - amount;
-	} 
+	const floor = (value, amount) => Math.floor(value/amount) * amount + amount; 
+	const ceil = (value, amount) => Math.ceil(value/amount) * amount - amount;
 
     function handleWheel(e) {
 		const multiplier = e.shiftKey ? 1 : 10;
