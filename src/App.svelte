@@ -54,9 +54,16 @@
     function handleKeydown(e) {
 		const multiplier = e.shiftKey ? 1 : 5;
 		const keyActions = {
+			' ' : () => playing = !playing,
 			'ArrowUp' : () => setBpm(floor(bpm, multiplier)),
 			'ArrowDown': () => setBpm(ceil(bpm, multiplier)),
-			' ' : () => playing = !playing
+			'ArrowRight': () => {pattern = [...pattern, 0]},
+			'ArrowLeft': () => {pattern = [...pattern, 1]},
+			'Delete' : () => {pattern=[];},
+			'Backspace' : () => {
+				pattern.pop();
+				pattern = [...pattern];
+			},
 		}
 		keyActions[e.key] && keyActions[e.key]();
     }

@@ -67,10 +67,10 @@
         pattern = [...pattern, 1];
     }
     
-    function removeOne() {
-        pattern.pop();
-        pattern=[...pattern];
-    }
+        function removeOne() {
+            pattern.pop();
+            pattern=[...pattern];
+        }
 
     function clearAll() {
         pattern = [];
