@@ -22,9 +22,7 @@
 	let keypadVisible = true;
 	let message = '';
 
-	onMount(() => {
-		mounted = true;
-	});
+	onMount(() => { mounted = true;});
 
 	function toggleClass(node, name, duration = 100) {
 		node.classList.add(name);
