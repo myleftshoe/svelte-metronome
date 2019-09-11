@@ -99,7 +99,6 @@
 	}
 
 	function handleKeypad(e) {
-		console.log(e);
 		const keyActions = {
 			'onbeat': actions.addOnBeat,
 			'offbeat': actions.addOffBeat,
@@ -114,7 +113,6 @@
 			'-1': () => actions.setBpm(bpm-1),
 		}
 		keyActions[e.detail]();
-
 	}
 
 	$: {
