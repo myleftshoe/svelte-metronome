@@ -36,10 +36,31 @@
 		toggleClass(bar, 'active');
 	}
 
-	function setBpm (value) {
-		bpm = value < 40 ? 40 : value > 360 ? 360 : value;
+	const actions = {
+		addOnBeat() {
+			pattern = [...pattern, 1];
+		},
+		addOffBeat() {
+			pattern = [...pattern, 0];
+		},
+		removeOne() {
+			pattern.pop();
+			pattern=[...pattern];
+		},
+		clearAll() {
+			pattern = [];
+		},
+		togglePlaying() {
+			playing = !playing;
+		},
+		setBpm(value) {
+			bpm = value < 40 ? 40 : value > 360 ? 360 : value;
+		},
+		setClicks(value) {
+			clicks = value < 0 ? 0 : value > 9 ? 9 : value;
+		},
 	}
-
+	
 	const floor = (value, amount) => Math.floor(value/amount) * amount + amount; 
 	const ceil = (value, amount) => Math.ceil(value/amount) * amount - amount;
 
@@ -54,16 +75,15 @@
     function handleKeydown(e) {
 		const multiplier = e.shiftKey ? 1 : 5;
 		const keyActions = {
-			' ' : () => playing = !playing,
-			'ArrowUp' : () => setBpm(floor(bpm, multiplier)),
-			'ArrowDown': () => setBpm(ceil(bpm, multiplier)),
-			'ArrowRight': () => {pattern = [...pattern, 0]},
-			'ArrowLeft': () => {pattern = [...pattern, 1]},
-			'Delete' : () => {pattern=[];},
-			'Backspace' : () => {
-				pattern.pop();
-				pattern = [...pattern];
-			},
+			'ArrowUp': actions.addOnBeat,
+			'ArrowDown': actions.addOffBeat,
+			'Backspace': actions.removeOne,
+			'Delete': actions.clearAll,
+			' ': actions.togglePlaying,
+			'PageUp' : () => actions.setBpm(floor(bpm, multiplier)),
+			'PageDown': () => actions.setBpm(ceil(bpm, multiplier)),
+			'ArrowLeft': () => actions.setClicks(clicks-1),
+			'ArrowRight' : () => actions.setClicks(clicks+1),
 		}
 		keyActions[e.key] && keyActions[e.key]();
     }
@@ -76,6 +96,25 @@
 			if (!keypadVisible && !playing)
 				playing = true; 
 		}
+	}
+
+	function handleKeypad(e) {
+		console.log(e);
+		const keyActions = {
+			'onbeat': actions.addOnBeat,
+			'offbeat': actions.addOffBeat,
+			'backspace': actions.removeOne,
+			'delete': actions.clearAll,
+			'playpause': actions.togglePlaying,
+			'+': () => actions.setClicks(clicks+1),  
+			'-': () => actions.setClicks(clicks-1),
+			'+20': () => actions.setBpm(bpm+20),
+			'-20': () => actions.setBpm(bpm-20),
+			'+1': () => actions.setBpm(bpm+1),
+			'-1': () => actions.setBpm(bpm-1),
+		}
+		keyActions[e.detail]();
+
 	}
 
 	$: {
@@ -97,7 +136,7 @@
 {#if mounted}
 	<div class=container transition:fade={{duration:1000}}>
 		<Display bind:pattern on:click={handleDisplayClick}/>
-		<Keypad visible={keypadVisible} {bpm} bind:clicks bind:pattern bind:playing on:change={e => setBpm(e.detail)}/>
+		<Keypad visible={keypadVisible} on:keypress={handleKeypad}/>
 		<Notifier bind:message/>
 	</div>
 {/if}

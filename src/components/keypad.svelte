@@ -31,75 +31,51 @@
     button:active {
         background-color: #777;
     }
-    .on-beat { 
+    #onbeat { 
         grid-row:1/3; 
         grid-column:1/3; 
     }
-    .off-beat { 
+    #offbeat { 
         grid-row:1/3; 
         grid-column:3/5; 
     }
-    .onoff {
+    #playpause {
         grid-row:3/5;
         grid-column:1/3;
     }
 </style>
 <script>
     export let visible = false;
-    export let pattern = [];
     export let playing = false;
-    export let bpm;
-    export let clicks;
 
     import { ClearIcon, VerticalBarIcon, PlayIcon,  PauseIcon } from '../svgicons';
-	import { createEventDispatcher } from 'svelte';
-	const dispatch = createEventDispatcher();
-    
-    function change (value) {
-		dispatch('change', value);
-	}
+    import { createEventDispatcher } from 'svelte';
 
-    function addOffBeat() {
-        pattern = [...pattern, 0];
-    }
+    const dispatch = createEventDispatcher();
 
-    function addOnBeat() {
-        pattern = [...pattern, 1];
+    function handleKeypress(e) {
+        const key = e.target.id || e.target.innerText;
+        dispatch('keypress', key);
     }
-    
-        function removeOne() {
-            pattern.pop();
-            pattern=[...pattern];
-        }
-
-    function clearAll() {
-        pattern = [];
-    }
-
-    function setClicks (value) {
-		clicks = value < 0 ? 0 : value > 9 ? 9 : value;
-		dispatch('click', clicks);
-    }
-    
 </script>
 <div class=container class:hidden={!visible}>
-    <div class='keypad'>
-        <button class='on-beat' on:click={addOnBeat}><VerticalBarIcon size=32/></button>
-        <button class='off-beat' on:click={addOffBeat}><VerticalBarIcon size='16'/></button>
-        <button on:click={removeOne}><ClearIcon/></button>
-        <button on:click={clearAll}>X</button>
-        <button class='onoff' on:click={() => {playing = !playing}}>
+    <div class='keypad' on:click={handleKeypress}>
+        <button id='onbeat'><VerticalBarIcon size={32}/></button>
+        <button id='offbeat'><VerticalBarIcon size={16}/></button>
+        <button id='backspace'><ClearIcon/></button>
+        <button id='delete'>X</button>
+        <button id='playpause'>
             {#if playing}
                 <PauseIcon/>
             {:else}
                 <PlayIcon/>
             {/if}
         </button>
-        <button on:click={() => change(bpm+20)}>+20</button>
-        <button on:click={() => change(bpm+1)}>+1</button>
-        <button on:click={() => setClicks(clicks+1)}>+</button>
-        <button on:click={() => change(bpm-20)}>-20</button>
-        <button on:click={() => change(bpm-1)}>-1</button>
-        <button on:click={() => setClicks(clicks-1)}>-</button>
+        <button>+20</button>
+        <button>+1</button>
+        <button>+</button>
+        <button>-20</button>
+        <button>-1</button>
+        <button>-</button>
     </div>
 </div>

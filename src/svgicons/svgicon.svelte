@@ -8,9 +8,9 @@
     width={size} 
     height={size}
     viewBox={`0 0 24 24`}
+    pointer-events=none
     style={`fill:${color}; cursor: pointer; padding: calc( ${size} * 1.0 )`}
     on:click
-    class=svg
 >
     <slot/>
 </svg>
