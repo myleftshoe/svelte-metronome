@@ -75,8 +75,8 @@
     function handleKeydown(e) {
 		const multiplier = e.shiftKey ? 1 : 5;
 		const keyActions = {
-			'ArrowUp': actions.addOnBeat,
-			'ArrowDown': actions.addOffBeat,
+			'ArrowUp': actions.addOffBeat,
+			'ArrowDown': actions.addOnBeat,
 			'Backspace': actions.removeOne,
 			'Delete': actions.clearAll,
 			' ': actions.togglePlaying,
