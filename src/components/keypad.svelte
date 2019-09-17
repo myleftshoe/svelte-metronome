@@ -31,6 +31,9 @@
     button:active {
         background-color: #777;
     }
+    .active {
+        background-color: #0ff;
+    }
     #onbeat { 
         grid-row:1/3; 
         grid-column:1/3; 
@@ -60,7 +63,7 @@
 </script>
 <div class=container class:hidden={!visible}>
     <div class='keypad' on:click={handleKeypress}>
-        <button id='onbeat'><VerticalBarIcon size={32}/></button>
+        <button id='onbeat' class:active={false}><VerticalBarIcon size={32}/></button>
         <button id='offbeat'><VerticalBarIcon size={16}/></button>
         <button id='backspace'><ClearIcon/></button>
         <button id='delete'>X</button>

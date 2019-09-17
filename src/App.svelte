@@ -34,6 +34,10 @@
 		const bar = document.getElementById(`bar-${id}`);
 		bar.scrollIntoView({block:'center', inline:'center', behaviour:'smooth'});
 		toggleClass(bar, 'active');
+		let beat = document.getElementById('offbeat');
+		if (pattern[id]) 
+			beat = document.getElementById('onbeat');
+		toggleClass(beat, 'active');
 	}
 
 	const actions = {
@@ -134,7 +138,7 @@
 {#if mounted}
 	<div class=container transition:fade={{duration:1000}}>
 		<Display bind:pattern on:click={handleDisplayClick}/>
-		<Keypad visible={keypadVisible} on:keypress={handleKeypad}/>
+		<Keypad {playing} visible={keypadVisible} on:keypress={handleKeypad}/>
 		<Notifier bind:message/>
 	</div>
 {/if}
