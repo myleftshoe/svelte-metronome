@@ -1,11 +1,11 @@
 // import Tone from 'tone'
 import Tone from 'tone/Tone/core/Tone';
-import ToneTransport from 'tone/Tone/core/Transport';
-import TonePart from 'tone/Tone/event/Part';
-import ToneLoop from 'tone/Tone/event/Loop';
-import TonePlayer from 'tone/Tone/source/Player';
-import ToneTime from 'tone/Tone/type/Time';
-import ToneDraw from 'tone/Tone/core/Draw';
+// import _Transport from 'tone/Tone/core/Transport';
+import _Part from 'tone/Tone/event/Part';
+import _Loop from 'tone/Tone/event/Loop';
+import _Player from 'tone/Tone/source/Player';
+import _Time from 'tone/Tone/type/Time';
+import _Draw from 'tone/Tone/core/Draw';
 
 export default {
 
@@ -21,8 +21,8 @@ export default {
     play(bpm, beatsArray, clicks) {
         this.init()
         const beats = beatsArray.length;
-        ToneTransport.bpm.value = bpm; 
-        ToneTransport.timeSignature = [beats,4];
+        Tone.Transport.bpm.value = bpm; 
+        Tone.Transport.timeSignature = [beats,4];
         const onTimes = beatsArray.reduce((res, beat, index) => {
             if (beat)
                 res.push(`0:${index}`);
@@ -37,22 +37,22 @@ export default {
         this.onBeats.play(onTimes, this.beatCallback);
         this.offBeats.play(offTimes);
         this.clicksLoop.play(clicks);
-        ToneTransport.start();
+        Tone.Transport.start();
     },
     stop() {
-        ToneTransport.stop();
-        ToneTransport.cancel();
+        Tone.Transport.stop();
+        Tone.Transport.cancel();
     },
 }
 
 function Part(url, callback) {
-    this.player = new TonePlayer(url).toMaster();
-    this.part = new TonePart();
-    this.setUrl = (url) => {this.player = new TonePlayer(url).toMaster()};
+    this.player = new Tone.Player(url).toMaster();
+    this.part = new Tone.Part();
+    this.setUrl = (url) => {this.player = new Tone.Player(url).toMaster()};
     this.play = function(times) {
         this.part.removeAll();
         this.part.dispose();
-        this.part = new TonePart((time, id) => {
+        this.part = new Tone.Part((time, id) => {
             callback && Tone.Draw.schedule(() => callback(id), time);
             this.player.start(time)
         });
@@ -63,13 +63,13 @@ function Part(url, callback) {
 }
 
 function Loop(url) {
-    this.player = new TonePlayer(url).toMaster();
-    this.loop = new ToneLoop();
-    this.setUrl = (url) => {this.player = new TonePlayer(url).toMaster()};
+    this.player = new Tone.Player(url).toMaster();
+    this.loop = new Tone.Loop();
+    this.setUrl = (url) => {this.player = new Tone.Player(url).toMaster()};
     this.play = function(clicks) {
         this.loop.cancel();
         if (!clicks) return;
-        this.loop.interval = ToneTime('4n')/clicks;
+        this.loop.interval = Tone.Time('4n')/clicks;
         this.loop.callback = time => this.player.start(time);
         this.loop.start('4n');
     }
